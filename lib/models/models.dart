@@ -1,1 +1,1 @@
-// Data models module placeholder.
+export 'wallpaper.dart';

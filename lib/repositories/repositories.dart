@@ -1,1 +1,1 @@
-// Repositories module placeholder.
+export 'wallpaper_repository.dart';

@@ -1,1 +1,1 @@
-// State management providers module placeholder.
+export 'wallpaper_providers.dart';

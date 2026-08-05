@@ -1,1 +1,1 @@
-// Services module placeholder.
+export 'asset_service.dart';
