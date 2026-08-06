@@ -320,7 +320,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     if (index == 0) {
       context.goNamed(RouteConstants.homeName);
     } else if (index == 1) {
-      context.pushNamed(RouteConstants.favoritesName);
+      context.goNamed(RouteConstants.favoritesName);
     }
   }
 }

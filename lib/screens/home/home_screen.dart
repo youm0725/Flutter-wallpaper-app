@@ -22,7 +22,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  int _currentBottomNavIndex = 0;
+  static const int _currentBottomNavIndex = 0;
 
   static const List<String> _categories = <String>[
     'All',
@@ -362,14 +362,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   void _onBottomNavTapped(BuildContext context, int index) {
     if (index == _currentBottomNavIndex) return;
 
-    setState(() {
-      _currentBottomNavIndex = index;
-    });
-
     if (index == 1) {
-      context.pushNamed(RouteConstants.favoritesName);
+      context.goNamed(RouteConstants.favoritesName);
     } else if (index == 2) {
-      context.pushNamed(RouteConstants.settingsName);
+      context.goNamed(RouteConstants.settingsName);
     }
   }
 }
