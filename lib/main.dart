@@ -5,6 +5,7 @@ import 'core/theme/app_theme.dart';
 import 'providers/theme_provider.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(
     const ProviderScope(
       child: WallpaperApp(),
