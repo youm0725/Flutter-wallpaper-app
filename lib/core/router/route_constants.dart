@@ -23,4 +23,13 @@ abstract final class RouteConstants {
 
   static const String settingsPath = '/settings';
   static const String settingsName = 'settings';
+
+  static const String aboutPath = '/about';
+  static const String aboutName = 'about';
+
+  static const String privacyPath = '/privacy';
+  static const String privacyName = 'privacy';
+
+  static const String termsPath = '/terms';
+  static const String termsName = 'terms';
 }

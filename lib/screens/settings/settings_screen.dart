@@ -160,6 +160,13 @@ class SettingsScreen extends ConsumerWidget {
                 subtitle: 'Share the app with friends',
               ),
               PreferenceTile(
+                icon: Icons.info_outline_rounded,
+                title: 'About Wallpaper Gallery',
+                subtitle: 'Version, privacy, licenses & support',
+                trailing: const Icon(Icons.chevron_right_rounded),
+                onTap: () => context.pushNamed(RouteConstants.aboutName),
+              ),
+              PreferenceTile(
                 icon: Icons.share_rounded,
                 title: 'Share Wallpaper Gallery',
                 subtitle: 'Spread the word',

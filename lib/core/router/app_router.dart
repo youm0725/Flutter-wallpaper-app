@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
 import '../../models/wallpaper.dart';
+import '../../screens/about/about_screen.dart';
+import '../../screens/about/legal_screens.dart';
 import '../../screens/categories/categories_screen.dart';
 import '../../screens/collections/user_collections_screen.dart';
 import '../../screens/details/wallpaper_details_screen.dart';
@@ -44,11 +46,9 @@ final GoRouter appRouter = GoRouter(
       name: RouteConstants.wallpaperDetailsName,
       builder: (context, state) {
         final id = state.pathParameters['id'] ?? '';
-        final wallpaper = state.extra is Wallpaper ? state.extra as Wallpaper : null;
-        return WallpaperDetailsScreen(
-          wallpaperId: id,
-          wallpaper: wallpaper,
-        );
+        final wallpaper =
+            state.extra is Wallpaper ? state.extra as Wallpaper : null;
+        return WallpaperDetailsScreen(wallpaperId: id, wallpaper: wallpaper);
       },
     ),
     GoRoute(
@@ -60,6 +60,21 @@ final GoRouter appRouter = GoRouter(
       path: RouteConstants.settingsPath,
       name: RouteConstants.settingsName,
       builder: (context, state) => const SettingsScreen(),
+    ),
+    GoRoute(
+      path: RouteConstants.aboutPath,
+      name: RouteConstants.aboutName,
+      builder: (context, state) => const AboutScreen(),
+    ),
+    GoRoute(
+      path: RouteConstants.privacyPath,
+      name: RouteConstants.privacyName,
+      builder: (context, state) => const PrivacyScreen(),
+    ),
+    GoRoute(
+      path: RouteConstants.termsPath,
+      name: RouteConstants.termsName,
+      builder: (context, state) => const TermsScreen(),
     ),
   ],
 );
