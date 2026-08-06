@@ -32,7 +32,7 @@ class OptionSelector extends StatelessWidget {
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 200),
               padding: const EdgeInsets.symmetric(
-                horizontal: AppSizes.p12,
+                horizontal: AppSizes.p8,
                 vertical: AppSizes.p6,
               ),
               decoration: BoxDecoration(
