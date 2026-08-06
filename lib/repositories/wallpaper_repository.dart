@@ -6,6 +6,9 @@ import '../services/asset_service.dart';
 /// Contract for wallpaper data repository operations.
 abstract interface class IWallpaperRepository {
   Future<List<Wallpaper>> getWallpapers();
+  Future<Wallpaper?> getWallpaperById(String id);
+  Future<List<Wallpaper>> getWallpapersByCategory(String category);
+  Future<List<Wallpaper>> getFeaturedWallpapers();
 }
 
 /// Local offline implementation of [IWallpaperRepository].
@@ -46,5 +49,30 @@ final class LocalWallpaperRepository implements IWallpaperRepository {
       }
       rethrow;
     }
+  }
+
+  @override
+  Future<Wallpaper?> getWallpaperById(String id) async {
+    final wallpapers = await getWallpapers();
+    try {
+      return wallpapers.firstWhere((w) => w.id == id);
+    } catch (_) {
+      return null;
+    }
+  }
+
+  @override
+  Future<List<Wallpaper>> getWallpapersByCategory(String category) async {
+    final wallpapers = await getWallpapers();
+    final lowerCategory = category.toLowerCase().trim();
+    return wallpapers
+        .where((w) => w.category.toLowerCase().trim() == lowerCategory)
+        .toList();
+  }
+
+  @override
+  Future<List<Wallpaper>> getFeaturedWallpapers() async {
+    final wallpapers = await getWallpapers();
+    return wallpapers.where((w) => w.isFeatured).toList();
   }
 }

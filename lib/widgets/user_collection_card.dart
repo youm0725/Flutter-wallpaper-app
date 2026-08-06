@@ -87,7 +87,7 @@ class UserCollectionCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final wallpapers = ref.watch(userCollectionWallpapersProvider(collection.id));
-    final previewPath = wallpapers.isNotEmpty ? wallpapers.first.imagePath : null;
+    final previewPath = wallpapers.isNotEmpty ? wallpapers.first.effectiveThumbnailPath : null;
 
     return Material(
       color: theme.colorScheme.surfaceContainerHighest,

@@ -67,15 +67,15 @@ flutter:
   assets:
     - assets/metadata/
     - assets/icons/
-    - assets/wallpapers/nature/
-    - assets/wallpapers/abstract/
-    - assets/wallpapers/amoled/
-    - assets/wallpapers/anime/
-    - assets/wallpapers/architecture/
-    - assets/wallpapers/cars/
-    - assets/wallpapers/gaming/
-    - assets/wallpapers/minimal/
-    - assets/wallpapers/space/
+    - assets/wallpapers/full/nature/
+    - assets/wallpapers/full/abstract/
+    - assets/wallpapers/full/amoled/
+    - assets/wallpapers/full/anime/
+    - assets/wallpapers/full/architecture/
+    - assets/wallpapers/full/cars/
+    - assets/wallpapers/full/gaming/
+    - assets/wallpapers/full/minimal/
+    - assets/wallpapers/full/space/
     - assets/wallpapers/thumbnails/nature/
     - assets/wallpapers/thumbnails/abstract/
     - assets/wallpapers/thumbnails/amoled/

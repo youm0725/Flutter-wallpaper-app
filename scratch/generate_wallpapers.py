@@ -22,7 +22,6 @@ def create_gradient_canvas(width, height, color1, color2, vertical=True):
 
 def draw_nature(draw, width, height, item_id):
     if item_id == "nature_01":
-        # Misty Alpine Forest
         draw.polygon([(0, height * 0.7), (width * 0.5, height * 0.4), (width, height * 0.75), (width, height), (0, height)], fill=(20, 45, 40))
         draw.polygon([(0, height * 0.8), (width * 0.7, height * 0.55), (width, height * 0.85), (width, height), (0, height)], fill=(12, 30, 26))
         for i in range(25):
@@ -32,13 +31,11 @@ def draw_nature(draw, width, height, item_id):
             th = random.randint(100, 250)
             draw.polygon([(tx, ty - th), (tx - tw//2, ty), (tx + tw//2, ty)], fill=(8, 22, 18))
     elif item_id == "nature_02":
-        # Golden Hour Horizon
         cx, cy = width // 2, int(height * 0.55)
         draw.ellipse([cx-140, cy-140, cx+140, cy+140], fill=(255, 230, 160))
         draw.polygon([(0, height * 0.6), (width * 0.4, height * 0.52), (width, height * 0.65), (width, height), (0, height)], fill=(80, 30, 10))
         draw.polygon([(0, height * 0.7), (width * 0.75, height * 0.58), (width, height * 0.72), (width, height), (0, height)], fill=(40, 12, 5))
     elif item_id == "nature_03":
-        # Emerald Canyon River
         draw.polygon([(0, height*0.3), (width*0.4, height*0.7), (width*0.3, height), (0, height)], fill=(15, 35, 25))
         draw.polygon([(width, height*0.25), (width*0.55, height*0.7), (width*0.7, height), (width, height)], fill=(10, 25, 18))
         draw.polygon([(width*0.35, height*0.68), (width*0.45, height*0.8), (width*0.1, height), (width*0.8, height)], fill=(30, 160, 130))
@@ -131,7 +128,7 @@ def generate_wallpaper(item):
     category = item['category']
     title = item['title']
 
-    print(f"Generating optimized WebP wallpaper for {item_id} ({title})...")
+    print(f"Generating WebP wallpaper for {item_id} ({title})...")
 
     full_w, full_h = 1080, 1920
     thumb_w, thumb_h = 360, 640
@@ -179,15 +176,17 @@ def generate_wallpaper(item):
     else:
         draw_generic(draw, img, full_w, full_h, item_id, category)
 
-    cat_dir = os.path.join(WALLPAPERS_DIR, category)
-    os.makedirs(cat_dir, exist_ok=True)
+    full_cat_dir = os.path.join(WALLPAPERS_DIR, "full", category)
+    os.makedirs(full_cat_dir, exist_ok=True)
     
     thumb_cat_dir = os.path.join(WALLPAPERS_DIR, "thumbnails", category)
     os.makedirs(thumb_cat_dir, exist_ok=True)
 
     filename_base = os.path.splitext(os.path.basename(item['imagePath']))[0]
-    
-    full_path = os.path.join(cat_dir, f"{filename_base}.webp")
+    if filename_base.endswith('.webp'):
+        filename_base = os.path.splitext(filename_base)[0]
+
+    full_path = os.path.join(full_cat_dir, f"{filename_base}.webp")
     thumb_path = os.path.join(thumb_cat_dir, f"{filename_base}.webp")
 
     img.save(full_path, "WEBP", quality=85, method=6)
@@ -195,7 +194,7 @@ def generate_wallpaper(item):
     thumb_img = img.resize((thumb_w, thumb_h), Image.Resampling.LANCZOS)
     thumb_img.save(thumb_path, "WEBP", quality=75, method=6)
 
-    rel_full_path = f"assets/wallpapers/{category}/{filename_base}.webp"
+    rel_full_path = f"assets/wallpapers/full/{category}/{filename_base}.webp"
     rel_thumb_path = f"assets/wallpapers/thumbnails/{category}/{filename_base}.webp"
 
     full_bytes = os.path.getsize(full_path)
@@ -218,12 +217,16 @@ def main():
         item['imagePath'] = rel_full
         item['thumbnailPath'] = rel_thumb
         item['fileSize'] = f"{int(f_kb)} KB" if f_kb < 1000 else f"{round(f_kb / 1024, 1)} MB"
+        if 'description' not in item:
+            item['description'] = f"A premium offline {item['category']} wallpaper optimized for modern mobile displays."
+        if 'collections' not in item:
+            item['collections'] = [f"{item['category'].capitalize()} Collection"]
 
     with open(METADATA_PATH, "w", encoding="utf-8") as f:
         json.dump(wallpapers, f, indent=2)
 
     print("\n==========================================")
-    print("ALL WEBP ASSETS SUCCESSFULLY GENERATED!")
+    print("ALL ASSETS SUCCESSFULLY GENERATED IN NEW ARCHITECTURE!")
     print(f"Total Full Wallpapers: {len(wallpapers)}")
     print("==========================================")
 

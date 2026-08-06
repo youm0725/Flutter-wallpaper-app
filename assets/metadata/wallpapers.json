@@ -3,7 +3,7 @@
     "id": "nature_01",
     "title": "Misty Alpine Forest",
     "category": "nature",
-    "imagePath": "assets/wallpapers/nature/misty_alpine_forest.webp",
+    "imagePath": "assets/wallpapers/full/nature/misty_alpine_forest.webp",
     "resolution": "2160x3840",
     "fileSize": "11 KB",
     "tags": [
@@ -13,13 +13,17 @@
       "fog"
     ],
     "isFeatured": true,
-    "thumbnailPath": "assets/wallpapers/thumbnails/nature/misty_alpine_forest.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/nature/misty_alpine_forest.webp",
+    "description": "A premium offline nature wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Nature Collection"
+    ]
   },
   {
     "id": "nature_02",
     "title": "Golden Hour Horizon",
     "category": "nature",
-    "imagePath": "assets/wallpapers/nature/golden_hour_horizon.webp",
+    "imagePath": "assets/wallpapers/full/nature/golden_hour_horizon.webp",
     "resolution": "2160x3840",
     "fileSize": "12 KB",
     "tags": [
@@ -29,13 +33,17 @@
       "warm"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/nature/golden_hour_horizon.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/nature/golden_hour_horizon.webp",
+    "description": "A premium offline nature wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Nature Collection"
+    ]
   },
   {
     "id": "nature_03",
     "title": "Emerald Canyon River",
     "category": "nature",
-    "imagePath": "assets/wallpapers/nature/emerald_canyon_river.webp",
+    "imagePath": "assets/wallpapers/full/nature/emerald_canyon_river.webp",
     "resolution": "2160x3840",
     "fileSize": "18 KB",
     "tags": [
@@ -45,13 +53,17 @@
       "waterfall"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/nature/emerald_canyon_river.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/nature/emerald_canyon_river.webp",
+    "description": "A premium offline nature wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Nature Collection"
+    ]
   },
   {
     "id": "abstract_01",
     "title": "Fluid Chromatic Waves",
     "category": "abstract",
-    "imagePath": "assets/wallpapers/abstract/fluid_chromatic_waves.webp",
+    "imagePath": "assets/wallpapers/full/abstract/fluid_chromatic_waves.webp",
     "resolution": "2160x3840",
     "fileSize": "13 KB",
     "tags": [
@@ -61,15 +73,19 @@
       "waves"
     ],
     "isFeatured": true,
-    "thumbnailPath": "assets/wallpapers/thumbnails/abstract/fluid_chromatic_waves.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/abstract/fluid_chromatic_waves.webp",
+    "description": "A premium offline abstract wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Abstract Collection"
+    ]
   },
   {
     "id": "abstract_02",
     "title": "Geometric Prism",
     "category": "abstract",
-    "imagePath": "assets/wallpapers/abstract/geometric_prism.webp",
+    "imagePath": "assets/wallpapers/full/abstract/geometric_prism.webp",
     "resolution": "2160x3840",
-    "fileSize": "84 KB",
+    "fileSize": "78 KB",
     "tags": [
       "abstract",
       "geometric",
@@ -77,13 +93,17 @@
       "3d"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/abstract/geometric_prism.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/abstract/geometric_prism.webp",
+    "description": "A premium offline abstract wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Abstract Collection"
+    ]
   },
   {
     "id": "abstract_03",
     "title": "Obsidian Flow",
     "category": "abstract",
-    "imagePath": "assets/wallpapers/abstract/obsidian_flow.webp",
+    "imagePath": "assets/wallpapers/full/abstract/obsidian_flow.webp",
     "resolution": "2160x3840",
     "fileSize": "19 KB",
     "tags": [
@@ -93,13 +113,17 @@
       "minimal"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/abstract/obsidian_flow.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/abstract/obsidian_flow.webp",
+    "description": "A premium offline abstract wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Abstract Collection"
+    ]
   },
   {
     "id": "amoled_01",
     "title": "Neon Eclipse",
     "category": "amoled",
-    "imagePath": "assets/wallpapers/amoled/neon_eclipse.webp",
+    "imagePath": "assets/wallpapers/full/amoled/neon_eclipse.webp",
     "resolution": "2160x3840",
     "fileSize": "9 KB",
     "tags": [
@@ -109,13 +133,17 @@
       "eclipse"
     ],
     "isFeatured": true,
-    "thumbnailPath": "assets/wallpapers/thumbnails/amoled/neon_eclipse.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/amoled/neon_eclipse.webp",
+    "description": "A premium offline amoled wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Amoled Collection"
+    ]
   },
   {
     "id": "amoled_02",
     "title": "Deep Void Geometry",
     "category": "amoled",
-    "imagePath": "assets/wallpapers/amoled/deep_void_geometry.webp",
+    "imagePath": "assets/wallpapers/full/amoled/deep_void_geometry.webp",
     "resolution": "2160x3840",
     "fileSize": "55 KB",
     "tags": [
@@ -125,13 +153,17 @@
       "minimal"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/amoled/deep_void_geometry.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/amoled/deep_void_geometry.webp",
+    "description": "A premium offline amoled wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Amoled Collection"
+    ]
   },
   {
     "id": "amoled_03",
     "title": "Midnight Glowing Lines",
     "category": "amoled",
-    "imagePath": "assets/wallpapers/amoled/midnight_glowing_lines.webp",
+    "imagePath": "assets/wallpapers/full/amoled/midnight_glowing_lines.webp",
     "resolution": "2160x3840",
     "fileSize": "28 KB",
     "tags": [
@@ -141,13 +173,17 @@
       "dark"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/amoled/midnight_glowing_lines.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/amoled/midnight_glowing_lines.webp",
+    "description": "A premium offline amoled wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Amoled Collection"
+    ]
   },
   {
     "id": "anime_01",
     "title": "Sunset Cyber Tokyo",
     "category": "anime",
-    "imagePath": "assets/wallpapers/anime/sunset_cyber_tokyo.webp",
+    "imagePath": "assets/wallpapers/full/anime/sunset_cyber_tokyo.webp",
     "resolution": "2160x3840",
     "fileSize": "11 KB",
     "tags": [
@@ -157,13 +193,17 @@
       "tokyo"
     ],
     "isFeatured": true,
-    "thumbnailPath": "assets/wallpapers/thumbnails/anime/sunset_cyber_tokyo.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/anime/sunset_cyber_tokyo.webp",
+    "description": "A premium offline anime wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Anime Collection"
+    ]
   },
   {
     "id": "anime_02",
     "title": "Celestial Shrine Peak",
     "category": "anime",
-    "imagePath": "assets/wallpapers/anime/celestial_shrine_peak.webp",
+    "imagePath": "assets/wallpapers/full/anime/celestial_shrine_peak.webp",
     "resolution": "2160x3840",
     "fileSize": "12 KB",
     "tags": [
@@ -173,15 +213,19 @@
       "fantasy"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/anime/celestial_shrine_peak.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/anime/celestial_shrine_peak.webp",
+    "description": "A premium offline anime wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Anime Collection"
+    ]
   },
   {
     "id": "architecture_01",
     "title": "Monolithic Glass Tower",
     "category": "architecture",
-    "imagePath": "assets/wallpapers/architecture/monolithic_glass_tower.webp",
+    "imagePath": "assets/wallpapers/full/architecture/monolithic_glass_tower.webp",
     "resolution": "2160x3840",
-    "fileSize": "18 KB",
+    "fileSize": "15 KB",
     "tags": [
       "architecture",
       "glass",
@@ -189,15 +233,19 @@
       "modern"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/architecture/monolithic_glass_tower.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/architecture/monolithic_glass_tower.webp",
+    "description": "A premium offline architecture wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Architecture Collection"
+    ]
   },
   {
     "id": "architecture_02",
     "title": "Minimalist Concrete Arch",
     "category": "architecture",
-    "imagePath": "assets/wallpapers/architecture/minimalist_concrete_arch.webp",
+    "imagePath": "assets/wallpapers/full/architecture/minimalist_concrete_arch.webp",
     "resolution": "2160x3840",
-    "fileSize": "17 KB",
+    "fileSize": "15 KB",
     "tags": [
       "architecture",
       "concrete",
@@ -205,13 +253,17 @@
       "arch"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/architecture/minimalist_concrete_arch.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/architecture/minimalist_concrete_arch.webp",
+    "description": "A premium offline architecture wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Architecture Collection"
+    ]
   },
   {
     "id": "cars_01",
     "title": "Supercar Midnight Drift",
     "category": "cars",
-    "imagePath": "assets/wallpapers/cars/supercar_midnight_drift.webp",
+    "imagePath": "assets/wallpapers/full/cars/supercar_midnight_drift.webp",
     "resolution": "2160x3840",
     "fileSize": "15 KB",
     "tags": [
@@ -221,13 +273,17 @@
       "speed"
     ],
     "isFeatured": true,
-    "thumbnailPath": "assets/wallpapers/thumbnails/cars/supercar_midnight_drift.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/cars/supercar_midnight_drift.webp",
+    "description": "A premium offline cars wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Cars Collection"
+    ]
   },
   {
     "id": "cars_02",
     "title": "Retro Cyber Roadster",
     "category": "cars",
-    "imagePath": "assets/wallpapers/cars/retro_cyber_roadster.webp",
+    "imagePath": "assets/wallpapers/full/cars/retro_cyber_roadster.webp",
     "resolution": "2160x3840",
     "fileSize": "15 KB",
     "tags": [
@@ -237,15 +293,19 @@
       "cyber"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/cars/retro_cyber_roadster.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/cars/retro_cyber_roadster.webp",
+    "description": "A premium offline cars wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Cars Collection"
+    ]
   },
   {
     "id": "gaming_01",
     "title": "Cyberpunk Neon Alley",
     "category": "gaming",
-    "imagePath": "assets/wallpapers/gaming/cyberpunk_neon_alley.webp",
+    "imagePath": "assets/wallpapers/full/gaming/cyberpunk_neon_alley.webp",
     "resolution": "2160x3840",
-    "fileSize": "17 KB",
+    "fileSize": "16 KB",
     "tags": [
       "gaming",
       "cyberpunk",
@@ -253,13 +313,17 @@
       "city"
     ],
     "isFeatured": true,
-    "thumbnailPath": "assets/wallpapers/thumbnails/gaming/cyberpunk_neon_alley.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/gaming/cyberpunk_neon_alley.webp",
+    "description": "A premium offline gaming wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Gaming Collection"
+    ]
   },
   {
     "id": "gaming_02",
     "title": "Low Poly Fantasy Kingdom",
     "category": "gaming",
-    "imagePath": "assets/wallpapers/gaming/low_poly_fantasy_kingdom.webp",
+    "imagePath": "assets/wallpapers/full/gaming/low_poly_fantasy_kingdom.webp",
     "resolution": "2160x3840",
     "fileSize": "16 KB",
     "tags": [
@@ -269,13 +333,17 @@
       "castle"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/gaming/low_poly_fantasy_kingdom.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/gaming/low_poly_fantasy_kingdom.webp",
+    "description": "A premium offline gaming wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Gaming Collection"
+    ]
   },
   {
     "id": "minimal_01",
     "title": "Sand Dune Silhouette",
     "category": "minimal",
-    "imagePath": "assets/wallpapers/minimal/sand_dune_silhouette.webp",
+    "imagePath": "assets/wallpapers/full/minimal/sand_dune_silhouette.webp",
     "resolution": "2160x3840",
     "fileSize": "19 KB",
     "tags": [
@@ -285,15 +353,19 @@
       "silhouette"
     ],
     "isFeatured": true,
-    "thumbnailPath": "assets/wallpapers/thumbnails/minimal/sand_dune_silhouette.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/minimal/sand_dune_silhouette.webp",
+    "description": "A premium offline minimal wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Minimal Collection"
+    ]
   },
   {
     "id": "minimal_02",
     "title": "Pastel Horizon Gradient",
     "category": "minimal",
-    "imagePath": "assets/wallpapers/minimal/pastel_horizon_gradient.webp",
+    "imagePath": "assets/wallpapers/full/minimal/pastel_horizon_gradient.webp",
     "resolution": "2160x3840",
-    "fileSize": "17 KB",
+    "fileSize": "15 KB",
     "tags": [
       "minimal",
       "pastel",
@@ -301,13 +373,17 @@
       "soft"
     ],
     "isFeatured": false,
-    "thumbnailPath": "assets/wallpapers/thumbnails/minimal/pastel_horizon_gradient.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/minimal/pastel_horizon_gradient.webp",
+    "description": "A premium offline minimal wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Minimal Collection"
+    ]
   },
   {
     "id": "space_01",
     "title": "Stellar Nebula Drift",
     "category": "space",
-    "imagePath": "assets/wallpapers/space/stellar_nebula_drift.webp",
+    "imagePath": "assets/wallpapers/full/space/stellar_nebula_drift.webp",
     "resolution": "2160x3840",
     "fileSize": "17 KB",
     "tags": [
@@ -317,6 +393,10 @@
       "stars"
     ],
     "isFeatured": true,
-    "thumbnailPath": "assets/wallpapers/thumbnails/space/stellar_nebula_drift.webp"
+    "thumbnailPath": "assets/wallpapers/thumbnails/space/stellar_nebula_drift.webp",
+    "description": "A premium offline space wallpaper optimized for modern mobile displays.",
+    "collections": [
+      "Space Collection"
+    ]
   }
 ]

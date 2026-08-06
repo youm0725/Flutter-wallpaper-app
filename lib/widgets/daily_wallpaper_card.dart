@@ -36,7 +36,7 @@ class DailyWallpaperCard extends StatelessWidget {
               Hero(
                 tag: 'wallpaper_${wallpaper.id}',
                 child: Image.asset(
-                  wallpaper.imagePath,
+                  wallpaper.effectiveThumbnailPath,
                   fit: BoxFit.cover,
                   cacheWidth: 800,
                   errorBuilder: (context, error, stackTrace) {
