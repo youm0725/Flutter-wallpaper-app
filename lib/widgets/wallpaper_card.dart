@@ -68,9 +68,16 @@ class WallpaperCard extends ConsumerWidget {
                           child: Image.asset(
                             wallpaper.effectiveThumbnailPath,
                             fit: BoxFit.cover,
-                            // Limit decoded image size to thumbnail dimensions,
-                            // significantly reducing memory usage for grid display.
                             cacheWidth: 400,
+                            frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                              if (wasSynchronouslyLoaded) return child;
+                              return AnimatedOpacity(
+                                opacity: frame == null ? 0 : 1,
+                                duration: const Duration(milliseconds: 250),
+                                curve: Curves.easeOut,
+                                child: child,
+                              );
+                            },
                             errorBuilder: (context, error, stackTrace) {
                               return Container(
                                 decoration: BoxDecoration(

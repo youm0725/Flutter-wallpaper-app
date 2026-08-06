@@ -71,6 +71,15 @@ class _ZoomableWallpaperState extends State<ZoomableWallpaper>
             child: Image.asset(
               widget.wallpaper.imagePath,
               fit: BoxFit.cover,
+              frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                if (wasSynchronouslyLoaded) return child;
+                return AnimatedOpacity(
+                  opacity: frame == null ? 0 : 1,
+                  duration: const Duration(milliseconds: 250),
+                  curve: Curves.easeOut,
+                  child: child,
+                );
+              },
               errorBuilder: (context, error, stackTrace) {
                 return Container(
                   color: theme.colorScheme.surfaceContainerHighest,
