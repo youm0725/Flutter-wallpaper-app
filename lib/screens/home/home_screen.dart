@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../core/router/route_constants.dart';
 import '../../models/wallpaper.dart';
 import '../../providers/category_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/wallpaper_providers.dart';
-import '../../widgets/category_chip.dart';
-import '../../widgets/search_bar_widget.dart';
-import '../../widgets/section_header.dart';
-import '../../widgets/wallpaper_card.dart';
+import '../../widgets/widgets.dart';
 
-/// Production-quality Home Screen displaying wallpaper gallery, categories, and theme options.
+/// Production-quality, refined Home Screen.
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
@@ -49,7 +45,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
           slivers: [
-            // Custom App Bar
+            // 1. App Bar
             SliverAppBar(
               floating: true,
               snap: true,
@@ -61,8 +57,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   Text(
                     'Wallpaper Gallery',
                     style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: -0.3,
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: -0.4,
                     ),
                   ),
                   Text(
@@ -82,17 +78,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   tooltip: isDark ? 'Switch to Light Theme' : 'Switch to Dark Theme',
                   icon: Icon(
                     isDark ? Icons.light_mode_outlined : Icons.dark_mode_outlined,
-                    size: AppSizes.iconMd,
+                    size: AppSizes.iconMd - 2,
                   ),
                 ),
                 const SizedBox(width: AppSizes.p8),
               ],
             ),
 
-            // Welcome Hero Section
+            // 2. Welcome Section
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.all(AppSizes.p16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: AppSizes.p16,
+                  vertical: AppSizes.p12,
+                ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -115,40 +114,42 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
 
-            // Search Bar (UI only)
+            // 3. Search Bar
             const SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.only(bottom: AppSizes.p16),
+                padding: EdgeInsets.symmetric(vertical: AppSizes.p8),
                 child: SearchBarWidget(),
               ),
             ),
 
-            // Categories Section Header
+            // 4. Categories Section Header & Horizontal List
             const SliverToBoxAdapter(
               child: SectionHeader(
                 title: 'Categories',
                 subtitle: 'Filter by style',
               ),
             ),
-
-            // Horizontal Categories List
             SliverToBoxAdapter(
               child: SizedBox(
-                height: 40.0,
+                height: 44.0,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
                   padding: const EdgeInsets.symmetric(horizontal: AppSizes.p16),
                   itemCount: _categories.length,
                   itemBuilder: (context, index) {
                     final category = _categories[index];
-                    final isSelected = selectedCategory.toLowerCase() == category.toLowerCase();
+                    final isSelected =
+                        selectedCategory.toLowerCase() == category.toLowerCase();
                     return CategoryChip(
                       label: category == 'All'
                           ? 'All'
                           : category[0].toUpperCase() + category.substring(1),
                       isSelected: isSelected,
                       onTap: () {
-                        ref.read(selectedCategoryProvider.notifier).selectCategory(category);
+                        ref
+                            .read(selectedCategoryProvider.notifier)
+                            .selectCategory(category);
                       },
                     );
                   },
@@ -160,35 +161,30 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               child: SizedBox(height: AppSizes.p16),
             ),
 
-            // Wallpaper Section Header
+            // 5. Wallpaper Grid Section Header & Grid Content
             const SliverToBoxAdapter(
               child: SectionHeader(
                 title: 'Explore Gallery',
               ),
             ),
-
-            // Wallpaper Grid content
             asyncWallpapers.when(
               data: (wallpapers) {
                 final filteredWallpapers = selectedCategory == 'All'
                     ? wallpapers
                     : wallpapers
                         .where(
-                          (w) => w.category.toLowerCase() == selectedCategory.toLowerCase(),
+                          (w) =>
+                              w.category.toLowerCase() ==
+                              selectedCategory.toLowerCase(),
                         )
                         .toList();
 
                 if (filteredWallpapers.isEmpty) {
                   return const SliverFillRemaining(
                     hasScrollBody: false,
-                    child: Center(
-                      child: Text(
-                        'No wallpapers found in this category.',
-                        style: TextStyle(
-                          fontSize: 14.0,
-                          color: AppColors.disabled,
-                        ),
-                      ),
+                    child: EmptyStateView(
+                      title: 'No Wallpapers Found',
+                      description: 'No wallpapers available in this category.',
                     ),
                   );
                 }
@@ -203,7 +199,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       crossAxisCount: _calculateCrossAxisCount(context),
                       mainAxisSpacing: AppSizes.p16,
                       crossAxisSpacing: AppSizes.p16,
-                      childAspectRatio: 0.72,
+                      childAspectRatio: 0.70,
                     ),
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
@@ -220,17 +216,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               },
               loading: () => const SliverFillRemaining(
                 hasScrollBody: false,
-                child: Center(
-                  child: CircularProgressIndicator(),
+                child: LoadingView(
+                  message: 'Loading offline gallery...',
                 ),
               ),
               error: (error, stack) => SliverFillRemaining(
                 hasScrollBody: false,
-                child: Center(
-                  child: Text(
-                    'Failed to load gallery: $error',
-                    style: const TextStyle(color: Colors.red),
-                  ),
+                child: ErrorStateView(
+                  message: error.toString(),
+                  onRetry: () {
+                    ref.invalidate(wallpapersProvider);
+                  },
                 ),
               ),
             ),
