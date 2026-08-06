@@ -1,0 +1,18 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Logs
+logs/*.log
+
+# User input/output temporary folders
+input/*
+!input/.gitkeep
+output/*
+!output/.gitkeep
+
+# Environment
+.venv/
+venv/
+ENV/
