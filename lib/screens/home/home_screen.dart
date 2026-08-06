@@ -148,7 +148,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           : category[0].toUpperCase() + category.substring(1),
                       isSelected: isSelected,
                       onTap: () {
-                        ref.read(selectedCategoryProvider.notifier).state = category;
+                        ref.read(selectedCategoryProvider.notifier).selectCategory(category);
                       },
                     );
                   },
