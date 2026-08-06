@@ -6,6 +6,7 @@
 -dontwarn org.bouncycastle.**
 -dontwarn org.openjsse.**
 -dontwarn javax.annotation.**
+-dontwarn com.google.android.play.core.**
 
 # Keep OkHttp3 classes
 -keep class okhttp3.** { *; }
