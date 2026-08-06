@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/constants/app_sizes.dart';
+import '../models/wallpaper.dart';
+import '../providers/download_provider.dart';
 
-/// Reusable action bar for wallpaper details screen.
-class WallpaperActionBar extends StatelessWidget {
+/// Reusable action bar for wallpaper details screen with interactive download functionality.
+class WallpaperActionBar extends ConsumerWidget {
+  final Wallpaper wallpaper;
   final VoidCallback? onDevicePreviewTap;
 
   const WallpaperActionBar({
     super.key,
+    required this.wallpaper,
     this.onDevicePreviewTap,
   });
 
-  void _showComingSoonSnackBar(BuildContext context) {
+  void _showFeedbackSnackBar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: const Text('Coming Soon'),
-        duration: const Duration(seconds: 2),
+        content: Text(message),
+        duration: const Duration(seconds: 3),
         behavior: SnackBarBehavior.floating,
         margin: const EdgeInsets.all(AppSizes.p16),
         shape: RoundedRectangleBorder(
@@ -25,10 +30,47 @@ class WallpaperActionBar extends StatelessWidget {
     );
   }
 
+  void _showComingSoonSnackBar(BuildContext context) {
+    _showFeedbackSnackBar(context, 'Coming Soon');
+  }
+
+  Future<void> _handleDownload(BuildContext context, WidgetRef ref) async {
+    final activeDownloads = ref.read(activeDownloadsProvider);
+    if (activeDownloads.contains(wallpaper.id)) return;
+
+    final result = await downloadWallpaper(ref, wallpaper);
+
+    if (!context.mounted) return;
+
+    switch (result) {
+      case DownloadResult.success:
+        _showFeedbackSnackBar(
+          context,
+          'Wallpaper "${wallpaper.title}" saved to Gallery',
+        );
+        break;
+      case DownloadResult.permissionDenied:
+        _showFeedbackSnackBar(
+          context,
+          'Storage permission required to save wallpaper',
+        );
+        break;
+      case DownloadResult.error:
+        _showFeedbackSnackBar(
+          context,
+          'Unable to save wallpaper. Please check permissions.',
+        );
+        break;
+    }
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+
+    final activeDownloads = ref.watch(activeDownloadsProvider);
+    final isDownloading = activeDownloads.contains(wallpaper.id);
 
     final backgroundColor = isDark
         ? theme.colorScheme.surface
@@ -68,12 +110,18 @@ class WallpaperActionBar extends StatelessWidget {
             const SizedBox(width: AppSizes.p8),
           ],
 
-          // Primary Download & Set Wallpaper Buttons
+          // Primary Download Button with Progress Indicator
           Expanded(
             child: OutlinedButton.icon(
-              onPressed: () => _showComingSoonSnackBar(context),
-              icon: const Icon(Icons.download_rounded, size: AppSizes.iconSm + 2),
-              label: const Text('Download'),
+              onPressed: isDownloading ? null : () => _handleDownload(context, ref),
+              icon: isDownloading
+                  ? const SizedBox(
+                      width: 18.0,
+                      height: 18.0,
+                      child: CircularProgressIndicator(strokeWidth: 2.0),
+                    )
+                  : const Icon(Icons.download_rounded, size: AppSizes.iconSm + 2),
+              label: Text(isDownloading ? 'Saving...' : 'Download'),
             ),
           ),
           const SizedBox(width: AppSizes.p8),

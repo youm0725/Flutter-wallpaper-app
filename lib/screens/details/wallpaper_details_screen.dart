@@ -8,7 +8,7 @@ import '../../providers/wallpaper_providers.dart';
 import '../../widgets/widgets.dart';
 
 /// Premium Wallpaper Details Screen featuring zoomable preview, fullscreen mode,
-/// device preview modal, metadata, add-to-collection, and similar wallpapers.
+/// device preview modal, metadata, add-to-collection, download, and similar wallpapers.
 class WallpaperDetailsScreen extends ConsumerStatefulWidget {
   final String wallpaperId;
   final Wallpaper? wallpaper;
@@ -138,6 +138,7 @@ class _WallpaperDetailsScreenState
           ? null
           : SafeArea(
               child: WallpaperActionBar(
+                wallpaper: wallpaper,
                 onDevicePreviewTap: () {
                   PhonePreviewWidget.showModal(context, wallpaper);
                 },
