@@ -3,6 +3,7 @@ import '../../models/wallpaper.dart';
 import '../../screens/details/wallpaper_details_screen.dart';
 import '../../screens/favorites/favorites_screen.dart';
 import '../../screens/home/home_screen.dart';
+import '../../screens/search/search_screen.dart';
 import '../../screens/settings/settings_screen.dart';
 import '../../screens/splash/splash_screen.dart';
 import 'route_constants.dart';
@@ -20,6 +21,11 @@ final GoRouter appRouter = GoRouter(
       path: RouteConstants.homePath,
       name: RouteConstants.homeName,
       builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: RouteConstants.searchPath,
+      name: RouteConstants.searchName,
+      builder: (context, state) => const SearchScreen(),
     ),
     GoRoute(
       path: RouteConstants.wallpaperDetailsPath,

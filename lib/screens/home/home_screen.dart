@@ -114,11 +114,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
 
-            // 3. Search Bar
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: AppSizes.p8),
-                child: SearchBarWidget(),
+                padding: const EdgeInsets.symmetric(vertical: AppSizes.p8),
+                child: SearchBarWidget(
+                  onTap: () => context.pushNamed(RouteConstants.searchName),
+                ),
               ),
             ),
 
