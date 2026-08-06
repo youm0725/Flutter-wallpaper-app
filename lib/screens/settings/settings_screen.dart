@@ -6,12 +6,13 @@ import '../../core/router/route_constants.dart';
 import '../../providers/favorites_provider.dart';
 import '../../providers/preferences_provider.dart';
 import '../../providers/recently_viewed_provider.dart';
+import '../../providers/share_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/user_collection_provider.dart';
 import '../../widgets/widgets.dart';
 
 /// Production Settings Screen featuring appearance customization, grid density controls,
-/// home feed section toggles, data management, and backup export foundation.
+/// home feed section toggles, data management, app sharing, and backup export foundation.
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
 
@@ -203,7 +204,21 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
 
               const Divider(height: AppSizes.p32),
 
-              // 4. Backup Export / Import Foundation Section
+              // 4. About & Sharing Section
+              const SectionHeader(
+                title: 'About & Share',
+                subtitle: 'Share the app with friends',
+              ),
+              PreferenceTile(
+                icon: Icons.share_rounded,
+                title: 'Share Application',
+                subtitle: 'Spread the word about Wallpaper Gallery',
+                onTap: () => shareApp(ref),
+              ),
+
+              const Divider(height: AppSizes.p32),
+
+              // 5. Backup Export / Import Foundation Section
               const SectionHeader(
                 title: 'Backup & Restore',
                 subtitle: 'Offline data backup foundation',

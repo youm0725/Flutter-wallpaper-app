@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/constants/app_sizes.dart';
 import '../models/wallpaper.dart';
 import '../providers/favorites_provider.dart';
+import '../providers/share_provider.dart';
 
 /// Component displaying wallpaper metadata details, interactive favorite & share buttons, and tags.
 class WallpaperMetadataCard extends ConsumerWidget {
@@ -12,21 +13,6 @@ class WallpaperMetadataCard extends ConsumerWidget {
     super.key,
     required this.wallpaper,
   });
-
-  void _showComingSoonSnackBar(BuildContext context) {
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text('Coming Soon'),
-        duration: const Duration(seconds: 2),
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(AppSizes.p16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSizes.radiusSm),
-        ),
-      ),
-    );
-  }
 
   void _showFeedbackSnackBar(BuildContext context, String message) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -123,12 +109,12 @@ class WallpaperMetadataCard extends ConsumerWidget {
 
               const SizedBox(width: AppSizes.p8),
 
-              // Share Button
+              // Native Share Button
               _buildActionButton(
                 context,
                 icon: Icons.share_outlined,
-                tooltip: 'Share',
-                onTap: () => _showComingSoonSnackBar(context),
+                tooltip: 'Share Wallpaper',
+                onTap: () => shareWallpaper(ref, wallpaper),
               ),
             ],
           ),
