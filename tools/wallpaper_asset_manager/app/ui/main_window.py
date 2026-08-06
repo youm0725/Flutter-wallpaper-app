@@ -45,7 +45,7 @@ class MainWindow(ctk.CTk):
         self.grid_columnconfigure(1, weight=1)
 
         # Native Menu Bar Setup
-        self.menu_bar = MenuBar(self)
+        self.menu_bar = MenuBar(self, on_navigate=self.show_view, on_theme=self._change_theme)
 
         # Sidebar Component
         self.sidebar = Sidebar(self, on_nav_change=self.show_view)
@@ -101,6 +101,10 @@ class MainWindow(ctk.CTk):
             self.views["Import"].search_entry.focus_set()
         elif active_name == "Metadata" and hasattr(self.views["Metadata"], "search_entry"):
             self.views["Metadata"].search_entry.focus_set()
+
+    def _change_theme(self, mode: str):
+        ctk.set_appearance_mode(mode)
+        self.service.config_manager.set("app", "theme", mode)
 
     def show_view(self, view_name: str):
         if view_name in self.views:
