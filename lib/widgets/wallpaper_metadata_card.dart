@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/constants/app_sizes.dart';
 import '../models/wallpaper.dart';
+import '../providers/favorites_provider.dart';
 
-/// Component displaying wallpaper metadata details, action buttons beside name, and tags.
-class WallpaperMetadataCard extends StatelessWidget {
+/// Component displaying wallpaper metadata details, interactive favorite & share buttons, and tags.
+class WallpaperMetadataCard extends ConsumerWidget {
   final Wallpaper wallpaper;
 
   const WallpaperMetadataCard({
@@ -26,10 +28,28 @@ class WallpaperMetadataCard extends StatelessWidget {
     );
   }
 
+  void _showFeedbackSnackBar(BuildContext context, String message) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        duration: const Duration(seconds: 2),
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(AppSizes.p16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSizes.radiusSm),
+        ),
+      ),
+    );
+  }
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+
+    final asyncFavIds = ref.watch(favoritesNotifierProvider);
+    final isFav = asyncFavIds.value?.contains(wallpaper.id) ?? false;
 
     final cardBackgroundColor = isDark
         ? theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.4)
@@ -80,17 +100,30 @@ class WallpaperMetadataCard extends StatelessWidget {
 
               const SizedBox(width: AppSizes.p8),
 
-              // Favorite Button beside name
+              // Interactive Favorite Button
               _buildActionButton(
                 context,
-                icon: Icons.favorite_outline_rounded,
-                tooltip: 'Favorite',
-                onTap: () => _showComingSoonSnackBar(context),
+                icon: isFav
+                    ? Icons.favorite_rounded
+                    : Icons.favorite_outline_rounded,
+                iconColor: isFav ? Colors.redAccent : null,
+                tooltip: isFav ? 'Remove Favorite' : 'Save Favorite',
+                onTap: () async {
+                  final nowFav = await ref
+                      .read(favoritesNotifierProvider.notifier)
+                      .toggleFavorite(wallpaper.id);
+                  if (context.mounted) {
+                    _showFeedbackSnackBar(
+                      context,
+                      nowFav ? 'Added to Favorites' : 'Removed from Favorites',
+                    );
+                  }
+                },
               ),
 
               const SizedBox(width: AppSizes.p8),
 
-              // Share Button beside favorite button
+              // Share Button
               _buildActionButton(
                 context,
                 icon: Icons.share_outlined,
@@ -180,6 +213,7 @@ class WallpaperMetadataCard extends StatelessWidget {
   Widget _buildActionButton(
     BuildContext context, {
     required IconData icon,
+    Color? iconColor,
     required String tooltip,
     required VoidCallback onTap,
   }) {
@@ -198,7 +232,7 @@ class WallpaperMetadataCard extends StatelessWidget {
           child: Icon(
             icon,
             size: AppSizes.iconMd - 2,
-            color: theme.colorScheme.onSurfaceVariant,
+            color: iconColor ?? theme.colorScheme.onSurfaceVariant,
           ),
         ),
       ),

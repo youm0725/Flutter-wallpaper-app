@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/constants/app_sizes.dart';
 import '../models/wallpaper.dart';
+import '../providers/favorites_provider.dart';
 
-/// Reusable, refined wallpaper card component.
-class WallpaperCard extends StatelessWidget {
+/// Reusable, refined wallpaper card component with favorite status indicator.
+class WallpaperCard extends ConsumerWidget {
   final Wallpaper wallpaper;
   final VoidCallback? onTap;
 
@@ -14,9 +16,12 @@ class WallpaperCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+
+    final asyncFavIds = ref.watch(favoritesNotifierProvider);
+    final isFav = asyncFavIds.value?.contains(wallpaper.id) ?? false;
 
     final backgroundColor = isDark
         ? theme.colorScheme.surface
@@ -41,74 +46,80 @@ class WallpaperCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Image Thumbnail with Hero and ClipRRect
+              // Image Thumbnail with Hero, ClipRRect, and Favorite Badge
               Expanded(
-                child: Hero(
-                  tag: 'wallpaper_${wallpaper.id}',
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.vertical(
-                      top: Radius.circular(AppSizes.radiusMd - 1),
-                    ),
-                    child: Container(
-                      width: double.infinity,
-                      color: theme.colorScheme.surfaceContainerHighest,
-                      child: Image.asset(
-                        wallpaper.imagePath,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  theme.colorScheme.primaryContainer,
-                                  theme.colorScheme.surfaceContainerHighest,
-                                ],
-                                begin: Alignment.topLeft,
-                                end: Alignment.bottomRight,
-                              ),
-                            ),
-                            child: Center(
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Hero(
+                      tag: 'wallpaper_${wallpaper.id}',
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.vertical(
+                          top: Radius.circular(AppSizes.radiusMd - 1),
+                        ),
+                        child: Container(
+                          width: double.infinity,
+                          color: theme.colorScheme.surfaceContainerHighest,
+                          child: Image.asset(
+                            wallpaper.imagePath,
+                            fit: BoxFit.cover,
+                            errorBuilder: (context, error, stackTrace) {
+                              return Container(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    colors: [
+                                      theme.colorScheme.primaryContainer,
+                                      theme.colorScheme.surfaceContainerHighest,
+                                    ],
+                                    begin: Alignment.topLeft,
+                                    end: Alignment.bottomRight,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Icon(
                                     Icons.image_outlined,
                                     size: AppSizes.iconLg - 8,
                                     color: theme.colorScheme.onSurfaceVariant
                                         .withValues(alpha: 0.5),
                                   ),
-                                  const SizedBox(height: AppSizes.p4),
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: AppSizes.p8,
-                                      vertical: AppSizes.p4,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: theme.colorScheme.surface
-                                          .withValues(alpha: 0.7),
-                                      borderRadius: BorderRadius.circular(
-                                        AppSizes.radiusSm - 2,
-                                      ),
-                                    ),
-                                    child: Text(
-                                      wallpaper.category.toUpperCase(),
-                                      style:
-                                          theme.textTheme.labelSmall?.copyWith(
-                                        color: theme.colorScheme.onSurface,
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: 0.8,
-                                        fontSize: 10.0,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
+                                ),
+                              );
+                            },
+                          ),
+                        ),
                       ),
                     ),
-                  ),
+
+                    // Top Right Favorite Quick Button Indicator
+                    Positioned(
+                      top: AppSizes.p6,
+                      right: AppSizes.p6,
+                      child: Material(
+                        color: Colors.black.withValues(alpha: 0.45),
+                        shape: const CircleBorder(),
+                        child: InkWell(
+                          customBorder: const CircleBorder(),
+                          onTap: () {
+                            ref
+                                .read(favoritesNotifierProvider.notifier)
+                                .toggleFavorite(wallpaper.id);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(AppSizes.p6),
+                            child: Icon(
+                              isFav
+                                  ? Icons.favorite_rounded
+                                  : Icons.favorite_outline_rounded,
+                              size: 16.0,
+                              color: isFav
+                                  ? Colors.redAccent
+                                  : Colors.white.withValues(alpha: 0.9),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
 
