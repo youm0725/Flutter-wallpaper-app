@@ -30,7 +30,7 @@ def main():
     
     if res.returncode == 0:
         print("\n" + "=" * 60)
-        print("✓ BUILD SUCCESSFUL! Standalone application created in:")
+        print("[OK] BUILD SUCCESSFUL! Standalone application created in:")
         print(f"{manager_root / 'dist' / 'WallpaperAssetManager'}")
         print("=" * 60)
     else:
