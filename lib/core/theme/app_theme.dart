@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_sizes.dart';
 
-/// Centralized Material 3 Light Theme configuration.
+/// Centralized Material 3 Theme configuration (Light & Dark).
 abstract final class AppTheme {
+  /// Light Theme Definition
   static ThemeData get lightTheme {
     const colorScheme = ColorScheme.light(
       primary: AppColors.primary,
@@ -29,12 +30,12 @@ abstract final class AppTheme {
         foregroundColor: AppColors.onSurface,
         elevation: 0,
         scrolledUnderElevation: 0,
-        centerTitle: true,
+        centerTitle: false,
         titleTextStyle: TextStyle(
           color: AppColors.onSurface,
-          fontSize: 18.0,
-          fontWeight: FontWeight.w600,
-          letterSpacing: -0.2,
+          fontSize: 20.0,
+          fontWeight: FontWeight.w700,
+          letterSpacing: -0.4,
         ),
       ),
       cardTheme: CardThemeData(
@@ -46,58 +47,75 @@ abstract final class AppTheme {
         ),
         margin: EdgeInsets.zero,
       ),
-      elevatedButtonTheme: ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
-          foregroundColor: AppColors.onPrimary,
-          elevation: 0,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSizes.radiusSm),
-          ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSizes.p24,
-            vertical: AppSizes.p12,
-          ),
-          textStyle: const TextStyle(
-            fontSize: 14.0,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 0.2,
-          ),
-        ),
-      ),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: AppColors.primary,
-          side: const BorderSide(color: AppColors.border, width: 1.0),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSizes.radiusSm),
-          ),
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSizes.p24,
-            vertical: AppSizes.p12,
-          ),
-          textStyle: const TextStyle(
-            fontSize: 14.0,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 0.2,
-          ),
-        ),
-      ),
-      textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-          foregroundColor: AppColors.primary,
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppSizes.p16,
-            vertical: AppSizes.p8,
-          ),
-          textStyle: const TextStyle(
-            fontSize: 14.0,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: AppColors.surface,
+        selectedItemColor: AppColors.primary,
+        unselectedItemColor: AppColors.onSurfaceVariant,
+        elevation: 8,
+        type: BottomNavigationBarType.fixed,
+        showUnselectedLabels: true,
       ),
       dividerTheme: const DividerThemeData(
         color: AppColors.border,
+        thickness: 1.0,
+        space: 1.0,
+      ),
+    );
+  }
+
+  /// Dark Theme Definition
+  static ThemeData get darkTheme {
+    const colorScheme = ColorScheme.dark(
+      primary: AppColors.darkPrimary,
+      onPrimary: AppColors.darkOnPrimary,
+      primaryContainer: AppColors.darkPrimaryContainer,
+      onPrimaryContainer: AppColors.darkOnPrimaryContainer,
+      secondary: AppColors.darkSecondary,
+      onSecondary: AppColors.darkOnSecondary,
+      surface: AppColors.darkSurface,
+      onSurface: AppColors.darkOnSurface,
+      surfaceContainerHighest: AppColors.darkSurfaceVariant,
+      onSurfaceVariant: AppColors.darkOnSurfaceVariant,
+      outline: AppColors.darkBorder,
+      outlineVariant: AppColors.darkDivider,
+    );
+
+    return ThemeData(
+      useMaterial3: true,
+      colorScheme: colorScheme,
+      scaffoldBackgroundColor: AppColors.darkBackground,
+      appBarTheme: const AppBarTheme(
+        backgroundColor: AppColors.darkBackground,
+        foregroundColor: AppColors.darkOnSurface,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        centerTitle: false,
+        titleTextStyle: TextStyle(
+          color: AppColors.darkOnSurface,
+          fontSize: 20.0,
+          fontWeight: FontWeight.w700,
+          letterSpacing: -0.4,
+        ),
+      ),
+      cardTheme: CardThemeData(
+        color: AppColors.darkSurface,
+        elevation: 0,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+          side: const BorderSide(color: AppColors.darkBorder, width: 1.0),
+        ),
+        margin: EdgeInsets.zero,
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: AppColors.darkSurface,
+        selectedItemColor: AppColors.darkPrimary,
+        unselectedItemColor: AppColors.darkOnSurfaceVariant,
+        elevation: 8,
+        type: BottomNavigationBarType.fixed,
+        showUnselectedLabels: true,
+      ),
+      dividerTheme: const DividerThemeData(
+        color: AppColors.darkBorder,
         thickness: 1.0,
         space: 1.0,
       ),
