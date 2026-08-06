@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import '../../core/constants/app_sizes.dart';
+import '../../core/router/route_constants.dart';
 import '../../providers/user_collection_provider.dart';
 import '../../widgets/widgets.dart';
 
@@ -103,7 +105,10 @@ class UserCollectionsScreen extends ConsumerWidget {
                         return UserCollectionCard(
                           collection: col,
                           onTap: () {
-                            // Can open collection detail or filter view
+                            context.pushNamed(
+                              RouteConstants.userCollectionDetailsName,
+                              pathParameters: {'id': col.id},
+                            );
                           },
                         );
                       },

@@ -12,6 +12,9 @@ abstract final class RouteConstants {
   static const String userCollectionsPath = '/user-collections';
   static const String userCollectionsName = 'userCollections';
 
+  static const String userCollectionDetailsPath = '/user-collections/:id';
+  static const String userCollectionDetailsName = 'userCollectionDetails';
+
   static const String searchPath = '/search';
   static const String searchName = 'search';
 
