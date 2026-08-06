@@ -27,7 +27,10 @@ class TestImportService(unittest.TestCase):
 
     def tearDown(self):
         self.thumb_service.shutdown()
-        self.tmpdir.cleanup()
+        try:
+            self.tmpdir.cleanup()
+        except Exception:
+            pass
 
     def test_validation_service(self):
         is_valid, status, msgs, w, h, res_str, aspect_str, creation_str = ValidationService.validate_file(self.valid_img_path)
