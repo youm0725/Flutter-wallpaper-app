@@ -1,0 +1,37 @@
+[
+  {
+    "id": "dark_amoled",
+    "title": "Dark & AMOLED",
+    "description": "Deep blacks and vibrant contrasts optimized for OLED screens.",
+    "coverImagePath": "assets/wallpapers/nature_01.jpg",
+    "wallpaperIds": ["w1", "w3", "w7", "w12", "w15"]
+  },
+  {
+    "id": "nature_escape",
+    "title": "Nature Escape",
+    "description": "Breathtaking landscapes, serene forests, and majestic mountains.",
+    "coverImagePath": "assets/wallpapers/nature_01.jpg",
+    "wallpaperIds": ["w1", "w2", "w5", "w8", "w14"]
+  },
+  {
+    "id": "luxury_cars",
+    "title": "Luxury & Supercars",
+    "description": "High-octane automotive designs and sleek hypercars.",
+    "coverImagePath": "assets/wallpapers/cars_01.jpg",
+    "wallpaperIds": ["w4", "w9", "w11", "w16"]
+  },
+  {
+    "id": "minimal_living",
+    "title": "Minimal Living",
+    "description": "Clean lines, subtle gradients, and calm aesthetics.",
+    "coverImagePath": "assets/wallpapers/minimal_01.jpg",
+    "wallpaperIds": ["w6", "w10", "w13", "w17"]
+  },
+  {
+    "id": "cosmic_space",
+    "title": "Cosmic Space",
+    "description": "Galaxies, nebulae, and stellar vistas from deep space.",
+    "coverImagePath": "assets/wallpapers/space_01.jpg",
+    "wallpaperIds": ["w3", "w7", "w15", "w18"]
+  }
+]

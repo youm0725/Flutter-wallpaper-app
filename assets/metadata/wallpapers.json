@@ -6,7 +6,8 @@
     "imagePath": "assets/wallpapers/nature/misty_alpine_forest.jpg",
     "resolution": "2160x3840",
     "fileSize": "3.4 MB",
-    "tags": ["nature", "forest", "mountain", "fog"]
+    "tags": ["nature", "forest", "mountain", "fog"],
+    "isFeatured": true
   },
   {
     "id": "nature_02",
@@ -15,7 +16,8 @@
     "imagePath": "assets/wallpapers/nature/golden_hour_horizon.jpg",
     "resolution": "2160x3840",
     "fileSize": "4.1 MB",
-    "tags": ["nature", "sunset", "horizon", "warm"]
+    "tags": ["nature", "sunset", "horizon", "warm"],
+    "isFeatured": false
   },
   {
     "id": "nature_03",
@@ -24,7 +26,8 @@
     "imagePath": "assets/wallpapers/nature/emerald_canyon_river.jpg",
     "resolution": "2160x3840",
     "fileSize": "3.8 MB",
-    "tags": ["nature", "river", "canyon", "waterfall"]
+    "tags": ["nature", "river", "canyon", "waterfall"],
+    "isFeatured": false
   },
   {
     "id": "abstract_01",
@@ -33,7 +36,8 @@
     "imagePath": "assets/wallpapers/abstract/fluid_chromatic_waves.jpg",
     "resolution": "2160x3840",
     "fileSize": "2.9 MB",
-    "tags": ["abstract", "fluid", "color", "waves"]
+    "tags": ["abstract", "fluid", "color", "waves"],
+    "isFeatured": true
   },
   {
     "id": "abstract_02",
@@ -42,7 +46,8 @@
     "imagePath": "assets/wallpapers/abstract/geometric_prism.jpg",
     "resolution": "2160x3840",
     "fileSize": "3.1 MB",
-    "tags": ["abstract", "geometric", "prism", "3d"]
+    "tags": ["abstract", "geometric", "prism", "3d"],
+    "isFeatured": false
   },
   {
     "id": "abstract_03",
@@ -51,7 +56,8 @@
     "imagePath": "assets/wallpapers/abstract/obsidian_flow.jpg",
     "resolution": "2160x3840",
     "fileSize": "2.5 MB",
-    "tags": ["abstract", "dark", "obsidian", "minimal"]
+    "tags": ["abstract", "dark", "obsidian", "minimal"],
+    "isFeatured": false
   },
   {
     "id": "amoled_01",
@@ -60,7 +66,8 @@
     "imagePath": "assets/wallpapers/amoled/neon_eclipse.jpg",
     "resolution": "2160x3840",
     "fileSize": "1.8 MB",
-    "tags": ["amoled", "dark", "neon", "eclipse"]
+    "tags": ["amoled", "dark", "neon", "eclipse"],
+    "isFeatured": true
   },
   {
     "id": "amoled_02",
@@ -69,7 +76,8 @@
     "imagePath": "assets/wallpapers/amoled/deep_void_geometry.jpg",
     "resolution": "2160x3840",
     "fileSize": "1.6 MB",
-    "tags": ["amoled", "black", "geometry", "minimal"]
+    "tags": ["amoled", "black", "geometry", "minimal"],
+    "isFeatured": false
   },
   {
     "id": "amoled_03",
@@ -78,7 +86,8 @@
     "imagePath": "assets/wallpapers/amoled/midnight_glowing_lines.jpg",
     "resolution": "2160x3840",
     "fileSize": "2.0 MB",
-    "tags": ["amoled", "lines", "glow", "dark"]
+    "tags": ["amoled", "lines", "glow", "dark"],
+    "isFeatured": false
   },
   {
     "id": "anime_01",
@@ -87,7 +96,8 @@
     "imagePath": "assets/wallpapers/anime/sunset_cyber_tokyo.jpg",
     "resolution": "2160x3840",
     "fileSize": "4.5 MB",
-    "tags": ["anime", "city", "sunset", "tokyo"]
+    "tags": ["anime", "city", "sunset", "tokyo"],
+    "isFeatured": true
   },
   {
     "id": "anime_02",
@@ -96,7 +106,8 @@
     "imagePath": "assets/wallpapers/anime/celestial_shrine_peak.jpg",
     "resolution": "2160x3840",
     "fileSize": "4.2 MB",
-    "tags": ["anime", "shrine", "stars", "fantasy"]
+    "tags": ["anime", "shrine", "stars", "fantasy"],
+    "isFeatured": false
   },
   {
     "id": "architecture_01",
@@ -105,7 +116,8 @@
     "imagePath": "assets/wallpapers/architecture/monolithic_glass_tower.jpg",
     "resolution": "2160x3840",
     "fileSize": "3.6 MB",
-    "tags": ["architecture", "glass", "building", "modern"]
+    "tags": ["architecture", "glass", "building", "modern"],
+    "isFeatured": false
   },
   {
     "id": "architecture_02",
@@ -114,7 +126,8 @@
     "imagePath": "assets/wallpapers/architecture/minimalist_concrete_arch.jpg",
     "resolution": "2160x3840",
     "fileSize": "2.8 MB",
-    "tags": ["architecture", "concrete", "minimal", "arch"]
+    "tags": ["architecture", "concrete", "minimal", "arch"],
+    "isFeatured": false
   },
   {
     "id": "cars_01",
@@ -123,7 +136,8 @@
     "imagePath": "assets/wallpapers/cars/supercar_midnight_drift.jpg",
     "resolution": "2160x3840",
     "fileSize": "4.0 MB",
-    "tags": ["cars", "supercar", "night", "speed"]
+    "tags": ["cars", "supercar", "night", "speed"],
+    "isFeatured": true
   },
   {
     "id": "cars_02",
@@ -132,7 +146,8 @@
     "imagePath": "assets/wallpapers/cars/retro_cyber_roadster.jpg",
     "resolution": "2160x3840",
     "fileSize": "3.7 MB",
-    "tags": ["cars", "retro", "synthwave", "cyber"]
+    "tags": ["cars", "retro", "synthwave", "cyber"],
+    "isFeatured": false
   },
   {
     "id": "gaming_01",
@@ -141,7 +156,8 @@
     "imagePath": "assets/wallpapers/gaming/cyberpunk_neon_alley.jpg",
     "resolution": "2160x3840",
     "fileSize": "4.8 MB",
-    "tags": ["gaming", "cyberpunk", "neon", "city"]
+    "tags": ["gaming", "cyberpunk", "neon", "city"],
+    "isFeatured": true
   },
   {
     "id": "gaming_02",
@@ -150,7 +166,8 @@
     "imagePath": "assets/wallpapers/gaming/low_poly_fantasy_kingdom.jpg",
     "resolution": "2160x3840",
     "fileSize": "3.2 MB",
-    "tags": ["gaming", "lowpoly", "fantasy", "castle"]
+    "tags": ["gaming", "lowpoly", "fantasy", "castle"],
+    "isFeatured": false
   },
   {
     "id": "minimal_01",
@@ -159,7 +176,8 @@
     "imagePath": "assets/wallpapers/minimal/sand_dune_silhouette.jpg",
     "resolution": "2160x3840",
     "fileSize": "2.1 MB",
-    "tags": ["minimal", "dune", "desert", "silhouette"]
+    "tags": ["minimal", "dune", "desert", "silhouette"],
+    "isFeatured": true
   },
   {
     "id": "minimal_02",
@@ -168,7 +186,8 @@
     "imagePath": "assets/wallpapers/minimal/pastel_horizon_gradient.jpg",
     "resolution": "2160x3840",
     "fileSize": "1.9 MB",
-    "tags": ["minimal", "pastel", "gradient", "soft"]
+    "tags": ["minimal", "pastel", "gradient", "soft"],
+    "isFeatured": false
   },
   {
     "id": "space_01",
@@ -177,6 +196,7 @@
     "imagePath": "assets/wallpapers/space/stellar_nebula_drift.jpg",
     "resolution": "2160x3840",
     "fileSize": "5.0 MB",
-    "tags": ["space", "nebula", "galaxy", "stars"]
+    "tags": ["space", "nebula", "galaxy", "stars"],
+    "isFeatured": true
   }
 ]

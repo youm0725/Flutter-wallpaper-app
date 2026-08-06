@@ -10,6 +10,7 @@ final class Wallpaper {
   final String resolution;
   final String fileSize;
   final List<String> tags;
+  final bool isFeatured;
 
   const Wallpaper({
     required this.id,
@@ -19,6 +20,7 @@ final class Wallpaper {
     required this.resolution,
     required this.fileSize,
     required this.tags,
+    this.isFeatured = false,
   });
 
   /// Factory constructor to create a [Wallpaper] from a JSON map.
@@ -34,6 +36,7 @@ final class Wallpaper {
               ?.map((dynamic tag) => tag.toString())
               .toList() ??
           const <String>[],
+      isFeatured: json['isFeatured'] as bool? ?? false,
     );
   }
 
@@ -47,6 +50,7 @@ final class Wallpaper {
       'resolution': resolution,
       'fileSize': fileSize,
       'tags': tags,
+      'isFeatured': isFeatured,
     };
   }
 
@@ -59,6 +63,7 @@ final class Wallpaper {
     String? resolution,
     String? fileSize,
     List<String>? tags,
+    bool? isFeatured,
   }) {
     return Wallpaper(
       id: id ?? this.id,
@@ -68,6 +73,7 @@ final class Wallpaper {
       resolution: resolution ?? this.resolution,
       fileSize: fileSize ?? this.fileSize,
       tags: tags ?? this.tags,
+      isFeatured: isFeatured ?? this.isFeatured,
     );
   }
 
@@ -82,6 +88,7 @@ final class Wallpaper {
         other.imagePath == imagePath &&
         other.resolution == resolution &&
         other.fileSize == fileSize &&
+        other.isFeatured == isFeatured &&
         listEquals(other.tags, tags);
   }
 
@@ -94,12 +101,13 @@ final class Wallpaper {
       imagePath,
       resolution,
       fileSize,
+      isFeatured,
       Object.hashAll(tags),
     );
   }
 
   @override
   String toString() {
-    return 'Wallpaper(id: $id, title: $title, category: $category, imagePath: $imagePath, resolution: $resolution, fileSize: $fileSize, tags: $tags)';
+    return 'Wallpaper(id: $id, title: $title, category: $category, imagePath: $imagePath, resolution: $resolution, fileSize: $fileSize, tags: $tags, isFeatured: $isFeatured)';
   }
 }
