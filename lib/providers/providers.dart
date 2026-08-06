@@ -1,6 +1,8 @@
 export 'category_provider.dart';
 export 'curated_providers.dart';
 export 'favorites_provider.dart';
+export 'recently_viewed_provider.dart';
 export 'search_providers.dart';
 export 'theme_provider.dart';
+export 'user_collection_provider.dart';
 export 'wallpaper_providers.dart';

@@ -3,11 +3,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../models/wallpaper.dart';
+import '../../providers/recently_viewed_provider.dart';
 import '../../providers/wallpaper_providers.dart';
 import '../../widgets/widgets.dart';
 
 /// Premium Wallpaper Details Screen featuring zoomable preview, fullscreen mode,
-/// device preview modal, metadata, and similar wallpapers recommendations.
+/// device preview modal, metadata, add-to-collection, and similar wallpapers.
 class WallpaperDetailsScreen extends ConsumerStatefulWidget {
   final String wallpaperId;
   final Wallpaper? wallpaper;
@@ -26,6 +27,16 @@ class WallpaperDetailsScreen extends ConsumerStatefulWidget {
 class _WallpaperDetailsScreenState
     extends ConsumerState<WallpaperDetailsScreen> {
   bool _isFullscreenMode = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref
+          .read(recentlyViewedNotifierProvider.notifier)
+          .addWallpaperView(widget.wallpaperId);
+    });
+  }
 
   void _toggleFullscreenMode() {
     setState(() {
@@ -108,15 +119,10 @@ class _WallpaperDetailsScreenState
                     ),
                     _buildFloatingIconButton(
                       context,
-                      icon: Icons.more_vert_rounded,
-                      tooltip: 'Options',
+                      icon: Icons.bookmark_add_outlined,
+                      tooltip: 'Add to Collection',
                       onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Options menu placeholder'),
-                            duration: Duration(seconds: 1),
-                          ),
-                        );
+                        AddToCollectionSheet.show(context, wallpaper);
                       },
                     ),
                   ],

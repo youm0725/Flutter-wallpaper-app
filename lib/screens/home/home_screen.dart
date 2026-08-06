@@ -6,11 +6,12 @@ import '../../core/router/route_constants.dart';
 import '../../models/wallpaper.dart';
 import '../../providers/category_provider.dart';
 import '../../providers/curated_providers.dart';
+import '../../providers/recently_viewed_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/wallpaper_providers.dart';
 import '../../widgets/widgets.dart';
 
-/// Production-quality, refined Home Screen featuring curated discovery feed.
+/// Production-quality, refined Home Screen featuring curated discovery feed & recently viewed history.
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
@@ -43,6 +44,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final dailyWallpaper = ref.watch(dailyWallpaperProvider);
     final featuredWallpapers = ref.watch(featuredWallpapersProvider);
     final asyncCollections = ref.watch(collectionsProvider);
+    final recentlyViewedWallpapers = ref.watch(recentlyViewedWallpapersProvider);
 
     return Scaffold(
       body: SafeArea(
@@ -127,7 +129,34 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ],
 
-            // 5. Categories Section Header & Horizontal List
+            // 5. Recently Viewed History Section
+            if (recentlyViewedWallpapers.isNotEmpty) ...[
+              SliverToBoxAdapter(
+                child: SectionHeader(
+                  title: 'Recently Viewed',
+                  subtitle: 'Wallpapers you recently explored',
+                  trailing: TextButton(
+                    onPressed: () {
+                      ref
+                          .read(recentlyViewedNotifierProvider.notifier)
+                          .clearHistory();
+                    },
+                    child: const Text('Clear'),
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: HorizontalWallpaperList(
+                  wallpapers: recentlyViewedWallpapers,
+                  onWallpaperTap: (w) => _onWallpaperTap(context, w),
+                ),
+              ),
+              const SliverToBoxAdapter(
+                child: SizedBox(height: AppSizes.p16),
+              ),
+            ],
+
+            // 6. Categories Section Header & Horizontal List
             SliverToBoxAdapter(
               child: SectionHeader(
                 title: 'Categories',
@@ -170,7 +199,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               child: SizedBox(height: AppSizes.p16),
             ),
 
-            // 6. Curated Collections
+            // 7. Curated Collections
             asyncCollections.when(
               data: (collections) {
                 if (collections.isEmpty) return const SliverToBoxAdapter(child: SizedBox.shrink());
@@ -214,7 +243,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               error: (error, stack) => const SliverToBoxAdapter(child: SizedBox.shrink()),
             ),
 
-            // 7. Wallpaper Grid Section Header & Grid Content
+            // 8. Wallpaper Grid Section Header & Grid Content
             const SliverToBoxAdapter(
               child: SectionHeader(
                 title: 'Explore Gallery',

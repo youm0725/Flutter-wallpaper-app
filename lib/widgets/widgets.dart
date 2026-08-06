@@ -1,3 +1,4 @@
+export 'add_to_collection_sheet.dart';
 export 'category_card.dart';
 export 'category_chip.dart';
 export 'collection_card.dart';
@@ -11,6 +12,7 @@ export 'search_bar_widget.dart';
 export 'section_header.dart';
 export 'similar_wallpapers_section.dart';
 export 'suggestion_tile.dart';
+export 'user_collection_card.dart';
 export 'wallpaper_action_bar.dart';
 export 'wallpaper_card.dart';
 export 'wallpaper_metadata_card.dart';
