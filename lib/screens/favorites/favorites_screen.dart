@@ -3,11 +3,13 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../core/router/route_constants.dart';
+import '../../models/user_preferences.dart';
 import '../../models/wallpaper.dart';
 import '../../providers/favorites_provider.dart';
+import '../../providers/preferences_provider.dart';
 import '../../widgets/widgets.dart';
 
-/// Production-ready Favorites Screen displaying saved offline wallpapers.
+/// Production-ready Favorites Screen displaying saved offline wallpapers respecting grid density.
 class FavoritesScreen extends ConsumerStatefulWidget {
   const FavoritesScreen({super.key});
 
@@ -21,7 +23,8 @@ class _FavoritesScreenState extends ConsumerState<FavoritesScreen> {
   @override
   Widget build(BuildContext context) {
     final favoriteWallpapers = ref.watch(favoriteWallpapersProvider);
-    final crossAxisCount = _calculateCrossAxisCount(context);
+    final prefs = ref.watch(userPreferencesNotifierProvider).value ?? const UserPreferences();
+    final crossAxisCount = calculateGridCrossAxisCount(context, prefs.gridDensity);
 
     return Scaffold(
       appBar: AppBar(
@@ -96,13 +99,6 @@ class _FavoritesScreenState extends ConsumerState<FavoritesScreen> {
         ],
       ),
     );
-  }
-
-  int _calculateCrossAxisCount(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    if (width > 900) return 4;
-    if (width > 600) return 3;
-    return 2;
   }
 
   void _onWallpaperTap(BuildContext context, Wallpaper wallpaper) {

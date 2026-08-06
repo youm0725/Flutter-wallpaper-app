@@ -3,15 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../core/router/route_constants.dart';
+import '../../models/user_preferences.dart';
 import '../../models/wallpaper.dart';
 import '../../providers/category_provider.dart';
 import '../../providers/curated_providers.dart';
+import '../../providers/preferences_provider.dart';
 import '../../providers/recently_viewed_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/wallpaper_providers.dart';
 import '../../widgets/widgets.dart';
 
-/// Production-quality, refined Home Screen featuring curated discovery feed & recently viewed history.
+/// Production-quality, refined Home Screen featuring curated discovery feed & customizable sections.
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
@@ -45,6 +47,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final featuredWallpapers = ref.watch(featuredWallpapersProvider);
     final asyncCollections = ref.watch(collectionsProvider);
     final recentlyViewedWallpapers = ref.watch(recentlyViewedWallpapersProvider);
+    final prefs = ref.watch(userPreferencesNotifierProvider).value ?? const UserPreferences();
+
+    final crossAxisCount = calculateGridCrossAxisCount(context, prefs.gridDensity);
 
     return Scaffold(
       body: SafeArea(
@@ -102,7 +107,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
 
             // 3. Wallpaper of the Day Hero Banner
-            if (dailyWallpaper != null)
+            if (prefs.showDailyWallpaper && dailyWallpaper != null)
               SliverToBoxAdapter(
                 child: DailyWallpaperCard(
                   wallpaper: dailyWallpaper,
@@ -111,7 +116,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
 
             // 4. Editor's Picks (Featured Wallpapers)
-            if (featuredWallpapers.isNotEmpty) ...[
+            if (prefs.showFeaturedSection && featuredWallpapers.isNotEmpty) ...[
               const SliverToBoxAdapter(
                 child: SectionHeader(
                   title: "Editor's Picks",
@@ -130,7 +135,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ],
 
             // 5. Recently Viewed History Section
-            if (recentlyViewedWallpapers.isNotEmpty) ...[
+            if (prefs.showRecentlyViewed && recentlyViewedWallpapers.isNotEmpty) ...[
               SliverToBoxAdapter(
                 child: SectionHeader(
                   title: 'Recently Viewed',
@@ -200,48 +205,49 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
 
             // 7. Curated Collections
-            asyncCollections.when(
-              data: (collections) {
-                if (collections.isEmpty) return const SliverToBoxAdapter(child: SizedBox.shrink());
-                return SliverMainAxisGroup(
-                  slivers: [
-                    const SliverToBoxAdapter(
-                      child: SectionHeader(
-                        title: 'Curated Collections',
-                        subtitle: 'Themed wallpaper sets',
-                      ),
-                    ),
-                    SliverToBoxAdapter(
-                      child: SizedBox(
-                        height: 150.0,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          physics: const BouncingScrollPhysics(),
-                          padding: const EdgeInsets.symmetric(horizontal: AppSizes.p16),
-                          itemCount: collections.length,
-                          itemBuilder: (context, index) {
-                            final collection = collections[index];
-                            return CollectionCard(
-                              collection: collection,
-                              onTap: () {
-                                ref
-                                    .read(selectedCategoryProvider.notifier)
-                                    .selectCategory(collection.title.split(' ').first);
-                              },
-                            );
-                          },
+            if (prefs.showCollectionsSection)
+              asyncCollections.when(
+                data: (collections) {
+                  if (collections.isEmpty) return const SliverToBoxAdapter(child: SizedBox.shrink());
+                  return SliverMainAxisGroup(
+                    slivers: [
+                      const SliverToBoxAdapter(
+                        child: SectionHeader(
+                          title: 'Curated Collections',
+                          subtitle: 'Themed wallpaper sets',
                         ),
                       ),
-                    ),
-                    const SliverToBoxAdapter(
-                      child: SizedBox(height: AppSizes.p16),
-                    ),
-                  ],
-                );
-              },
-              loading: () => const SliverToBoxAdapter(child: SizedBox.shrink()),
-              error: (error, stack) => const SliverToBoxAdapter(child: SizedBox.shrink()),
-            ),
+                      SliverToBoxAdapter(
+                        child: SizedBox(
+                          height: 150.0,
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            physics: const BouncingScrollPhysics(),
+                            padding: const EdgeInsets.symmetric(horizontal: AppSizes.p16),
+                            itemCount: collections.length,
+                            itemBuilder: (context, index) {
+                              final collection = collections[index];
+                              return CollectionCard(
+                                collection: collection,
+                                onTap: () {
+                                  ref
+                                      .read(selectedCategoryProvider.notifier)
+                                      .selectCategory(collection.title.split(' ').first);
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ),
+                      const SliverToBoxAdapter(
+                        child: SizedBox(height: AppSizes.p16),
+                      ),
+                    ],
+                  );
+                },
+                loading: () => const SliverToBoxAdapter(child: SizedBox.shrink()),
+                error: (error, stack) => const SliverToBoxAdapter(child: SizedBox.shrink()),
+              ),
 
             // 8. Wallpaper Grid Section Header & Grid Content
             const SliverToBoxAdapter(
@@ -278,7 +284,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                   sliver: SliverGrid(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: _calculateCrossAxisCount(context),
+                      crossAxisCount: crossAxisCount,
                       mainAxisSpacing: AppSizes.p16,
                       crossAxisSpacing: AppSizes.p16,
                       childAspectRatio: 0.70,
@@ -343,13 +349,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ],
       ),
     );
-  }
-
-  int _calculateCrossAxisCount(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    if (width > 900) return 4;
-    if (width > 600) return 3;
-    return 2;
   }
 
   void _onWallpaperTap(BuildContext context, Wallpaper wallpaper) {
