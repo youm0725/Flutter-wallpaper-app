@@ -3,7 +3,12 @@ import '../core/constants/app_sizes.dart';
 
 /// Reusable action bar for wallpaper details screen.
 class WallpaperActionBar extends StatelessWidget {
-  const WallpaperActionBar({super.key});
+  final VoidCallback? onDevicePreviewTap;
+
+  const WallpaperActionBar({
+    super.key,
+    this.onDevicePreviewTap,
+  });
 
   void _showComingSoonSnackBar(BuildContext context) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
@@ -68,7 +73,17 @@ class WallpaperActionBar extends StatelessWidget {
             tooltip: 'Share',
             onTap: () => _showComingSoonSnackBar(context),
           ),
-          const SizedBox(width: AppSizes.p12),
+          if (onDevicePreviewTap != null) ...[
+            const SizedBox(width: AppSizes.p8),
+            // Phone Frame Preview button
+            _buildIconButton(
+              context,
+              icon: Icons.smartphone_rounded,
+              tooltip: 'Device Preview',
+              onTap: onDevicePreviewTap!,
+            ),
+          ],
+          const SizedBox(width: AppSizes.p8),
 
           // Primary Download & Set Wallpaper Buttons
           Expanded(
@@ -107,8 +122,8 @@ class WallpaperActionBar extends StatelessWidget {
         onTap: onTap,
         borderRadius: BorderRadius.circular(AppSizes.radiusSm),
         child: Container(
-          width: 48.0,
-          height: 48.0,
+          width: 44.0,
+          height: 44.0,
           alignment: Alignment.center,
           child: Icon(
             icon,

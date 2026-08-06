@@ -19,3 +19,31 @@ final wallpapersProvider = FutureProvider<List<Wallpaper>>((ref) async {
   final repository = ref.watch(wallpaperRepositoryProvider);
   return repository.getWallpapers();
 });
+
+/// Family provider that returns a list of wallpapers similar to the given [target].
+///
+/// Matching logic compares category and tags, excluding the active wallpaper ID.
+final similarWallpapersProvider =
+    Provider.family<List<Wallpaper>, Wallpaper>((ref, target) {
+  final asyncWallpapers = ref.watch(wallpapersProvider);
+
+  return asyncWallpapers.when(
+    data: (wallpapers) {
+      final targetCategory = target.category.toLowerCase();
+      final targetTagsSet = target.tags.map((t) => t.toLowerCase()).toSet();
+
+      return wallpapers.where((w) {
+        if (w.id == target.id) return false;
+
+        final isSameCategory = w.category.toLowerCase() == targetCategory;
+        final hasSharedTag = w.tags.any(
+          (t) => targetTagsSet.contains(t.toLowerCase()),
+        );
+
+        return isSameCategory || hasSharedTag;
+      }).toList();
+    },
+    loading: () => const <Wallpaper>[],
+    error: (error, stack) => const <Wallpaper>[],
+  );
+});

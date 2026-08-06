@@ -6,7 +6,8 @@ import '../../models/wallpaper.dart';
 import '../../providers/wallpaper_providers.dart';
 import '../../widgets/widgets.dart';
 
-/// Premium Wallpaper Details Screen featuring interactive zoom/pan image viewer and metadata.
+/// Premium Wallpaper Details Screen featuring zoomable preview, fullscreen mode,
+/// device preview modal, metadata, and similar wallpapers recommendations.
 class WallpaperDetailsScreen extends ConsumerStatefulWidget {
   final String wallpaperId;
   final Wallpaper? wallpaper;
@@ -24,32 +25,12 @@ class WallpaperDetailsScreen extends ConsumerStatefulWidget {
 
 class _WallpaperDetailsScreenState
     extends ConsumerState<WallpaperDetailsScreen> {
-  final TransformationController _transformationController =
-      TransformationController();
-  TapDownDetails? _doubleTapDetails;
+  bool _isFullscreenMode = false;
 
-  @override
-  void dispose() {
-    _transformationController.dispose();
-    super.dispose();
-  }
-
-  void _handleDoubleTapDown(TapDownDetails details) {
-    _doubleTapDetails = details;
-  }
-
-  void _handleDoubleTap() {
-    if (_transformationController.value != Matrix4.identity()) {
-      _transformationController.value = Matrix4.identity();
-    } else {
-      final position = _doubleTapDetails?.localPosition ?? Offset.zero;
-      // ignore: deprecated_member_use
-      _transformationController.value = Matrix4.identity()
-        // ignore: deprecated_member_use
-        ..translate(-position.dx * 1.5, -position.dy * 1.5)
-        // ignore: deprecated_member_use
-        ..scale(2.5, 2.5);
-    }
+  void _toggleFullscreenMode() {
+    setState(() {
+      _isFullscreenMode = !_isFullscreenMode;
+    });
   }
 
   @override
@@ -103,9 +84,11 @@ class _WallpaperDetailsScreenState
           else
             _buildPortraitLayout(context, wallpaper),
 
-          // Floating Transparent AppBar
-          Positioned(
-            top: 0,
+          // Animated Floating Transparent AppBar
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 200),
+            curve: Curves.easeInOut,
+            top: _isFullscreenMode ? -100.0 : 0.0,
             left: 0,
             right: 0,
             child: SafeArea(
@@ -144,10 +127,16 @@ class _WallpaperDetailsScreenState
         ],
       ),
 
-      // Bottom Action Area
-      bottomNavigationBar: const SafeArea(
-        child: WallpaperActionBar(),
-      ),
+      // Animated Bottom Action Area
+      bottomNavigationBar: _isFullscreenMode
+          ? null
+          : SafeArea(
+              child: WallpaperActionBar(
+                onDevicePreviewTap: () {
+                  PhonePreviewWidget.showModal(context, wallpaper);
+                },
+              ),
+            ),
     );
   }
 
@@ -158,15 +147,26 @@ class _WallpaperDetailsScreenState
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Image Viewer Header
-          _buildImageViewer(context, wallpaper, height: 480.0),
-
-          // Metadata Details Container
-          Padding(
-            padding: const EdgeInsets.all(AppSizes.p16),
-            child: WallpaperMetadataCard(wallpaper: wallpaper),
+          ZoomableWallpaper(
+            wallpaper: wallpaper,
+            height: _isFullscreenMode
+                ? MediaQuery.of(context).size.height
+                : 500.0,
+            onTap: _toggleFullscreenMode,
           ),
 
-          const SizedBox(height: AppSizes.p16),
+          if (!_isFullscreenMode) ...[
+            // Metadata Details Container
+            Padding(
+              padding: const EdgeInsets.all(AppSizes.p16),
+              child: WallpaperMetadataCard(wallpaper: wallpaper),
+            ),
+
+            // Similar Wallpapers Section
+            SimilarWallpapersSection(wallpaper: wallpaper),
+
+            const SizedBox(height: AppSizes.p24),
+          ],
         ],
       ),
     );
@@ -182,77 +182,34 @@ class _WallpaperDetailsScreenState
           child: Container(
             color: Colors.black,
             child: Center(
-              child: _buildImageViewer(context, wallpaper,
-                  height: double.infinity),
+              child: ZoomableWallpaper(
+                wallpaper: wallpaper,
+                height: double.infinity,
+                onTap: _toggleFullscreenMode,
+              ),
             ),
           ),
         ),
 
-        // Right Column: Scrollable Metadata Details
-        Expanded(
-          flex: 4,
-          child: SafeArea(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(AppSizes.p24),
-              physics: const BouncingScrollPhysics(),
-              child: WallpaperMetadataCard(wallpaper: wallpaper),
+        // Right Column: Scrollable Metadata & Similar Section
+        if (!_isFullscreenMode)
+          Expanded(
+            flex: 4,
+            child: SafeArea(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(AppSizes.p24),
+                physics: const BouncingScrollPhysics(),
+                child: Column(
+                  children: [
+                    WallpaperMetadataCard(wallpaper: wallpaper),
+                    const SizedBox(height: AppSizes.p16),
+                    SimilarWallpapersSection(wallpaper: wallpaper),
+                  ],
+                ),
+              ),
             ),
           ),
-        ),
       ],
-    );
-  }
-
-  Widget _buildImageViewer(BuildContext context, Wallpaper wallpaper,
-      {required double height}) {
-    final theme = Theme.of(context);
-
-    return GestureDetector(
-      onDoubleTapDown: _handleDoubleTapDown,
-      onDoubleTap: _handleDoubleTap,
-      child: SizedBox(
-        height: height,
-        width: double.infinity,
-        child: InteractiveViewer(
-          transformationController: _transformationController,
-          minScale: 1.0,
-          maxScale: 4.0,
-          clipBehavior: Clip.none,
-          child: Hero(
-            tag: 'wallpaper_${wallpaper.id}',
-            child: Image.asset(
-              wallpaper.imagePath,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: theme.colorScheme.surfaceContainerHighest,
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.image_outlined,
-                          size: AppSizes.iconLg * 1.5,
-                          color: theme.colorScheme.onSurfaceVariant
-                              .withValues(alpha: 0.4),
-                        ),
-                        const SizedBox(height: AppSizes.p8),
-                        Text(
-                          wallpaper.title,
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            color: theme.colorScheme.onSurfaceVariant,
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-        ),
-      ),
     );
   }
 
