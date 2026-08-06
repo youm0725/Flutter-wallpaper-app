@@ -10,6 +10,11 @@ class PathHelper:
         return Path(__file__).resolve().parent.parent.parent
 
     @staticmethod
+    def get_tool_root() -> Path:
+        """Returns Path object to tools/wallpaper_asset_manager."""
+        return PathHelper.get_manager_root()
+
+    @staticmethod
     def get_workspace_root() -> Path:
         """Returns Path object to the main Flutter project root directory."""
         return PathHelper.get_manager_root().parent.parent
