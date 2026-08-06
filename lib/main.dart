@@ -12,13 +12,15 @@ void main() {
   );
 }
 
-/// Root widget of the application listening to theme state.
+/// Root widget of the application listening to persisted theme state.
 class WallpaperApp extends ConsumerWidget {
   const WallpaperApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeMode = ref.watch(themeModeProvider);
+    // Watch the async theme provider — fall back to ThemeMode.system while loading.
+    final asyncThemeMode = ref.watch(themeModeProvider);
+    final themeMode = asyncThemeMode.value ?? ThemeMode.system;
 
     return MaterialApp.router(
       title: 'Wallpaper Gallery',
