@@ -33,13 +33,15 @@ final class LocalShareService implements IShareService {
 
       final tempDir = await getTemporaryDirectory();
       final sanitizeName = wallpaper.id.replaceAll(RegExp(r'[^a-zA-Z0-9_]'), '_');
-      final tempFile = File('${tempDir.path}/share_$sanitizeName.jpg');
+      final tempFile = File('${tempDir.path}/$sanitizeName.jpg');
 
       await tempFile.writeAsBytes(bytes, flush: true);
 
+      final xfile = XFile(tempFile.path, mimeType: 'image/jpeg');
+
       final result = await SharePlus.instance.share(
         ShareParams(
-          files: [XFile(tempFile.path)],
+          files: [xfile],
           text: 'Check out "${wallpaper.title}" from Wallpaper Gallery!',
         ),
       );

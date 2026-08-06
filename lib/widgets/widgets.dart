@@ -13,6 +13,7 @@ export 'phone_preview_widget.dart';
 export 'preference_tile.dart';
 export 'search_bar_widget.dart';
 export 'section_header.dart';
+export 'set_wallpaper_sheet.dart';
 export 'similar_wallpapers_section.dart';
 export 'suggestion_tile.dart';
 export 'user_collection_card.dart';

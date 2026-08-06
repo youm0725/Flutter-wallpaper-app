@@ -3,8 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/constants/app_sizes.dart';
 import '../models/wallpaper.dart';
 import '../providers/download_provider.dart';
+import 'set_wallpaper_sheet.dart';
 
-/// Reusable action bar for wallpaper details screen with interactive download functionality.
+/// Reusable action bar for wallpaper details screen with interactive download and set wallpaper functionality.
 class WallpaperActionBar extends ConsumerWidget {
   final Wallpaper wallpaper;
   final VoidCallback? onDevicePreviewTap;
@@ -28,10 +29,6 @@ class WallpaperActionBar extends ConsumerWidget {
         ),
       ),
     );
-  }
-
-  void _showComingSoonSnackBar(BuildContext context) {
-    _showFeedbackSnackBar(context, 'Coming Soon');
   }
 
   Future<void> _handleDownload(BuildContext context, WidgetRef ref) async {
@@ -126,9 +123,12 @@ class WallpaperActionBar extends ConsumerWidget {
           ),
           const SizedBox(width: AppSizes.p8),
 
+          // Primary Set Wallpaper Button
           Expanded(
             child: ElevatedButton.icon(
-              onPressed: () => _showComingSoonSnackBar(context),
+              onPressed: () {
+                SetWallpaperSheet.show(context, wallpaper);
+              },
               icon: const Icon(Icons.wallpaper_rounded, size: AppSizes.iconSm + 2),
               label: const Text('Set Wallpaper'),
             ),

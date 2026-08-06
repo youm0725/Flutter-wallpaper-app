@@ -5,6 +5,7 @@ export 'favorites_provider.dart';
 export 'preferences_provider.dart';
 export 'recently_viewed_provider.dart';
 export 'search_providers.dart';
+export 'set_wallpaper_provider.dart';
 export 'share_provider.dart';
 export 'theme_provider.dart';
 export 'user_collection_provider.dart';
