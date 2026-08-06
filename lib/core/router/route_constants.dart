@@ -6,6 +6,9 @@ abstract final class RouteConstants {
   static const String homePath = '/home';
   static const String homeName = 'home';
 
+  static const String categoriesPath = '/categories';
+  static const String categoriesName = 'categories';
+
   static const String searchPath = '/search';
   static const String searchName = 'search';
 

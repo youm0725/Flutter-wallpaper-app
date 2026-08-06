@@ -1,4 +1,5 @@
 export 'category_chip.dart';
+export 'category_card.dart';
 export 'empty_state.dart';
 export 'error_view.dart';
 export 'loading_indicator.dart';
@@ -6,6 +7,7 @@ export 'phone_preview_widget.dart';
 export 'search_bar_widget.dart';
 export 'section_header.dart';
 export 'similar_wallpapers_section.dart';
+export 'suggestion_tile.dart';
 export 'wallpaper_action_bar.dart';
 export 'wallpaper_card.dart';
 export 'wallpaper_metadata_card.dart';

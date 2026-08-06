@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import '../../models/wallpaper.dart';
+import '../../screens/categories/categories_screen.dart';
 import '../../screens/details/wallpaper_details_screen.dart';
 import '../../screens/favorites/favorites_screen.dart';
 import '../../screens/home/home_screen.dart';
@@ -21,6 +22,11 @@ final GoRouter appRouter = GoRouter(
       path: RouteConstants.homePath,
       name: RouteConstants.homeName,
       builder: (context, state) => const HomeScreen(),
+    ),
+    GoRoute(
+      path: RouteConstants.categoriesPath,
+      name: RouteConstants.categoriesName,
+      builder: (context, state) => const CategoriesScreen(),
     ),
     GoRoute(
       path: RouteConstants.searchPath,

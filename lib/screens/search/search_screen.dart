@@ -64,6 +64,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     );
     ref.read(searchQueryProvider.notifier).setQuery(query);
     ref.read(recentSearchesProvider.notifier).addQuery(query);
+    _focusNode.unfocus();
   }
 
   void _clearQuery() {
@@ -79,6 +80,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
     final activeQuery = ref.watch(searchQueryProvider);
     final searchResults = ref.watch(searchResultsProvider);
     final asyncRecentSearches = ref.watch(recentSearchesProvider);
+    final suggestions = ref.watch(searchSuggestionsProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -143,7 +145,34 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
       body: SafeArea(
         child: activeQuery.trim().isEmpty
             ? _buildRecentAndSuggestionsView(context, asyncRecentSearches)
-            : _buildSearchResultsGrid(context, searchResults, activeQuery),
+            : Column(
+                children: [
+                  // Realtime Autocomplete Suggestions (when typing)
+                  if (_focusNode.hasFocus && suggestions.isNotEmpty)
+                    Container(
+                      constraints: const BoxConstraints(maxHeight: 220.0),
+                      color: theme.colorScheme.surface,
+                      child: ListView.separated(
+                        shrinkWrap: true,
+                        itemCount: suggestions.length,
+                        separatorBuilder: (context, index) => const Divider(height: 1.0),
+                        itemBuilder: (context, index) {
+                          final suggestion = suggestions[index];
+                          return SuggestionTile(
+                            suggestion: suggestion,
+                            onTap: () => _selectQuery(suggestion.query),
+                          );
+                        },
+                      ),
+                    ),
+
+                  // Results Grid
+                  Expanded(
+                    child: _buildSearchResultsGrid(
+                        context, searchResults, activeQuery),
+                  ),
+                ],
+              ),
       ),
     );
   }

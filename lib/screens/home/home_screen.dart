@@ -124,10 +124,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
 
             // 4. Categories Section Header & Horizontal List
-            const SliverToBoxAdapter(
+            SliverToBoxAdapter(
               child: SectionHeader(
                 title: 'Categories',
                 subtitle: 'Filter by style',
+                trailing: TextButton(
+                  onPressed: () => context.pushNamed(RouteConstants.categoriesName),
+                  child: const Text('See All'),
+                ),
               ),
             ),
             SliverToBoxAdapter(
