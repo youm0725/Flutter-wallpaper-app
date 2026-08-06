@@ -3,200 +3,320 @@
     "id": "nature_01",
     "title": "Misty Alpine Forest",
     "category": "nature",
-    "imagePath": "assets/wallpapers/nature/misty_alpine_forest.jpg",
+    "imagePath": "assets/wallpapers/nature/misty_alpine_forest.webp",
     "resolution": "2160x3840",
-    "fileSize": "3.4 MB",
-    "tags": ["nature", "forest", "mountain", "fog"],
-    "isFeatured": true
+    "fileSize": "11 KB",
+    "tags": [
+      "nature",
+      "forest",
+      "mountain",
+      "fog"
+    ],
+    "isFeatured": true,
+    "thumbnailPath": "assets/wallpapers/thumbnails/nature/misty_alpine_forest.webp"
   },
   {
     "id": "nature_02",
     "title": "Golden Hour Horizon",
     "category": "nature",
-    "imagePath": "assets/wallpapers/nature/golden_hour_horizon.jpg",
+    "imagePath": "assets/wallpapers/nature/golden_hour_horizon.webp",
     "resolution": "2160x3840",
-    "fileSize": "4.1 MB",
-    "tags": ["nature", "sunset", "horizon", "warm"],
-    "isFeatured": false
+    "fileSize": "12 KB",
+    "tags": [
+      "nature",
+      "sunset",
+      "horizon",
+      "warm"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/nature/golden_hour_horizon.webp"
   },
   {
     "id": "nature_03",
     "title": "Emerald Canyon River",
     "category": "nature",
-    "imagePath": "assets/wallpapers/nature/emerald_canyon_river.jpg",
+    "imagePath": "assets/wallpapers/nature/emerald_canyon_river.webp",
     "resolution": "2160x3840",
-    "fileSize": "3.8 MB",
-    "tags": ["nature", "river", "canyon", "waterfall"],
-    "isFeatured": false
+    "fileSize": "18 KB",
+    "tags": [
+      "nature",
+      "river",
+      "canyon",
+      "waterfall"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/nature/emerald_canyon_river.webp"
   },
   {
     "id": "abstract_01",
     "title": "Fluid Chromatic Waves",
     "category": "abstract",
-    "imagePath": "assets/wallpapers/abstract/fluid_chromatic_waves.jpg",
+    "imagePath": "assets/wallpapers/abstract/fluid_chromatic_waves.webp",
     "resolution": "2160x3840",
-    "fileSize": "2.9 MB",
-    "tags": ["abstract", "fluid", "color", "waves"],
-    "isFeatured": true
+    "fileSize": "13 KB",
+    "tags": [
+      "abstract",
+      "fluid",
+      "color",
+      "waves"
+    ],
+    "isFeatured": true,
+    "thumbnailPath": "assets/wallpapers/thumbnails/abstract/fluid_chromatic_waves.webp"
   },
   {
     "id": "abstract_02",
     "title": "Geometric Prism",
     "category": "abstract",
-    "imagePath": "assets/wallpapers/abstract/geometric_prism.jpg",
+    "imagePath": "assets/wallpapers/abstract/geometric_prism.webp",
     "resolution": "2160x3840",
-    "fileSize": "3.1 MB",
-    "tags": ["abstract", "geometric", "prism", "3d"],
-    "isFeatured": false
+    "fileSize": "84 KB",
+    "tags": [
+      "abstract",
+      "geometric",
+      "prism",
+      "3d"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/abstract/geometric_prism.webp"
   },
   {
     "id": "abstract_03",
     "title": "Obsidian Flow",
     "category": "abstract",
-    "imagePath": "assets/wallpapers/abstract/obsidian_flow.jpg",
+    "imagePath": "assets/wallpapers/abstract/obsidian_flow.webp",
     "resolution": "2160x3840",
-    "fileSize": "2.5 MB",
-    "tags": ["abstract", "dark", "obsidian", "minimal"],
-    "isFeatured": false
+    "fileSize": "19 KB",
+    "tags": [
+      "abstract",
+      "dark",
+      "obsidian",
+      "minimal"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/abstract/obsidian_flow.webp"
   },
   {
     "id": "amoled_01",
     "title": "Neon Eclipse",
     "category": "amoled",
-    "imagePath": "assets/wallpapers/amoled/neon_eclipse.jpg",
+    "imagePath": "assets/wallpapers/amoled/neon_eclipse.webp",
     "resolution": "2160x3840",
-    "fileSize": "1.8 MB",
-    "tags": ["amoled", "dark", "neon", "eclipse"],
-    "isFeatured": true
+    "fileSize": "9 KB",
+    "tags": [
+      "amoled",
+      "dark",
+      "neon",
+      "eclipse"
+    ],
+    "isFeatured": true,
+    "thumbnailPath": "assets/wallpapers/thumbnails/amoled/neon_eclipse.webp"
   },
   {
     "id": "amoled_02",
     "title": "Deep Void Geometry",
     "category": "amoled",
-    "imagePath": "assets/wallpapers/amoled/deep_void_geometry.jpg",
+    "imagePath": "assets/wallpapers/amoled/deep_void_geometry.webp",
     "resolution": "2160x3840",
-    "fileSize": "1.6 MB",
-    "tags": ["amoled", "black", "geometry", "minimal"],
-    "isFeatured": false
+    "fileSize": "55 KB",
+    "tags": [
+      "amoled",
+      "black",
+      "geometry",
+      "minimal"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/amoled/deep_void_geometry.webp"
   },
   {
     "id": "amoled_03",
     "title": "Midnight Glowing Lines",
     "category": "amoled",
-    "imagePath": "assets/wallpapers/amoled/midnight_glowing_lines.jpg",
+    "imagePath": "assets/wallpapers/amoled/midnight_glowing_lines.webp",
     "resolution": "2160x3840",
-    "fileSize": "2.0 MB",
-    "tags": ["amoled", "lines", "glow", "dark"],
-    "isFeatured": false
+    "fileSize": "28 KB",
+    "tags": [
+      "amoled",
+      "lines",
+      "glow",
+      "dark"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/amoled/midnight_glowing_lines.webp"
   },
   {
     "id": "anime_01",
     "title": "Sunset Cyber Tokyo",
     "category": "anime",
-    "imagePath": "assets/wallpapers/anime/sunset_cyber_tokyo.jpg",
+    "imagePath": "assets/wallpapers/anime/sunset_cyber_tokyo.webp",
     "resolution": "2160x3840",
-    "fileSize": "4.5 MB",
-    "tags": ["anime", "city", "sunset", "tokyo"],
-    "isFeatured": true
+    "fileSize": "11 KB",
+    "tags": [
+      "anime",
+      "city",
+      "sunset",
+      "tokyo"
+    ],
+    "isFeatured": true,
+    "thumbnailPath": "assets/wallpapers/thumbnails/anime/sunset_cyber_tokyo.webp"
   },
   {
     "id": "anime_02",
     "title": "Celestial Shrine Peak",
     "category": "anime",
-    "imagePath": "assets/wallpapers/anime/celestial_shrine_peak.jpg",
+    "imagePath": "assets/wallpapers/anime/celestial_shrine_peak.webp",
     "resolution": "2160x3840",
-    "fileSize": "4.2 MB",
-    "tags": ["anime", "shrine", "stars", "fantasy"],
-    "isFeatured": false
+    "fileSize": "12 KB",
+    "tags": [
+      "anime",
+      "shrine",
+      "stars",
+      "fantasy"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/anime/celestial_shrine_peak.webp"
   },
   {
     "id": "architecture_01",
     "title": "Monolithic Glass Tower",
     "category": "architecture",
-    "imagePath": "assets/wallpapers/architecture/monolithic_glass_tower.jpg",
+    "imagePath": "assets/wallpapers/architecture/monolithic_glass_tower.webp",
     "resolution": "2160x3840",
-    "fileSize": "3.6 MB",
-    "tags": ["architecture", "glass", "building", "modern"],
-    "isFeatured": false
+    "fileSize": "18 KB",
+    "tags": [
+      "architecture",
+      "glass",
+      "building",
+      "modern"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/architecture/monolithic_glass_tower.webp"
   },
   {
     "id": "architecture_02",
     "title": "Minimalist Concrete Arch",
     "category": "architecture",
-    "imagePath": "assets/wallpapers/architecture/minimalist_concrete_arch.jpg",
+    "imagePath": "assets/wallpapers/architecture/minimalist_concrete_arch.webp",
     "resolution": "2160x3840",
-    "fileSize": "2.8 MB",
-    "tags": ["architecture", "concrete", "minimal", "arch"],
-    "isFeatured": false
+    "fileSize": "17 KB",
+    "tags": [
+      "architecture",
+      "concrete",
+      "minimal",
+      "arch"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/architecture/minimalist_concrete_arch.webp"
   },
   {
     "id": "cars_01",
     "title": "Supercar Midnight Drift",
     "category": "cars",
-    "imagePath": "assets/wallpapers/cars/supercar_midnight_drift.jpg",
+    "imagePath": "assets/wallpapers/cars/supercar_midnight_drift.webp",
     "resolution": "2160x3840",
-    "fileSize": "4.0 MB",
-    "tags": ["cars", "supercar", "night", "speed"],
-    "isFeatured": true
+    "fileSize": "15 KB",
+    "tags": [
+      "cars",
+      "supercar",
+      "night",
+      "speed"
+    ],
+    "isFeatured": true,
+    "thumbnailPath": "assets/wallpapers/thumbnails/cars/supercar_midnight_drift.webp"
   },
   {
     "id": "cars_02",
     "title": "Retro Cyber Roadster",
     "category": "cars",
-    "imagePath": "assets/wallpapers/cars/retro_cyber_roadster.jpg",
+    "imagePath": "assets/wallpapers/cars/retro_cyber_roadster.webp",
     "resolution": "2160x3840",
-    "fileSize": "3.7 MB",
-    "tags": ["cars", "retro", "synthwave", "cyber"],
-    "isFeatured": false
+    "fileSize": "15 KB",
+    "tags": [
+      "cars",
+      "retro",
+      "synthwave",
+      "cyber"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/cars/retro_cyber_roadster.webp"
   },
   {
     "id": "gaming_01",
     "title": "Cyberpunk Neon Alley",
     "category": "gaming",
-    "imagePath": "assets/wallpapers/gaming/cyberpunk_neon_alley.jpg",
+    "imagePath": "assets/wallpapers/gaming/cyberpunk_neon_alley.webp",
     "resolution": "2160x3840",
-    "fileSize": "4.8 MB",
-    "tags": ["gaming", "cyberpunk", "neon", "city"],
-    "isFeatured": true
+    "fileSize": "17 KB",
+    "tags": [
+      "gaming",
+      "cyberpunk",
+      "neon",
+      "city"
+    ],
+    "isFeatured": true,
+    "thumbnailPath": "assets/wallpapers/thumbnails/gaming/cyberpunk_neon_alley.webp"
   },
   {
     "id": "gaming_02",
     "title": "Low Poly Fantasy Kingdom",
     "category": "gaming",
-    "imagePath": "assets/wallpapers/gaming/low_poly_fantasy_kingdom.jpg",
+    "imagePath": "assets/wallpapers/gaming/low_poly_fantasy_kingdom.webp",
     "resolution": "2160x3840",
-    "fileSize": "3.2 MB",
-    "tags": ["gaming", "lowpoly", "fantasy", "castle"],
-    "isFeatured": false
+    "fileSize": "16 KB",
+    "tags": [
+      "gaming",
+      "lowpoly",
+      "fantasy",
+      "castle"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/gaming/low_poly_fantasy_kingdom.webp"
   },
   {
     "id": "minimal_01",
     "title": "Sand Dune Silhouette",
     "category": "minimal",
-    "imagePath": "assets/wallpapers/minimal/sand_dune_silhouette.jpg",
+    "imagePath": "assets/wallpapers/minimal/sand_dune_silhouette.webp",
     "resolution": "2160x3840",
-    "fileSize": "2.1 MB",
-    "tags": ["minimal", "dune", "desert", "silhouette"],
-    "isFeatured": true
+    "fileSize": "19 KB",
+    "tags": [
+      "minimal",
+      "dune",
+      "desert",
+      "silhouette"
+    ],
+    "isFeatured": true,
+    "thumbnailPath": "assets/wallpapers/thumbnails/minimal/sand_dune_silhouette.webp"
   },
   {
     "id": "minimal_02",
     "title": "Pastel Horizon Gradient",
     "category": "minimal",
-    "imagePath": "assets/wallpapers/minimal/pastel_horizon_gradient.jpg",
+    "imagePath": "assets/wallpapers/minimal/pastel_horizon_gradient.webp",
     "resolution": "2160x3840",
-    "fileSize": "1.9 MB",
-    "tags": ["minimal", "pastel", "gradient", "soft"],
-    "isFeatured": false
+    "fileSize": "17 KB",
+    "tags": [
+      "minimal",
+      "pastel",
+      "gradient",
+      "soft"
+    ],
+    "isFeatured": false,
+    "thumbnailPath": "assets/wallpapers/thumbnails/minimal/pastel_horizon_gradient.webp"
   },
   {
     "id": "space_01",
     "title": "Stellar Nebula Drift",
     "category": "space",
-    "imagePath": "assets/wallpapers/space/stellar_nebula_drift.jpg",
+    "imagePath": "assets/wallpapers/space/stellar_nebula_drift.webp",
     "resolution": "2160x3840",
-    "fileSize": "5.0 MB",
-    "tags": ["space", "nebula", "galaxy", "stars"],
-    "isFeatured": true
+    "fileSize": "17 KB",
+    "tags": [
+      "space",
+      "nebula",
+      "galaxy",
+      "stars"
+    ],
+    "isFeatured": true,
+    "thumbnailPath": "assets/wallpapers/thumbnails/space/stellar_nebula_drift.webp"
   }
 ]

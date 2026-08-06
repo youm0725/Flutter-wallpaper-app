@@ -7,6 +7,7 @@ final class Wallpaper {
   final String title;
   final String category;
   final String imagePath;
+  final String? thumbnailPath;
   final String resolution;
   final String fileSize;
   final List<String> tags;
@@ -17,11 +18,18 @@ final class Wallpaper {
     required this.title,
     required this.category,
     required this.imagePath,
+    this.thumbnailPath,
     required this.resolution,
     required this.fileSize,
     required this.tags,
     this.isFeatured = false,
   });
+
+  /// Returns thumbnail path if specified, falling back to full image path.
+  String get effectiveThumbnailPath =>
+      (thumbnailPath != null && thumbnailPath!.isNotEmpty)
+          ? thumbnailPath!
+          : imagePath;
 
   /// Factory constructor to create a [Wallpaper] from a JSON map.
   factory Wallpaper.fromJson(Map<String, dynamic> json) {
@@ -30,6 +38,7 @@ final class Wallpaper {
       title: json['title'] as String? ?? '',
       category: json['category'] as String? ?? '',
       imagePath: json['imagePath'] as String? ?? '',
+      thumbnailPath: json['thumbnailPath'] as String?,
       resolution: json['resolution'] as String? ?? '',
       fileSize: json['fileSize'] as String? ?? '',
       tags: (json['tags'] as List<dynamic>?)
@@ -47,6 +56,7 @@ final class Wallpaper {
       'title': title,
       'category': category,
       'imagePath': imagePath,
+      if (thumbnailPath != null) 'thumbnailPath': thumbnailPath,
       'resolution': resolution,
       'fileSize': fileSize,
       'tags': tags,
@@ -60,6 +70,7 @@ final class Wallpaper {
     String? title,
     String? category,
     String? imagePath,
+    String? thumbnailPath,
     String? resolution,
     String? fileSize,
     List<String>? tags,
@@ -70,6 +81,7 @@ final class Wallpaper {
       title: title ?? this.title,
       category: category ?? this.category,
       imagePath: imagePath ?? this.imagePath,
+      thumbnailPath: thumbnailPath ?? this.thumbnailPath,
       resolution: resolution ?? this.resolution,
       fileSize: fileSize ?? this.fileSize,
       tags: tags ?? this.tags,
@@ -86,6 +98,7 @@ final class Wallpaper {
         other.title == title &&
         other.category == category &&
         other.imagePath == imagePath &&
+        other.thumbnailPath == thumbnailPath &&
         other.resolution == resolution &&
         other.fileSize == fileSize &&
         other.isFeatured == isFeatured &&
@@ -99,6 +112,7 @@ final class Wallpaper {
       title,
       category,
       imagePath,
+      thumbnailPath,
       resolution,
       fileSize,
       isFeatured,
@@ -108,6 +122,6 @@ final class Wallpaper {
 
   @override
   String toString() {
-    return 'Wallpaper(id: $id, title: $title, category: $category, imagePath: $imagePath, resolution: $resolution, fileSize: $fileSize, tags: $tags, isFeatured: $isFeatured)';
+    return 'Wallpaper(id: $id, title: $title, category: $category, imagePath: $imagePath, thumbnailPath: $thumbnailPath, resolution: $resolution, fileSize: $fileSize, tags: $tags, isFeatured: $isFeatured)';
   }
 }

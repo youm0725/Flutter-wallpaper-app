@@ -66,7 +66,7 @@ class WallpaperCard extends ConsumerWidget {
                           width: double.infinity,
                           color: theme.colorScheme.surfaceContainerHighest,
                           child: Image.asset(
-                            wallpaper.imagePath,
+                            wallpaper.effectiveThumbnailPath,
                             fit: BoxFit.cover,
                             // Limit decoded image size to thumbnail dimensions,
                             // significantly reducing memory usage for grid display.

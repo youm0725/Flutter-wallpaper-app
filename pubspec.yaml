@@ -76,6 +76,15 @@ flutter:
     - assets/wallpapers/gaming/
     - assets/wallpapers/minimal/
     - assets/wallpapers/space/
+    - assets/wallpapers/thumbnails/nature/
+    - assets/wallpapers/thumbnails/abstract/
+    - assets/wallpapers/thumbnails/amoled/
+    - assets/wallpapers/thumbnails/anime/
+    - assets/wallpapers/thumbnails/architecture/
+    - assets/wallpapers/thumbnails/cars/
+    - assets/wallpapers/thumbnails/gaming/
+    - assets/wallpapers/thumbnails/minimal/
+    - assets/wallpapers/thumbnails/space/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

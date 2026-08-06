@@ -70,7 +70,7 @@ class SimilarWallpapersSection extends ConsumerWidget {
                         children: [
                           Expanded(
                             child: Image.asset(
-                              item.imagePath,
+                              item.effectiveThumbnailPath,
                               width: double.infinity,
                               fit: BoxFit.cover,
                               cacheWidth: 300,
