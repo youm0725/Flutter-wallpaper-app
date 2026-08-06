@@ -38,6 +38,7 @@ class DailyWallpaperCard extends StatelessWidget {
                 child: Image.asset(
                   wallpaper.imagePath,
                   fit: BoxFit.cover,
+                  cacheWidth: 800,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
                       color: theme.colorScheme.surfaceContainerHighest,

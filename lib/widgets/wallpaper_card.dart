@@ -20,8 +20,13 @@ class WallpaperCard extends ConsumerWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
-    final asyncFavIds = ref.watch(favoritesNotifierProvider);
-    final isFav = asyncFavIds.value?.contains(wallpaper.id) ?? false;
+    // .select() ensures this card only rebuilds when THIS wallpaper's
+    // favorite status changes — not when any other wallpaper is toggled.
+    final isFav = ref.watch(
+      favoritesNotifierProvider.select(
+        (asyncValue) => asyncValue.value?.contains(wallpaper.id) ?? false,
+      ),
+    );
 
     final backgroundColor = isDark
         ? theme.colorScheme.surface
@@ -63,6 +68,9 @@ class WallpaperCard extends ConsumerWidget {
                           child: Image.asset(
                             wallpaper.imagePath,
                             fit: BoxFit.cover,
+                            // Limit decoded image size to thumbnail dimensions,
+                            // significantly reducing memory usage for grid display.
+                            cacheWidth: 400,
                             errorBuilder: (context, error, stackTrace) {
                               return Container(
                                 decoration: BoxDecoration(

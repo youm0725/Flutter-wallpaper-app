@@ -40,6 +40,7 @@ class CollectionCard extends StatelessWidget {
                 Image.asset(
                   collection.coverImagePath,
                   fit: BoxFit.cover,
+                  cacheWidth: 500,
                   errorBuilder: (context, error, stackTrace) {
                     return Container(
                       color: theme.colorScheme.surfaceContainerHighest,

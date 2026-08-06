@@ -73,6 +73,7 @@ class SimilarWallpapersSection extends ConsumerWidget {
                               item.imagePath,
                               width: double.infinity,
                               fit: BoxFit.cover,
+                              cacheWidth: 300,
                               errorBuilder: (context, error, stackTrace) {
                                 return Container(
                                   color: theme.colorScheme.surfaceContainerHighest,
