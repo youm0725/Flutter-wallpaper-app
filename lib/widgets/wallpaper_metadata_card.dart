@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../core/constants/app_sizes.dart';
 import '../models/wallpaper.dart';
 
-/// Component displaying wallpaper metadata details and tags.
+/// Component displaying wallpaper metadata details, action buttons beside name, and tags.
 class WallpaperMetadataCard extends StatelessWidget {
   final Wallpaper wallpaper;
 
@@ -10,6 +10,21 @@ class WallpaperMetadataCard extends StatelessWidget {
     super.key,
     required this.wallpaper,
   });
+
+  void _showComingSoonSnackBar(BuildContext context) {
+    ScaffoldMessenger.of(context).hideCurrentSnackBar();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: const Text('Coming Soon'),
+        duration: const Duration(seconds: 2),
+        behavior: SnackBarBehavior.floating,
+        margin: const EdgeInsets.all(AppSizes.p16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSizes.radiusSm),
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +50,9 @@ class WallpaperMetadataCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Title & Category Header
+          // Title & Category Header with Favorite and Share Buttons
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Expanded(
                 child: Column(
@@ -61,6 +76,26 @@ class WallpaperMetadataCard extends StatelessWidget {
                     ),
                   ],
                 ),
+              ),
+
+              const SizedBox(width: AppSizes.p8),
+
+              // Favorite Button beside name
+              _buildActionButton(
+                context,
+                icon: Icons.favorite_outline_rounded,
+                tooltip: 'Favorite',
+                onTap: () => _showComingSoonSnackBar(context),
+              ),
+
+              const SizedBox(width: AppSizes.p8),
+
+              // Share Button beside favorite button
+              _buildActionButton(
+                context,
+                icon: Icons.share_outlined,
+                tooltip: 'Share',
+                onTap: () => _showComingSoonSnackBar(context),
               ),
             ],
           ),
@@ -138,6 +173,34 @@ class WallpaperMetadataCard extends StatelessWidget {
             ),
           ],
         ],
+      ),
+    );
+  }
+
+  Widget _buildActionButton(
+    BuildContext context, {
+    required IconData icon,
+    required String tooltip,
+    required VoidCallback onTap,
+  }) {
+    final theme = Theme.of(context);
+
+    return Material(
+      color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.6),
+      borderRadius: BorderRadius.circular(AppSizes.radiusSm),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(AppSizes.radiusSm),
+        child: Container(
+          width: 44.0,
+          height: 44.0,
+          alignment: Alignment.center,
+          child: Icon(
+            icon,
+            size: AppSizes.iconMd - 2,
+            color: theme.colorScheme.onSurfaceVariant,
+          ),
+        ),
       ),
     );
   }
