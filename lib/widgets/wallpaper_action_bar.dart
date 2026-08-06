@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/constants/app_sizes.dart';
 import '../models/wallpaper.dart';
 import '../providers/download_provider.dart';
+import 'confirmation_dialog.dart';
 import 'set_wallpaper_sheet.dart';
 
 /// Reusable action bar for wallpaper details screen with interactive download and set wallpaper functionality.
@@ -35,6 +36,19 @@ class WallpaperActionBar extends ConsumerWidget {
     final activeDownloads = ref.read(activeDownloadsProvider);
     if (activeDownloads.contains(wallpaper.id)) return;
 
+    final confirmed = await ConfirmationDialog.show(
+      context,
+      title: 'Save to Gallery',
+      message:
+          'Wallpaper Gallery needs permission to save "${wallpaper.title}" to your device photo gallery.',
+      confirmLabel: 'Grant & Download',
+      cancelLabel: 'Cancel',
+    );
+
+    if (confirmed != true) return;
+
+    if (!context.mounted) return;
+
     final result = await downloadWallpaper(ref, wallpaper);
 
     if (!context.mounted) return;
@@ -55,7 +69,7 @@ class WallpaperActionBar extends ConsumerWidget {
       case DownloadResult.error:
         _showFeedbackSnackBar(
           context,
-          'Unable to save wallpaper. Please check permissions.',
+          'Unable to save wallpaper. Please check permissions in device Settings.',
         );
         break;
     }

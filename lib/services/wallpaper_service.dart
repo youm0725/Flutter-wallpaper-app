@@ -57,7 +57,13 @@ final class LocalWallpaperService implements IWallpaperService {
         );
 
         final result = await aw.AsyncWallpaper.setWallpaper(request);
-        return result.isSuccess;
+        if (result.isSuccess) {
+          return true;
+        }
+
+        // Fallback: Open native Android wallpaper chooser if direct setting was restricted
+        final chooserResult = await aw.AsyncWallpaper.openWallpaperChooser();
+        return chooserResult.isSuccess;
       } else {
         // iOS: Save image to Photos library for user setup
         final ByteData byteData = await rootBundle.load(wallpaper.imagePath);
@@ -74,6 +80,12 @@ final class LocalWallpaperService implements IWallpaperService {
         return true;
       }
     } catch (_) {
+      try {
+        if (Platform.isAndroid) {
+          final chooserResult = await aw.AsyncWallpaper.openWallpaperChooser();
+          return chooserResult.isSuccess;
+        }
+      } catch (__) {}
       return false;
     }
   }
