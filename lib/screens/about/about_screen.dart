@@ -5,6 +5,7 @@ import '../../core/constants/app_info.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../core/router/route_constants.dart';
 import '../../providers/app_info_provider.dart';
+import '../../providers/engagement_provider.dart';
 
 /// About screen — app identity, version, links to legal pages, and support.
 class AboutScreen extends ConsumerWidget {
@@ -56,13 +57,19 @@ class AboutScreen extends ConsumerWidget {
               icon: Icons.mail_outline_rounded,
               title: 'Contact Support',
               subtitle: AppInfo.supportEmail,
-              onTap: () => _showComingSoon(context),
+              onTap: () => _sendFeedback(context, ref),
             ),
             _InfoTile(
               icon: Icons.rate_review_outlined,
               title: 'Send Feedback',
               subtitle: 'Help us improve the app',
-              onTap: () => _showComingSoon(context),
+              onTap: () => _sendFeedback(context, ref),
+            ),
+            _InfoTile(
+              icon: Icons.star_rate_rounded,
+              title: 'Rate the App',
+              subtitle: 'Share your experience on the store',
+              onTap: () => requestAppReview(ref),
             ),
 
             const Divider(height: AppSizes.p32),
@@ -119,20 +126,23 @@ class AboutScreen extends ConsumerWidget {
     );
   }
 
-  void _showComingSoon(BuildContext context) {
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: const Text('Coming soon'),
-        behavior: SnackBarBehavior.floating,
-        margin: const EdgeInsets.all(AppSizes.p16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSizes.radiusSm),
+  Future<void> _sendFeedback(BuildContext context, WidgetRef ref) async {
+    final success = await openFeedback(ref);
+    if (!success && context.mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text('No email app found. Please use support@wallpapergallery.app'),
+          behavior: SnackBarBehavior.floating,
+          margin: const EdgeInsets.all(AppSizes.p16),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppSizes.radiusSm),
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 }
+
 
 // ── Private Widgets ─────────────────────────────────────────────────────────
 

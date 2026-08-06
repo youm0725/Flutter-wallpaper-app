@@ -1,4 +1,5 @@
 export 'app_info_provider.dart';
+export 'engagement_provider.dart';
 export 'category_provider.dart';
 export 'curated_providers.dart';
 export 'download_provider.dart';

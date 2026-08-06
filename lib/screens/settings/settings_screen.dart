@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../core/router/route_constants.dart';
+import '../../providers/engagement_provider.dart';
 import '../../providers/favorites_provider.dart';
 import '../../providers/preferences_provider.dart';
 import '../../providers/recently_viewed_provider.dart';
@@ -11,8 +12,7 @@ import '../../providers/theme_provider.dart';
 import '../../providers/user_collection_provider.dart';
 import '../../widgets/widgets.dart';
 
-/// Full Settings Screen — Appearance, Grid Layout, Home Feed, Data Management,
-/// About & Share, and Backup & Restore sections.
+/// Full Settings Screen — Appearance, Home Feed, Data, Engagement, and Backup sections.
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
@@ -27,177 +27,213 @@ class SettingsScreen extends ConsumerWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Settings'),
+        centerTitle: false,
       ),
       body: SafeArea(
         child: asyncPrefs.when(
           data: (prefs) => ListView(
             physics: const BouncingScrollPhysics(),
-            padding: const EdgeInsets.symmetric(vertical: AppSizes.p12),
+            padding: const EdgeInsets.symmetric(
+              vertical: AppSizes.p8,
+              horizontal: AppSizes.p4,
+            ),
             children: [
 
-              // ── 1. APPEARANCE ──────────────────────────────────────────
-              const SectionHeader(
-                title: 'Appearance',
-                subtitle: 'Theme and layout preferences',
-              ),
-
-              // Theme mode: System / Light / Dark
-              PreferenceTile(
-                icon: Icons.brightness_auto_rounded,
-                title: 'App Theme',
-                subtitle: _themeModeLabel(currentThemeMode),
-                trailing: ThemeSelector(
-                  selectedMode: currentThemeMode,
-                  onSelected: (mode) =>
-                      ref.read(themeModeProvider.notifier).setThemeMode(mode),
+              // ── 1. APPEARANCE ───────────────────────────────────────────
+              _SettingsGroup(
+                header: const SectionHeader(
+                  title: 'Appearance',
+                  subtitle: 'Theme and layout preferences',
                 ),
+                children: [
+                  PreferenceTile(
+                    icon: Icons.brightness_auto_rounded,
+                    title: 'App Theme',
+                    subtitle: _themeModeLabel(currentThemeMode),
+                    trailing: ThemeSelector(
+                      selectedMode: currentThemeMode,
+                      onSelected: (mode) => ref
+                          .read(themeModeProvider.notifier)
+                          .setThemeMode(mode),
+                    ),
+                  ),
+                  PreferenceTile(
+                    icon: Icons.grid_view_rounded,
+                    title: 'Grid Layout',
+                    subtitle: 'Thumbnail density',
+                    trailing: OptionSelector(
+                      selectedDensity: prefs.gridDensity,
+                      onSelected: (density) => ref
+                          .read(userPreferencesNotifierProvider.notifier)
+                          .setGridDensity(density),
+                    ),
+                  ),
+                ],
               ),
 
-              // Grid density
-              PreferenceTile(
-                icon: Icons.grid_view_rounded,
-                title: 'Wallpaper Grid Layout',
-                subtitle: 'Control thumbnail density',
-                trailing: OptionSelector(
-                  selectedDensity: prefs.gridDensity,
-                  onSelected: (density) => ref
-                      .read(userPreferencesNotifierProvider.notifier)
-                      .setGridDensity(density),
-                ),
-              ),
-
-              const Divider(height: AppSizes.p32),
+              const SizedBox(height: AppSizes.p8),
 
               // ── 2. HOME FEED ────────────────────────────────────────────
-              const SectionHeader(
-                title: 'Home Feed',
-                subtitle: 'Toggle discovery sections',
-              ),
-              PreferenceTile(
-                icon: Icons.today_rounded,
-                title: 'Wallpaper of the Day',
-                subtitle: 'Daily hero banner',
-                trailing: Switch.adaptive(
-                  value: prefs.showDailyWallpaper,
-                  onChanged: (val) => ref
-                      .read(userPreferencesNotifierProvider.notifier)
-                      .toggleDailyWallpaper(val),
+              _SettingsGroup(
+                header: const SectionHeader(
+                  title: 'Home Feed',
+                  subtitle: 'Toggle discovery sections',
                 ),
+                children: [
+                  PreferenceTile(
+                    icon: Icons.today_rounded,
+                    title: 'Wallpaper of the Day',
+                    subtitle: 'Daily hero banner',
+                    trailing: Switch.adaptive(
+                      value: prefs.showDailyWallpaper,
+                      onChanged: (val) => ref
+                          .read(userPreferencesNotifierProvider.notifier)
+                          .toggleDailyWallpaper(val),
+                    ),
+                  ),
+                  PreferenceTile(
+                    icon: Icons.star_outline_rounded,
+                    title: "Editor's Picks",
+                    subtitle: 'Featured wallpapers',
+                    trailing: Switch.adaptive(
+                      value: prefs.showFeaturedSection,
+                      onChanged: (val) => ref
+                          .read(userPreferencesNotifierProvider.notifier)
+                          .toggleFeaturedSection(val),
+                    ),
+                  ),
+                  PreferenceTile(
+                    icon: Icons.history_rounded,
+                    title: 'Recently Viewed',
+                    subtitle: 'Recent view history',
+                    trailing: Switch.adaptive(
+                      value: prefs.showRecentlyViewed,
+                      onChanged: (val) => ref
+                          .read(userPreferencesNotifierProvider.notifier)
+                          .toggleRecentlyViewed(val),
+                    ),
+                  ),
+                  PreferenceTile(
+                    icon: Icons.collections_bookmark_outlined,
+                    title: 'Curated Collections',
+                    subtitle: 'Themed gallery sections',
+                    trailing: Switch.adaptive(
+                      value: prefs.showCollectionsSection,
+                      onChanged: (val) => ref
+                          .read(userPreferencesNotifierProvider.notifier)
+                          .toggleCollectionsSection(val),
+                    ),
+                  ),
+                ],
               ),
-              PreferenceTile(
-                icon: Icons.star_outline_rounded,
-                title: "Editor's Picks",
-                subtitle: 'Featured wallpapers section',
-                trailing: Switch.adaptive(
-                  value: prefs.showFeaturedSection,
-                  onChanged: (val) => ref
-                      .read(userPreferencesNotifierProvider.notifier)
-                      .toggleFeaturedSection(val),
+
+              const SizedBox(height: AppSizes.p8),
+
+              // ── 3. DATA & LIBRARY ───────────────────────────────────────
+              _SettingsGroup(
+                header: const SectionHeader(
+                  title: 'Data & Library',
+                  subtitle: 'Manage local offline data',
                 ),
+                children: [
+                  PreferenceTile(
+                    icon: Icons.folder_special_outlined,
+                    title: 'Personal Collections',
+                    subtitle: 'Manage custom libraries',
+                    trailing: const Icon(Icons.chevron_right_rounded),
+                    onTap: () => context
+                        .pushNamed(RouteConstants.userCollectionsName),
+                  ),
+                  PreferenceTile(
+                    icon: Icons.delete_outline_rounded,
+                    title: 'Clear Recently Viewed',
+                    subtitle: 'Reset view history',
+                    onTap: () => _clearRecentlyViewed(context, ref),
+                  ),
+                  PreferenceTile(
+                    icon: Icons.heart_broken_outlined,
+                    title: 'Clear All Favorites',
+                    subtitle: 'Remove saved wallpapers',
+                    onTap: () => _clearFavorites(context, ref),
+                  ),
+                  PreferenceTile(
+                    icon: Icons.folder_delete_outlined,
+                    title: 'Delete All Collections',
+                    subtitle: 'Remove personal libraries',
+                    onTap: () => _deleteAllCollections(context, ref),
+                  ),
+                ],
               ),
-              PreferenceTile(
-                icon: Icons.history_rounded,
-                title: 'Recently Viewed',
-                subtitle: 'Recent view history section',
-                trailing: Switch.adaptive(
-                  value: prefs.showRecentlyViewed,
-                  onChanged: (val) => ref
-                      .read(userPreferencesNotifierProvider.notifier)
-                      .toggleRecentlyViewed(val),
+
+              const SizedBox(height: AppSizes.p8),
+
+              // ── 4. ABOUT & ENGAGEMENT ───────────────────────────────────
+              _SettingsGroup(
+                header: const SectionHeader(
+                  title: 'About & Feedback',
+                  subtitle: 'App info, ratings, and support',
                 ),
-              ),
-              PreferenceTile(
-                icon: Icons.collections_bookmark_outlined,
-                title: 'Curated Collections',
-                subtitle: 'Themed collections on home feed',
-                trailing: Switch.adaptive(
-                  value: prefs.showCollectionsSection,
-                  onChanged: (val) => ref
-                      .read(userPreferencesNotifierProvider.notifier)
-                      .toggleCollectionsSection(val),
-                ),
-              ),
-
-              const Divider(height: AppSizes.p32),
-
-              // ── 3. DATA MANAGEMENT ──────────────────────────────────────
-              const SectionHeader(
-                title: 'Data & Library',
-                subtitle: 'Manage local offline data',
-              ),
-              PreferenceTile(
-                icon: Icons.folder_special_outlined,
-                title: 'Personal Collections',
-                subtitle: 'Manage custom wallpaper libraries',
-                trailing: const Icon(Icons.chevron_right_rounded),
-                onTap: () =>
-                    context.pushNamed(RouteConstants.userCollectionsName),
-              ),
-              PreferenceTile(
-                icon: Icons.delete_outline_rounded,
-                title: 'Clear Recently Viewed',
-                subtitle: 'Reset wallpaper view history',
-                onTap: () => _clearRecentlyViewed(context, ref),
-              ),
-              PreferenceTile(
-                icon: Icons.heart_broken_outlined,
-                title: 'Clear All Favorites',
-                subtitle: 'Remove all saved wallpapers',
-                onTap: () => _clearFavorites(context, ref),
-              ),
-              PreferenceTile(
-                icon: Icons.folder_delete_outlined,
-                title: 'Delete All Collections',
-                subtitle: 'Remove all personal wallpaper libraries',
-                onTap: () => _deleteAllCollections(context, ref),
+                children: [
+                  PreferenceTile(
+                    icon: Icons.info_outline_rounded,
+                    title: 'About Wallpaper Gallery',
+                    subtitle: 'Version, privacy & licenses',
+                    trailing: const Icon(Icons.chevron_right_rounded),
+                    onTap: () =>
+                        context.pushNamed(RouteConstants.aboutName),
+                  ),
+                  PreferenceTile(
+                    icon: Icons.star_rate_rounded,
+                    title: 'Rate the App',
+                    subtitle: 'Share your experience on the store',
+                    onTap: () => _rateApp(context, ref),
+                  ),
+                  PreferenceTile(
+                    icon: Icons.rate_review_outlined,
+                    title: 'Send Feedback',
+                    subtitle: 'Help us improve',
+                    onTap: () => _sendFeedback(context, ref),
+                  ),
+                  PreferenceTile(
+                    icon: Icons.share_rounded,
+                    title: 'Share the App',
+                    subtitle: 'Recommend to friends',
+                    onTap: () => shareApp(ref),
+                  ),
+                ],
               ),
 
-              const Divider(height: AppSizes.p32),
-
-              // ── 4. ABOUT & SHARE ────────────────────────────────────────
-              const SectionHeader(
-                title: 'About & Share',
-                subtitle: 'Share the app with friends',
-              ),
-              PreferenceTile(
-                icon: Icons.info_outline_rounded,
-                title: 'About Wallpaper Gallery',
-                subtitle: 'Version, privacy, licenses & support',
-                trailing: const Icon(Icons.chevron_right_rounded),
-                onTap: () => context.pushNamed(RouteConstants.aboutName),
-              ),
-              PreferenceTile(
-                icon: Icons.share_rounded,
-                title: 'Share Wallpaper Gallery',
-                subtitle: 'Spread the word',
-                onTap: () => shareApp(ref),
-              ),
-
-              const Divider(height: AppSizes.p32),
+              const SizedBox(height: AppSizes.p8),
 
               // ── 5. BACKUP & RESTORE ─────────────────────────────────────
-              const SectionHeader(
-                title: 'Backup & Restore',
-                subtitle: 'Offline data management',
-              ),
-              PreferenceTile(
-                icon: Icons.upload_file_outlined,
-                title: 'Export Local Backup',
-                subtitle: 'Generate offline JSON snapshot',
-                onTap: () => _exportBackup(context, ref, prefs),
-              ),
-              PreferenceTile(
-                icon: Icons.restore_page_outlined,
-                title: 'Reset All Preferences',
-                subtitle: 'Restore default settings',
-                onTap: () => _resetPreferences(context, ref),
+              _SettingsGroup(
+                header: const SectionHeader(
+                  title: 'Backup & Restore',
+                  subtitle: 'Offline data management',
+                ),
+                children: [
+                  PreferenceTile(
+                    icon: Icons.upload_file_outlined,
+                    title: 'Export Backup',
+                    subtitle: 'Generate offline JSON snapshot',
+                    onTap: () => _exportBackup(context, ref, prefs),
+                  ),
+                  PreferenceTile(
+                    icon: Icons.restore_page_outlined,
+                    title: 'Reset All Preferences',
+                    subtitle: 'Restore defaults',
+                    onTap: () => _resetPreferences(context, ref),
+                  ),
+                ],
               ),
 
               const SizedBox(height: AppSizes.p32),
             ],
           ),
-          loading: () => const LoadingView(message: 'Loading settings...'),
-          error: (error, _) => ErrorStateView(message: error.toString()),
+          loading: () =>
+              const LoadingView(message: 'Loading settings...'),
+          error: (error, _) =>
+              ErrorStateView(message: error.toString()),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -226,21 +262,27 @@ class SettingsScreen extends ConsumerWidget {
 
   // ── Helpers ──────────────────────────────────────────────────────────────
 
-  String _themeModeLabel(ThemeMode mode) {
-    switch (mode) {
-      case ThemeMode.system:
-        return 'Follow system setting';
-      case ThemeMode.light:
-        return 'Light theme';
-      case ThemeMode.dark:
-        return 'Dark theme';
-    }
-  }
+  String _themeModeLabel(ThemeMode mode) => switch (mode) {
+        ThemeMode.system => 'Follow system',
+        ThemeMode.light => 'Light theme',
+        ThemeMode.dark => 'Dark theme',
+      };
 
   void _onBottomNavTapped(BuildContext context, int index) {
     if (index == _currentBottomNavIndex) return;
     if (index == 0) context.goNamed(RouteConstants.homeName);
     if (index == 1) context.goNamed(RouteConstants.favoritesName);
+  }
+
+  Future<void> _rateApp(BuildContext context, WidgetRef ref) async {
+    await requestAppReview(ref);
+  }
+
+  Future<void> _sendFeedback(BuildContext context, WidgetRef ref) async {
+    final success = await openFeedback(ref);
+    if (!success && context.mounted) {
+      _showSnackBar(context, 'No email app found. Please contact support.');
+    }
   }
 
   Future<void> _clearRecentlyViewed(
@@ -285,7 +327,7 @@ class SettingsScreen extends ConsumerWidget {
       context,
       title: 'Delete All Collections?',
       message:
-          'All personal wallpaper libraries will be permanently deleted. This cannot be undone.',
+          'All personal wallpaper libraries will be permanently deleted.',
       confirmLabel: 'Delete All',
       isDestructive: true,
     );
@@ -313,7 +355,8 @@ class SettingsScreen extends ConsumerWidget {
             ?.map((c) => c.toJson())
             .toList() ??
         [];
-    final currentPrefs = (prefs as dynamic).toJson() as Map<String, dynamic>;
+    final currentPrefs =
+        (prefs as dynamic).toJson() as Map<String, dynamic>;
 
     final backupService = ref.read(backupServiceProvider);
     final jsonStr = await backupService.exportBackupToJson(
@@ -325,17 +368,20 @@ class SettingsScreen extends ConsumerWidget {
     if (context.mounted) {
       showDialog<void>(
         context: context,
-        builder: (context) => AlertDialog(
+        builder: (ctx) => AlertDialog(
           title: const Text('Backup Exported'),
           content: SingleChildScrollView(
             child: SelectableText(
               jsonStr,
-              style: const TextStyle(fontFamily: 'monospace', fontSize: 12.0),
+              style: const TextStyle(
+                fontFamily: 'monospace',
+                fontSize: 12.0,
+              ),
             ),
           ),
           actions: [
             TextButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => Navigator.pop(ctx),
               child: const Text('Close'),
             ),
           ],
@@ -349,7 +395,8 @@ class SettingsScreen extends ConsumerWidget {
     final confirmed = await ConfirmationDialog.show(
       context,
       title: 'Reset Preferences?',
-      message: 'All layout and view preferences will be restored to default.',
+      message:
+          'All layout and view preferences will be restored to defaults.',
       confirmLabel: 'Reset',
     );
     if (confirmed == true) {
@@ -374,5 +421,59 @@ class SettingsScreen extends ConsumerWidget {
         ),
       ),
     );
+  }
+}
+
+// ── Private Layout Widget ────────────────────────────────────────────────────
+
+/// Wraps a settings group with its header and subtle card surface.
+class _SettingsGroup extends StatelessWidget {
+  final Widget header;
+  final List<Widget> children;
+
+  const _SettingsGroup({required this.header, required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        header,
+        Container(
+          margin: const EdgeInsets.symmetric(
+            horizontal: AppSizes.p12,
+            vertical: AppSizes.p4,
+          ),
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surfaceContainerLowest,
+            borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+            border: Border.all(
+              color: theme.colorScheme.outlineVariant.withValues(alpha: 0.5),
+            ),
+          ),
+          child: Column(
+            children: _separatedChildren(children, theme),
+          ),
+        ),
+      ],
+    );
+  }
+
+  List<Widget> _separatedChildren(List<Widget> items, ThemeData theme) {
+    if (items.isEmpty) return [];
+    final result = <Widget>[];
+    for (var i = 0; i < items.length; i++) {
+      result.add(items[i]);
+      if (i < items.length - 1) {
+        result.add(Divider(
+          height: 1,
+          indent: AppSizes.p16 + 36 + AppSizes.p16, // align with tile content
+          endIndent: AppSizes.p16,
+          color: theme.colorScheme.outlineVariant.withValues(alpha: 0.4),
+        ));
+      }
+    }
+    return result;
   }
 }
