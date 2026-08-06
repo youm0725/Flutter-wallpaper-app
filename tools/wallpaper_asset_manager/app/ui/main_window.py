@@ -1,5 +1,5 @@
 import customtkinter as ctk
-from app.services.app_service import AppService
+from pathlib import Path
 from app.ui.sidebar import Sidebar
 from app.ui.status_bar import StatusBar
 from app.ui.menu_bar import MenuBar
@@ -8,99 +8,112 @@ from app.ui.views.import_view import ImportView
 from app.ui.views.process_view import ProcessView
 from app.ui.views.metadata_view import MetadataView
 from app.ui.views.validation_view import ValidationView
+from app.ui.views.sync_view import SyncView
+from app.ui.views.backup_view import BackupView
 from app.ui.views.settings_view import SettingsView
 from app.ui.views.logs_view import LogsView
 from app.ui.views.about_view import AboutView
+from app.core.crash_handler import CrashHandler
 from app.core.logger import get_logger
 
 logger = get_logger("MainWindow")
 
 class MainWindow(ctk.CTk):
-    """Main desktop application window."""
+    """Main desktop application window container."""
     
-    def __init__(self, service: AppService):
+    def __init__(self, app_service):
         super().__init__()
+        self.service = app_service
         
-        self.service = service
-        self.title("Wallpaper Asset Manager v1.0")
-        self.geometry("1150x720")
-        self.minsize(900, 600)
+        # Setup Global Crash Handler
+        CrashHandler.setup_crash_handler(self)
+
+        # Apply Window Branding Title & Size
+        self.title("Wallpaper Asset Manager - Desktop Developer Tool v1.0.0")
         
-        # Apply initial saved theme
-        saved_theme = self.service.state.theme_mode
-        ctk.set_appearance_mode(saved_theme)
-        
-        # Grid Configuration (1 row for content, 1 row for status bar)
-        self.grid_columnconfigure(1, weight=1)
+        geom = self.service.config_manager.get("ui", "window_geometry", "1280x820")
+        self.geometry(geom)
+        self.minsize(1080, 700)
+
+        # Theme Initialization
+        theme_mode = self.service.config_manager.get("app", "theme", "System")
+        if theme_mode in ("Dark", "Light"):
+            ctk.set_appearance_mode(theme_mode)
+
+        # Configure Grid Layout
         self.grid_rowconfigure(0, weight=1)
-        self.grid_rowconfigure(1, weight=0)
+        self.grid_columnconfigure(1, weight=1)
 
-        # Native Menu Bar
-        self.menu_bar = MenuBar(
-            self,
-            on_navigate=self.navigate_to,
-            on_theme=self.change_theme
-        )
+        # Native Menu Bar Setup
+        self.menu_bar = MenuBar(self)
 
-        # Sidebar (Left)
-        self.sidebar = Sidebar(
-            self,
-            on_navigate_callback=self.navigate_to,
-            on_theme_callback=self.change_theme,
-            current_theme=saved_theme
-        )
+        # Sidebar Component
+        self.sidebar = Sidebar(self, on_nav_change=self.show_view)
         self.sidebar.grid(row=0, column=0, sticky="nsew")
 
-        # Main Content Container (Center)
-        self.content_container = ctk.CTkFrame(self, fg_color="transparent")
-        self.content_container.grid(row=0, column=1, sticky="nsew")
-        self.content_container.grid_columnconfigure(0, weight=1)
-        self.content_container.grid_rowconfigure(0, weight=1)
+        # View Container
+        self.container = ctk.CTkFrame(self, fg_color="transparent")
+        self.container.grid(row=0, column=1, sticky="nsew")
+        self.container.grid_rowconfigure(0, weight=1)
+        self.container.grid_columnconfigure(0, weight=1)
 
-        # Initialize Views Dictionary
-        self.views = {
-            "Dashboard": DashboardView(self.content_container, self.service),
-            "Import": ImportView(self.content_container, self.service),
-            "Process": ProcessView(self.content_container, self.service),
-            "Metadata": MetadataView(self.content_container, self.service),
-            "Validation": ValidationView(self.content_container, self.service),
-            "Settings": SettingsView(self.content_container, self.service),
-            "Logs": LogsView(self.content_container, self.service),
-            "About": AboutView(self.content_container, self.service),
-        }
-
-        # Place all views into content container stack
-        for view_frame in self.views.values():
-            view_frame.grid(row=0, column=0, sticky="nsew")
-
-        # Status Bar (Bottom)
-        self.status_bar = StatusBar(
-            self,
-            project_path=self.service.state.project_path
-        )
+        # Status Bar Component
+        self.status_bar = StatusBar(self)
         self.status_bar.grid(row=1, column=0, columnspan=2, sticky="ew")
 
-        # Display initial view
-        self.navigate_to("Dashboard")
-        logger.info("Main desktop window initialized successfully.")
+        # Initialize Views
+        self.views = {
+            "Dashboard": DashboardView(self.container, self.service),
+            "Import": ImportView(self.container, self.service),
+            "Process": ProcessView(self.container, self.service),
+            "Metadata": MetadataView(self.container, self.service),
+            "Validation": ValidationView(self.container, self.service),
+            "Sync": SyncView(self.container, self.service),
+            "Backups": BackupView(self.container, self.service),
+            "Settings": SettingsView(self.container, self.service),
+            "Logs": LogsView(self.container, self.service),
+            "About": AboutView(self.container, self.service),
+        }
 
-    def navigate_to(self, view_id: str):
-        """Switches the visible main view frame."""
-        if view_id in self.views:
-            target_view = self.views[view_id]
-            target_view.lift()
-            self.sidebar.set_active(view_id)
-            self.status_bar.set_status(f"Active View: {view_id}")
-            
-            # Special case refresh for Logs view
-            if view_id == "Logs" and hasattr(target_view, "reload_logs"):
-                target_view.reload_logs()
+        for view in self.views.values():
+            view.grid(row=0, column=0, sticky="nsew")
 
-            logger.info("Navigated to %s view.", view_id)
+        # Bind Global Keyboard Shortcuts
+        self._bind_keyboard_shortcuts()
 
-    def change_theme(self, theme_name: str):
-        """Changes the UI appearance mode dynamically."""
-        ctk.set_appearance_mode(theme_name)
-        self.service.set_theme(theme_name)
-        self.sidebar.theme_option.set(theme_name)
-        self.status_bar.set_status(f"Theme set to {theme_name}")
+        # Load last active view
+        last_view = self.service.config_manager.get("ui", "last_active_view", "Dashboard")
+        self.show_view(last_view if last_view in self.views else "Dashboard")
+        
+        # Save geometry on close
+        self.protocol("WM_DELETE_WINDOW", self._on_close)
+
+    def _bind_keyboard_shortcuts(self):
+        self.bind("<Control-i>", lambda e: self.sidebar._on_nav_click("Import"))
+        self.bind("<Control-s>", lambda e: self.sidebar._on_nav_click("Sync"))
+        self.bind("<Control-b>", lambda e: self.sidebar._on_nav_click("Backups"))
+        self.bind("<Control-r>", lambda e: self.sidebar._on_nav_click("Validation"))
+        self.bind("<Control-f>", lambda e: self._focus_search_shortcut())
+
+    def _focus_search_shortcut(self):
+        active_name = self.sidebar.active_view_name
+        if active_name == "Import" and hasattr(self.views["Import"], "search_entry"):
+            self.views["Import"].search_entry.focus_set()
+        elif active_name == "Metadata" and hasattr(self.views["Metadata"], "search_entry"):
+            self.views["Metadata"].search_entry.focus_set()
+
+    def show_view(self, view_name: str):
+        if view_name in self.views:
+            view = self.views[view_name]
+            view.lift()
+            self.status_bar.set_status(f"Active View: {view_name}")
+            self.sidebar.set_active(view_name)
+            self.service.config_manager.set("ui", "last_active_view", view_name)
+
+    def _on_close(self):
+        try:
+            geom = self.geometry()
+            self.service.config_manager.set("ui", "window_geometry", geom)
+        except Exception:
+            pass
+        self.destroy()

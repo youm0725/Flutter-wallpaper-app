@@ -1,90 +1,122 @@
 import customtkinter as ctk
+from pathlib import Path
+from tkinter import filedialog, messagebox
 from app.ui.widgets.card_widget import CardWidget
+from app.utils.path_helper import PathHelper
+from app.core.logger import get_logger
+
+logger = get_logger("SettingsView")
 
 class SettingsView(ctk.CTkFrame):
+    """Application Settings & Configuration Management View."""
+    
     def __init__(self, master, service, **kwargs):
         super().__init__(master, fg_color="transparent", **kwargs)
+        
         self.service = service
-        self.config_manager = service.config_manager
-        
+        self.cfg = self.service.config_manager
+
         self.grid_columnconfigure(0, weight=1)
-        
+        self.grid_rowconfigure(1, weight=1)
+
+        # Title Header
         title_label = ctk.CTkLabel(
             self,
-            text="⚙️ Preferences & Configuration",
+            text="⚙️ Application Settings & Preferences",
             font=ctk.CTkFont(size=22, weight="bold"),
             anchor="w"
         )
         title_label.grid(row=0, column=0, sticky="w", padx=20, pady=(20, 10))
+
+        # Main Scrollable Form Container
+        self.form_scroll = ctk.CTkScrollableFrame(self, fg_color="transparent")
+        self.form_scroll.grid(row=1, column=0, sticky="nsew", padx=20, pady=(0, 20))
+        self.form_scroll.columnconfigure(0, weight=1)
+
+        self._build_settings_form()
+
+    def _build_settings_form(self):
+        # 1. UI Appearance Card
+        card_ui = CardWidget(self.form_scroll, title="UI & Appearance", subtitle="Visual theme and window layout settings")
+        card_ui.pack(fill="x", pady=8)
+
+        row_theme = ctk.CTkFrame(card_ui.container, fg_color="transparent")
+        row_theme.pack(fill="x", pady=6)
+        ctk.CTkLabel(row_theme, text="Color Theme Mode:", font=ctk.CTkFont(weight="bold"), width=160, anchor="w").pack(side="left")
         
-        # Appearance Card
-        theme_card = CardWidget(self, title="Appearance & UI Theme", subtitle="Choose application color scheme")
-        theme_card.grid(row=1, column=0, sticky="ew", padx=20, pady=10)
-        
-        theme_row = ctk.CTkFrame(theme_card.container, fg_color="transparent")
-        theme_row.pack(fill="x", pady=10)
-        
-        ctk.CTkLabel(theme_row, text="Theme Mode:", font=ctk.CTkFont(weight="bold")).pack(side="left", padx=(0, 15))
-        
-        current_theme = self.config_manager.get("app", "theme", "Dark")
-        self.theme_menu = ctk.CTkOptionMenu(
-            theme_row,
-            values=["Dark", "Light", "System"],
+        cur_theme = self.cfg.get("app", "theme", "System")
+        self.theme_option = ctk.CTkOptionMenu(
+            row_theme,
+            values=["System", "Dark", "Light"],
             command=self._on_theme_changed
         )
-        self.theme_menu.set(current_theme)
-        self.theme_menu.pack(side="left")
+        self.theme_option.set(cur_theme)
+        self.theme_option.pack(side="left")
 
-        # Processing Settings Card
-        proc_card = CardWidget(self, title="Compression & Image Quality Defaults", subtitle="Configure default WebP quality parameters")
-        proc_card.grid(row=2, column=0, sticky="ew", padx=20, pady=10)
-        
-        q_full = str(self.config_manager.get("processing", "quality_full", 85))
-        q_thumb = str(self.config_manager.get("processing", "quality_thumb", 75))
-        
-        proc_row1 = ctk.CTkFrame(proc_card.container, fg_color="transparent")
-        proc_row1.pack(fill="x", pady=6)
-        ctk.CTkLabel(proc_row1, text="Full Image WebP Quality (1-100):", width=220, anchor="w").pack(side="left")
-        self.q_full_entry = ctk.CTkEntry(proc_row1, width=100)
-        self.q_full_entry.insert(0, q_full)
-        self.q_full_entry.pack(side="left", padx=10)
+        # 2. Workspace & Paths Card
+        card_paths = CardWidget(self.form_scroll, title="Workspace & Repository Paths", subtitle="Target Flutter application location")
+        card_paths.pack(fill="x", pady=8)
 
-        proc_row2 = ctk.CTkFrame(proc_card.container, fg_color="transparent")
-        proc_row2.pack(fill="x", pady=6)
-        ctk.CTkLabel(proc_row2, text="Thumbnail WebP Quality (1-100):", width=220, anchor="w").pack(side="left")
-        self.q_thumb_entry = ctk.CTkEntry(proc_row2, width=100)
-        self.q_thumb_entry.insert(0, q_thumb)
-        self.q_thumb_entry.pack(side="left", padx=10)
+        row_path = ctk.CTkFrame(card_paths.container, fg_color="transparent")
+        row_path.pack(fill="x", pady=6)
+        ctk.CTkLabel(row_path, text="Repository Root Path:", font=ctk.CTkFont(weight="bold"), width=160, anchor="w").pack(side="left")
         
-        # Save Button & Message
-        btn_row = ctk.CTkFrame(self, fg_color="transparent")
-        btn_row.grid(row=3, column=0, sticky="w", padx=20, pady=15)
+        self.path_entry = ctk.CTkEntry(row_path, width=380)
+        self.path_entry.insert(0, str(PathHelper.get_workspace_root()))
+        self.path_entry.pack(side="left", padx=5)
+
+        # 3. Processing Defaults Card
+        card_proc = CardWidget(self.form_scroll, title="Image Processing Defaults", subtitle="Default WebP quality & downscaling bounds")
+        card_proc.pack(fill="x", pady=8)
+
+        row_preset = ctk.CTkFrame(card_proc.container, fg_color="transparent")
+        row_preset.pack(fill="x", pady=6)
+        ctk.CTkLabel(row_preset, text="Default WebP Preset:", font=ctk.CTkFont(weight="bold"), width=160, anchor="w").pack(side="left")
         
-        save_btn = ctk.CTkButton(
-            btn_row,
-            text="💾 Save Configuration",
-            font=ctk.CTkFont(weight="bold"),
-            command=self._save_settings
+        cur_preset = self.cfg.get("processing", "preset", "Balanced")
+        self.preset_option = ctk.CTkOptionMenu(
+            row_preset,
+            values=["High (90)", "Balanced (82)", "Compact (75)"]
         )
-        save_btn.pack(side="left")
+        if cur_preset == "High": self.preset_option.set("High (90)")
+        elif cur_preset == "Compact": self.preset_option.set("Compact (75)")
+        else: self.preset_option.set("Balanced (82)")
+        self.preset_option.pack(side="left")
 
-        self.msg_label = ctk.CTkLabel(btn_row, text="", text_color="green", font=ctk.CTkFont(size=12))
-        self.msg_label.pack(side="left", padx=15)
+        row_limit = ctk.CTkFrame(card_proc.container, fg_color="transparent")
+        row_limit.pack(fill="x", pady=6)
+        ctk.CTkLabel(row_limit, text="Size Warning Limit (MB):", font=ctk.CTkFont(weight="bold"), width=160, anchor="w").pack(side="left")
+        
+        self.limit_entry = ctk.CTkEntry(row_limit, width=120)
+        self.limit_entry.insert(0, str(self.cfg.get("processing", "warning_limit_mb", 200.0)))
+        self.limit_entry.pack(side="left")
+
+        # Save Button
+        btn_save = ctk.CTkButton(
+            self.form_scroll,
+            text="💾 Save Application Settings",
+            font=ctk.CTkFont(size=14, weight="bold"),
+            fg_color="#10B981",
+            hover_color="#059669",
+            height=36,
+            command=self._on_save_settings
+        )
+        btn_save.pack(anchor="w", pady=15)
 
     def _on_theme_changed(self, new_theme: str):
         ctk.set_appearance_mode(new_theme)
-        self.service.set_theme(new_theme)
+        self.cfg.set("app", "theme", new_theme)
 
-    def _save_settings(self):
+    def _on_save_settings(self):
         try:
-            q_f = int(self.q_full_entry.get().strip())
-            q_t = int(self.q_thumb_entry.get().strip())
-            
-            self.config_manager.set("processing", "quality_full", q_f)
-            self.config_manager.set("processing", "quality_thumb", q_t)
-            self.config_manager.save_config()
-            
-            self.msg_label.configure(text="✓ Settings saved to config.toml", text_color="green")
-            self.service.update_status("Configuration saved successfully")
+            val_limit = float(self.limit_entry.get().strip())
+            self.cfg.set("processing", "warning_limit_mb", val_limit)
+
+            preset_str = self.preset_option.get()
+            preset = "High" if "High" in preset_str else ("Compact" if "Compact" in preset_str else "Balanced")
+            self.cfg.set("processing", "preset", preset)
+
+            self.service.update_status("✓ Saved application configuration settings")
+            messagebox.showinfo("Settings Saved", "Application configuration saved to config.toml successfully!")
         except Exception as e:
-            self.msg_label.configure(text=f"Error: {e}", text_color="red")
+            messagebox.showerror("Error", f"Failed saving settings: {e}")
