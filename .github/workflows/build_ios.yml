@@ -1,0 +1,52 @@
+name: Build iOS Release
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-ios:
+    name: Build iOS App
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java Development Kit
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Set up Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Get Dependencies
+        run: flutter pub get
+
+      - name: Verify Code Quality
+        run: flutter analyze lib
+
+      - name: Build iOS App (Unsigned Release)
+        run: flutter build ios --release --no-codesign
+
+      - name: Package iOS Runner
+        run: |
+          cd build/ios/iphoneos
+          mkdir -p Payload
+          mv Runner.app Payload/
+          zip -r WallpaperGallery_iOS.ipa Payload
+
+      - name: Upload iOS Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: WallpaperGallery_iOS_IPA
+          path: build/ios/iphoneos/WallpaperGallery_iOS.ipa
+          retire-if-exists: true
