@@ -5,11 +5,11 @@ import '../core/constants/app_sizes.dart';
 class WallpaperActionBar extends StatelessWidget {
   const WallpaperActionBar({super.key});
 
-  void _showComingSoonSnackBar(BuildContext context, String actionName) {
+  void _showComingSoonSnackBar(BuildContext context) {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('$actionName feature coming in future release'),
+        content: const Text('Coming Soon'),
         duration: const Duration(seconds: 2),
         behavior: SnackBarBehavior.floating,
         margin: const EdgeInsets.all(AppSizes.p16),
@@ -57,7 +57,7 @@ class WallpaperActionBar extends StatelessWidget {
             context,
             icon: Icons.favorite_outline_rounded,
             tooltip: 'Favorite',
-            onTap: () => _showComingSoonSnackBar(context, 'Save Favorite'),
+            onTap: () => _showComingSoonSnackBar(context),
           ),
           const SizedBox(width: AppSizes.p8),
 
@@ -66,14 +66,14 @@ class WallpaperActionBar extends StatelessWidget {
             context,
             icon: Icons.share_outlined,
             tooltip: 'Share',
-            onTap: () => _showComingSoonSnackBar(context, 'Share'),
+            onTap: () => _showComingSoonSnackBar(context),
           ),
           const SizedBox(width: AppSizes.p12),
 
           // Primary Download & Set Wallpaper Buttons
           Expanded(
             child: OutlinedButton.icon(
-              onPressed: () => _showComingSoonSnackBar(context, 'Download'),
+              onPressed: () => _showComingSoonSnackBar(context),
               icon: const Icon(Icons.download_rounded, size: AppSizes.iconSm + 2),
               label: const Text('Download'),
             ),
@@ -82,7 +82,7 @@ class WallpaperActionBar extends StatelessWidget {
 
           Expanded(
             child: ElevatedButton.icon(
-              onPressed: () => _showComingSoonSnackBar(context, 'Set Wallpaper'),
+              onPressed: () => _showComingSoonSnackBar(context),
               icon: const Icon(Icons.wallpaper_rounded, size: AppSizes.iconSm + 2),
               label: const Text('Set Wallpaper'),
             ),
