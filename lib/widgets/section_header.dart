@@ -17,6 +17,7 @@ class SectionHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: AppSizes.p16,
@@ -46,7 +47,7 @@ class SectionHeader extends StatelessWidget {
               ],
             ],
           ),
-          if (trailing != null) trailing!,
+          ?trailing,
         ],
       ),
     );

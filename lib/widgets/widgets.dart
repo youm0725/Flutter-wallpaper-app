@@ -4,4 +4,6 @@ export 'error_view.dart';
 export 'loading_indicator.dart';
 export 'search_bar_widget.dart';
 export 'section_header.dart';
+export 'wallpaper_action_bar.dart';
 export 'wallpaper_card.dart';
+export 'wallpaper_metadata_card.dart';

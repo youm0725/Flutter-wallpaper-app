@@ -41,65 +41,72 @@ class WallpaperCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Image Thumbnail with ClipRRect
+              // Image Thumbnail with Hero and ClipRRect
               Expanded(
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.vertical(
-                    top: Radius.circular(AppSizes.radiusMd - 1),
-                  ),
-                  child: Container(
-                    width: double.infinity,
-                    color: theme.colorScheme.surfaceContainerHighest,
-                    child: Image.asset(
-                      wallpaper.imagePath,
-                      fit: BoxFit.cover,
-                      errorBuilder: (context, error, stackTrace) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                theme.colorScheme.primaryContainer,
-                                theme.colorScheme.surfaceContainerHighest,
-                              ],
-                              begin: Alignment.topLeft,
-                              end: Alignment.bottomRight,
+                child: Hero(
+                  tag: 'wallpaper_${wallpaper.id}',
+                  child: ClipRRect(
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(AppSizes.radiusMd - 1),
+                    ),
+                    child: Container(
+                      width: double.infinity,
+                      color: theme.colorScheme.surfaceContainerHighest,
+                      child: Image.asset(
+                        wallpaper.imagePath,
+                        fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  theme.colorScheme.primaryContainer,
+                                  theme.colorScheme.surfaceContainerHighest,
+                                ],
+                                begin: Alignment.topLeft,
+                                end: Alignment.bottomRight,
+                              ),
                             ),
-                          ),
-                          child: Center(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.image_outlined,
-                                  size: AppSizes.iconLg - 8,
-                                  color: theme.colorScheme.onSurfaceVariant
-                                      .withValues(alpha: 0.5),
-                                ),
-                                const SizedBox(height: AppSizes.p4),
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: AppSizes.p8,
-                                    vertical: AppSizes.p4,
+                            child: Center(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Icons.image_outlined,
+                                    size: AppSizes.iconLg - 8,
+                                    color: theme.colorScheme.onSurfaceVariant
+                                        .withValues(alpha: 0.5),
                                   ),
-                                  decoration: BoxDecoration(
-                                    color: theme.colorScheme.surface.withValues(alpha: 0.7),
-                                    borderRadius: BorderRadius.circular(AppSizes.radiusSm - 2),
-                                  ),
-                                  child: Text(
-                                    wallpaper.category.toUpperCase(),
-                                    style: theme.textTheme.labelSmall?.copyWith(
-                                      color: theme.colorScheme.onSurface,
-                                      fontWeight: FontWeight.w700,
-                                      letterSpacing: 0.8,
-                                      fontSize: 10.0,
+                                  const SizedBox(height: AppSizes.p4),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: AppSizes.p8,
+                                      vertical: AppSizes.p4,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: theme.colorScheme.surface
+                                          .withValues(alpha: 0.7),
+                                      borderRadius: BorderRadius.circular(
+                                        AppSizes.radiusSm - 2,
+                                      ),
+                                    ),
+                                    child: Text(
+                                      wallpaper.category.toUpperCase(),
+                                      style:
+                                          theme.textTheme.labelSmall?.copyWith(
+                                        color: theme.colorScheme.onSurface,
+                                        fontWeight: FontWeight.w700,
+                                        letterSpacing: 0.8,
+                                        fontSize: 10.0,
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),

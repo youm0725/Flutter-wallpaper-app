@@ -274,6 +274,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     context.pushNamed(
       RouteConstants.wallpaperDetailsName,
       pathParameters: {'id': wallpaper.id},
+      extra: wallpaper,
     );
   }
 

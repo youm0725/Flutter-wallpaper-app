@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import '../../models/wallpaper.dart';
 import '../../screens/details/wallpaper_details_screen.dart';
 import '../../screens/favorites/favorites_screen.dart';
 import '../../screens/home/home_screen.dart';
@@ -25,7 +26,11 @@ final GoRouter appRouter = GoRouter(
       name: RouteConstants.wallpaperDetailsName,
       builder: (context, state) {
         final id = state.pathParameters['id'] ?? '';
-        return WallpaperDetailsScreen(wallpaperId: id);
+        final wallpaper = state.extra is Wallpaper ? state.extra as Wallpaper : null;
+        return WallpaperDetailsScreen(
+          wallpaperId: id,
+          wallpaper: wallpaper,
+        );
       },
     ),
     GoRoute(
