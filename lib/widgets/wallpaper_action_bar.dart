@@ -57,24 +57,7 @@ class WallpaperActionBar extends StatelessWidget {
       ),
       child: Row(
         children: [
-          // Favorite button
-          _buildIconButton(
-            context,
-            icon: Icons.favorite_outline_rounded,
-            tooltip: 'Favorite',
-            onTap: () => _showComingSoonSnackBar(context),
-          ),
-          const SizedBox(width: AppSizes.p8),
-
-          // Share button
-          _buildIconButton(
-            context,
-            icon: Icons.share_outlined,
-            tooltip: 'Share',
-            onTap: () => _showComingSoonSnackBar(context),
-          ),
           if (onDevicePreviewTap != null) ...[
-            const SizedBox(width: AppSizes.p8),
             // Phone Frame Preview button
             _buildIconButton(
               context,
@@ -82,8 +65,8 @@ class WallpaperActionBar extends StatelessWidget {
               tooltip: 'Device Preview',
               onTap: onDevicePreviewTap!,
             ),
+            const SizedBox(width: AppSizes.p8),
           ],
-          const SizedBox(width: AppSizes.p8),
 
           // Primary Download & Set Wallpaper Buttons
           Expanded(
