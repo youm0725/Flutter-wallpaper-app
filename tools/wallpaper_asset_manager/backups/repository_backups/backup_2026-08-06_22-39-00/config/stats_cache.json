@@ -7,7 +7,7 @@
   "full_size_mb": 0.0,
   "thumb_size_mb": 0.0,
   "metadata_size_mb": 0.0,
-  "backups_size_mb": 0.02,
+  "backups_size_mb": 0.0,
   "projected_app_mb": 0.0,
   "remaining_mb": 200.0,
   "max_limit_mb": 200.0,
@@ -85,7 +85,7 @@
       "event": "Loaded 1 wallpapers & metadata"
     },
     {
-      "time": "22:40",
+      "time": "22:39",
       "event": "Completed asset integrity scan"
     },
     {
@@ -93,5 +93,5 @@
       "event": "Synchronized asset manager cache"
     }
   ],
-  "cache_timestamp": "2026-08-06 22:40:09"
+  "cache_timestamp": "2026-08-06 22:39:00"
 }
