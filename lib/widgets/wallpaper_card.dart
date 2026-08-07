@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/constants/app_sizes.dart';
 import '../models/wallpaper.dart';
-import '../providers/favorites_provider.dart';
 
-/// Reusable, refined wallpaper card component with favorite status indicator.
-class WallpaperCard extends ConsumerWidget {
+/// Clean, minimalist wallpaper card widget displaying solely the artwork image.
+class WallpaperCard extends StatelessWidget {
   final Wallpaper wallpaper;
   final VoidCallback? onTap;
 
@@ -16,174 +14,45 @@ class WallpaperCard extends ConsumerWidget {
   });
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
+    final borderRadius = BorderRadius.circular(AppSizes.radiusMd);
 
-    // .select() ensures this card only rebuilds when THIS wallpaper's
-    // favorite status changes — not when any other wallpaper is toggled.
-    final isFav = ref.watch(
-      favoritesNotifierProvider.select(
-        (asyncValue) => asyncValue.value?.contains(wallpaper.id) ?? false,
-      ),
-    );
-
-    final backgroundColor = isDark
-        ? theme.colorScheme.surface
-        : theme.colorScheme.surface;
-
-    final borderColor = theme.colorScheme.outline.withValues(alpha: 0.25);
-
-    return Material(
-      color: backgroundColor,
-      borderRadius: BorderRadius.circular(AppSizes.radiusMd),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(AppSizes.radiusMd),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppSizes.radiusMd),
-            border: Border.all(
-              color: borderColor,
-              width: 1.0,
+    return ClipRRect(
+      borderRadius: borderRadius,
+      child: Material(
+        color: theme.colorScheme.surfaceContainerHighest,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: borderRadius,
+          child: Hero(
+            tag: 'wallpaper_${wallpaper.id}',
+            child: Image.asset(
+              wallpaper.effectiveThumbnailPath,
+              fit: BoxFit.cover,
+              cacheWidth: 400,
+              frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
+                if (wasSynchronouslyLoaded) return child;
+                return AnimatedOpacity(
+                  opacity: frame == null ? 0 : 1,
+                  duration: const Duration(milliseconds: 200),
+                  curve: Curves.easeOut,
+                  child: child,
+                );
+              },
+              errorBuilder: (context, error, stackTrace) {
+                return Container(
+                  color: theme.colorScheme.surfaceContainerHighest,
+                  child: Center(
+                    child: Icon(
+                      Icons.image_outlined,
+                      size: AppSizes.iconLg - 8,
+                      color: theme.colorScheme.onSurfaceVariant.withValues(alpha: 0.4),
+                    ),
+                  ),
+                );
+              },
             ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Image Thumbnail with Hero, ClipRRect, and Favorite Badge
-              Expanded(
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: [
-                    Hero(
-                      tag: 'wallpaper_${wallpaper.id}',
-                      child: ClipRRect(
-                        borderRadius: const BorderRadius.vertical(
-                          top: Radius.circular(AppSizes.radiusMd - 1),
-                        ),
-                        child: Container(
-                          width: double.infinity,
-                          color: theme.colorScheme.surfaceContainerHighest,
-                          child: Image.asset(
-                            wallpaper.effectiveThumbnailPath,
-                            fit: BoxFit.cover,
-                            cacheWidth: 400,
-                            frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
-                              if (wasSynchronouslyLoaded) return child;
-                              return AnimatedOpacity(
-                                opacity: frame == null ? 0 : 1,
-                                duration: const Duration(milliseconds: 250),
-                                curve: Curves.easeOut,
-                                child: child,
-                              );
-                            },
-                            errorBuilder: (context, error, stackTrace) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      theme.colorScheme.primaryContainer,
-                                      theme.colorScheme.surfaceContainerHighest,
-                                    ],
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight,
-                                  ),
-                                ),
-                                child: Center(
-                                  child: Icon(
-                                    Icons.image_outlined,
-                                    size: AppSizes.iconLg - 8,
-                                    color: theme.colorScheme.onSurfaceVariant
-                                        .withValues(alpha: 0.5),
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    // Top Right Favorite Quick Button Indicator
-                    Positioned(
-                      top: AppSizes.p6,
-                      right: AppSizes.p6,
-                      child: Material(
-                        color: Colors.black.withValues(alpha: 0.45),
-                        shape: const CircleBorder(),
-                        child: InkWell(
-                          customBorder: const CircleBorder(),
-                          onTap: () {
-                            ref
-                                .read(favoritesNotifierProvider.notifier)
-                                .toggleFavorite(wallpaper.id);
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(AppSizes.p6),
-                            child: Icon(
-                              isFav
-                                  ? Icons.favorite_rounded
-                                  : Icons.favorite_outline_rounded,
-                              size: 16.0,
-                              color: isFav
-                                  ? Colors.redAccent
-                                  : Colors.white.withValues(alpha: 0.9),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              // Title and details section
-              Padding(
-                padding: const EdgeInsets.all(AppSizes.p12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      wallpaper.title,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: -0.2,
-                      ),
-                    ),
-                    const SizedBox(height: AppSizes.p4),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            wallpaper.category[0].toUpperCase() +
-                                wallpaper.category.substring(1),
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
-                            style: theme.textTheme.labelSmall?.copyWith(
-                              color: theme.colorScheme.onSurfaceVariant,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: AppSizes.p4),
-                        Text(
-                          wallpaper.resolution,
-                          style: theme.textTheme.labelSmall?.copyWith(
-                            color: theme.colorScheme.onSurfaceVariant
-                                .withValues(alpha: 0.7),
-                            fontSize: 10.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
           ),
         ),
       ),

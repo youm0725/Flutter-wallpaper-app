@@ -1,5 +1,45 @@
 [
   {
+    "timestamp": "2026-08-07 15:08:31",
+    "total_checks": 2,
+    "pass_count": 0,
+    "warning_count": 2,
+    "error_count": 0,
+    "total_size_mb": 0.01
+  },
+  {
+    "timestamp": "2026-08-07 09:43:08",
+    "total_checks": 55,
+    "pass_count": 33,
+    "warning_count": 0,
+    "error_count": 22,
+    "total_size_mb": 0.02
+  },
+  {
+    "timestamp": "2026-08-07 09:43:06",
+    "total_checks": 55,
+    "pass_count": 33,
+    "warning_count": 0,
+    "error_count": 22,
+    "total_size_mb": 0.02
+  },
+  {
+    "timestamp": "2026-08-07 09:40:46",
+    "total_checks": 0,
+    "pass_count": 0,
+    "warning_count": 0,
+    "error_count": 0,
+    "total_size_mb": 0.0
+  },
+  {
+    "timestamp": "2026-08-07 09:39:01",
+    "total_checks": 0,
+    "pass_count": 0,
+    "warning_count": 0,
+    "error_count": 0,
+    "total_size_mb": 0.0
+  },
+  {
     "timestamp": "2026-08-07 09:35:17",
     "total_checks": 2,
     "pass_count": 0,

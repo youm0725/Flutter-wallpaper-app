@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-08-07 09:39:01",
+  "duration_seconds": 0.02,
+  "total_checks": 0,
+  "pass_count": 0,
+  "warning_count": 0,
+  "error_count": 0,
+  "storage_stats": {
+    "full_size_mb": 0.0,
+    "thumb_size_mb": 0.0,
+    "metadata_size_mb": 0.0,
+    "total_size_mb": 0.0,
+    "max_limit_mb": 200.0,
+    "issues": []
+  },
+  "issues": []
+}
