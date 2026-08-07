@@ -16,10 +16,11 @@ full_height = 1920
 thumb_width = 360
 thumb_height = 640
 format = "WEBP"
+preset = "High"
 
 [logging]
 level = "INFO"
 
 [ui]
-last_active_view = "Sync"
+last_active_view = "Metadata"
 window_geometry = "1366x685+58+66"

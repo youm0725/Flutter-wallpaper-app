@@ -9,10 +9,11 @@ ThemeMode _parseThemeMode(String? value) {
   switch (value) {
     case 'light':
       return ThemeMode.light;
-    case 'dark':
-      return ThemeMode.dark;
-    default:
+    case 'system':
       return ThemeMode.system;
+    case 'dark':
+    default:
+      return ThemeMode.dark;
   }
 }
 

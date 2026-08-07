@@ -1,0 +1,14 @@
+[
+  {
+    "id": "cars",
+    "name": "Cars",
+    "description": "dfgdfdvbgf",
+    "icon": "car"
+  },
+  {
+    "id": "new",
+    "name": "New",
+    "description": "",
+    "icon": "New"
+  }
+]

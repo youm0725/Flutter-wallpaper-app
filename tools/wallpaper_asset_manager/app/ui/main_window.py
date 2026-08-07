@@ -6,7 +6,6 @@ from app.ui.menu_bar import MenuBar
 from app.ui.views.dashboard_view import DashboardView
 from app.ui.views.import_view import ImportView
 from app.ui.views.process_view import ProcessView
-from app.ui.views.metadata_view import MetadataView
 from app.ui.views.delete_wallpapers_view import DeleteWallpapersView
 from app.ui.views.validation_view import ValidationView
 from app.ui.views.sync_view import SyncView
@@ -67,7 +66,6 @@ class MainWindow(ctk.CTk):
             "Dashboard": DashboardView(self.container, self.service),
             "Import": ImportView(self.container, self.service),
             "Process": ProcessView(self.container, self.service),
-            "Metadata": MetadataView(self.container, self.service),
             "DeleteWallpapers": DeleteWallpapersView(self.container, self.service),
             "Validation": ValidationView(self.container, self.service),
             "Sync": SyncView(self.container, self.service),
@@ -101,8 +99,6 @@ class MainWindow(ctk.CTk):
         active_name = self.sidebar.active_view_name
         if active_name == "Import" and hasattr(self.views["Import"], "search_entry"):
             self.views["Import"].search_entry.focus_set()
-        elif active_name == "Metadata" and hasattr(self.views["Metadata"], "search_entry"):
-            self.views["Metadata"].search_entry.focus_set()
 
     def _change_theme(self, mode: str):
         ctk.set_appearance_mode(mode)

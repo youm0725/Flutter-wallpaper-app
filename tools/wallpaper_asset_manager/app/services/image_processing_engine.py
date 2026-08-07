@@ -106,8 +106,8 @@ class ImageProcessingEngine:
                 if orig_w > max_width or orig_h > max_height:
                     img.thumbnail((max_width, max_height), Image.Resampling.LANCZOS)
 
-                # 4. Save Single Optimized WebP Wallpaper Asset
-                img.save(output_path, "WEBP", quality=quality, method=6)
+                # 4. Save WebP format without lossy compression (100% quality)
+                img.save(output_path, "WEBP", quality=100, lossless=True, method=6)
                 task.full_size_bytes = output_path.stat().st_size
                 task.thumb_size_bytes = task.full_size_bytes
 

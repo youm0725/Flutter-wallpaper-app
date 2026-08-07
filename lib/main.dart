@@ -25,7 +25,7 @@ class WallpaperApp extends ConsumerWidget {
 
     // Watch the async theme provider — fall back to ThemeMode.system while loading.
     final asyncThemeMode = ref.watch(themeModeProvider);
-    final themeMode = asyncThemeMode.value ?? ThemeMode.system;
+    final themeMode = asyncThemeMode.value ?? ThemeMode.dark;
 
     return MaterialApp.router(
       title: 'Wallpaper Gallery',

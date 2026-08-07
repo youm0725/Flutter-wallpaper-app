@@ -387,11 +387,15 @@ class _WallpaperDetailsScreenState
                                   alignment: Alignment.center,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    color: Theme.of(context).colorScheme.primary,
+                                    color: Colors.black.withValues(alpha: 0.75),
+                                    border: Border.all(
+                                      color: Colors.white.withValues(alpha: 0.30),
+                                      width: 1.5,
+                                    ),
                                     boxShadow: [
                                       BoxShadow(
                                         color:
-                                            Colors.black.withValues(alpha: 0.40),
+                                            Colors.black.withValues(alpha: 0.50),
                                         blurRadius: 10,
                                         offset: const Offset(0, 4),
                                       ),

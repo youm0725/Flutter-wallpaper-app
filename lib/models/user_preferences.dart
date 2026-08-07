@@ -14,7 +14,7 @@ final class UserPreferences {
   final GridDensity gridDensity;
 
   const UserPreferences({
-    this.themeMode = 'system',
+    this.themeMode = 'dark',
     this.gridDensity = GridDensity.comfortable,
   });
 
@@ -29,7 +29,7 @@ final class UserPreferences {
     }
 
     return UserPreferences(
-      themeMode: json['themeMode'] as String? ?? 'system',
+      themeMode: json['themeMode'] as String? ?? 'dark',
       gridDensity: density,
     );
   }

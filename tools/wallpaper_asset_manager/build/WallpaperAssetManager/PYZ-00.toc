@@ -515,10 +515,6 @@
    'D:\\YOUM PATEL\\Desktop\\Flutter '
    'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\ui\\views\\logs_view.py',
    'PYMODULE'),
-  ('app.ui.views.metadata_view',
-   'D:\\YOUM PATEL\\Desktop\\Flutter '
-   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\ui\\views\\metadata_view.py',
-   'PYMODULE'),
   ('app.ui.views.process_view',
    'D:\\YOUM PATEL\\Desktop\\Flutter '
    'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\ui\\views\\process_view.py',
@@ -546,10 +542,6 @@
   ('app.ui.widgets.import_grid_card',
    'D:\\YOUM PATEL\\Desktop\\Flutter '
    'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\ui\\widgets\\import_grid_card.py',
-   'PYMODULE'),
-  ('app.ui.widgets.library_grid_card',
-   'D:\\YOUM PATEL\\Desktop\\Flutter '
-   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\ui\\widgets\\library_grid_card.py',
    'PYMODULE'),
   ('app.ui.widgets.preview_panel',
    'D:\\YOUM PATEL\\Desktop\\Flutter '
