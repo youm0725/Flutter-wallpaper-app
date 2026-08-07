@@ -1,12 +1,22 @@
+import sys
 import os
 from pathlib import Path
 
 class PathHelper:
-    """Utility class for resolving application paths."""
+    """Utility class for resolving application and workspace paths safely across dev & frozen environments."""
     
     @staticmethod
     def get_manager_root() -> Path:
         """Returns Path object to tools/wallpaper_asset_manager."""
+        if getattr(sys, 'frozen', False):
+            exe_dir = Path(sys.executable).resolve().parent
+            # Check upward parents for main.py or tools directory
+            for parent in [exe_dir] + list(exe_dir.parents):
+                if (parent / "main.py").exists() or (parent.name == "wallpaper_asset_manager"):
+                    return parent
+            # Fallback for dist/WallpaperAssetManager/ -> tools/wallpaper_asset_manager
+            if (exe_dir.parent.parent / "main.py").exists():
+                return exe_dir.parent.parent
         return Path(__file__).resolve().parent.parent.parent
 
     @staticmethod
@@ -17,7 +27,13 @@ class PathHelper:
     @staticmethod
     def get_workspace_root() -> Path:
         """Returns Path object to the main Flutter project root directory."""
-        return PathHelper.get_manager_root().parent.parent
+        manager_root = PathHelper.get_manager_root()
+        # Search upwards for pubspec.yaml
+        for p in [manager_root] + list(manager_root.parents):
+            if (p / "pubspec.yaml").exists():
+                return p
+        # Fallback to parent of tools/
+        return manager_root.parent.parent
 
     @staticmethod
     def get_config_dir() -> Path:

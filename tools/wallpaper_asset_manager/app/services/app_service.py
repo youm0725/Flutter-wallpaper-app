@@ -2,6 +2,9 @@ from app.core.config_manager import ConfigManager
 from app.core.logger import get_logger
 from app.models.app_state import AppState
 from app.utils.path_helper import PathHelper
+from app.services.metadata_service import MetadataService
+from app.services.history_service import HistoryService
+from app.services.library_service import LibraryService
 
 logger = get_logger("AppService")
 
@@ -15,6 +18,9 @@ class AppService:
             theme_mode=saved_theme,
             project_path=str(PathHelper.get_workspace_root())
         )
+        self.metadata_service = MetadataService()
+        self.history_service = HistoryService()
+        self.library_service = LibraryService(self.metadata_service, self.history_service)
 
     def set_theme(self, theme_name: str) -> None:
         """Updates active theme and persists setting in config.toml."""

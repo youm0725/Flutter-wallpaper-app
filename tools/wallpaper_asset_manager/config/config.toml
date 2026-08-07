@@ -1,7 +1,7 @@
 [app]
 name = "Wallpaper Asset Manager"
 version = "1.0.0"
-theme = "Dark"
+theme = "Light"
 
 [paths]
 input_folder = "input"
@@ -19,3 +19,6 @@ format = "WEBP"
 
 [logging]
 level = "INFO"
+
+[ui]
+last_active_view = "Dashboard"

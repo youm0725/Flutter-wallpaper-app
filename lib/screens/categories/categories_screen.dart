@@ -19,49 +19,56 @@ class CategoriesScreen extends ConsumerWidget {
         title: const Text('Categories'),
       ),
       body: SafeArea(
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            const SliverToBoxAdapter(
-              child: SectionHeader(
-                title: 'Browse Collections',
-                subtitle: 'Explore wallpapers curated by theme',
+        child: categories.isEmpty
+            ? const EmptyStateView(
+                icon: Icons.category_outlined,
+                title: 'No Categories Available',
+                description:
+                    'Use the Wallpaper Asset Manager to add your custom categories and wallpapers.',
+              )
+            : CustomScrollView(
+                physics: const BouncingScrollPhysics(),
+                slivers: [
+                  const SliverToBoxAdapter(
+                    child: SectionHeader(
+                      title: 'Browse Collections',
+                      subtitle: 'Explore wallpapers curated by theme',
+                    ),
+                  ),
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: AppSizes.p16,
+                      vertical: AppSizes.p8,
+                    ),
+                    sliver: SliverGrid(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: _calculateCrossAxisCount(context),
+                        mainAxisSpacing: AppSizes.p16,
+                        crossAxisSpacing: AppSizes.p16,
+                        childAspectRatio: 1.35,
+                      ),
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          final category = categories[index];
+                          return CategoryCard(
+                            category: category,
+                            onTap: () {
+                              ref
+                                  .read(selectedCategoryProvider.notifier)
+                                  .selectCategory(category.name);
+                              context.goNamed(RouteConstants.homeName);
+                            },
+                          );
+                        },
+                        childCount: categories.length,
+                      ),
+                    ),
+                  ),
+                  const SliverToBoxAdapter(
+                    child: SizedBox(height: AppSizes.p24),
+                  ),
+                ],
               ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: AppSizes.p16,
-                vertical: AppSizes.p8,
-              ),
-              sliver: SliverGrid(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: _calculateCrossAxisCount(context),
-                  mainAxisSpacing: AppSizes.p16,
-                  crossAxisSpacing: AppSizes.p16,
-                  childAspectRatio: 1.35,
-                ),
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final category = categories[index];
-                    return CategoryCard(
-                      category: category,
-                      onTap: () {
-                        ref
-                            .read(selectedCategoryProvider.notifier)
-                            .selectCategory(category.name);
-                        context.goNamed(RouteConstants.homeName);
-                      },
-                    );
-                  },
-                  childCount: categories.length,
-                ),
-              ),
-            ),
-            const SliverToBoxAdapter(
-              child: SizedBox(height: AppSizes.p24),
-            ),
-          ],
-        ),
       ),
     );
   }

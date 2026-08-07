@@ -1,0 +1,97 @@
+{
+  "total_wallpapers": 1,
+  "total_categories": 9,
+  "total_collections": 2,
+  "featured_count": 1,
+  "total_storage_mb": 0.0,
+  "full_size_mb": 0.0,
+  "thumb_size_mb": 0.0,
+  "metadata_size_mb": 0.0,
+  "backups_size_mb": 0.41,
+  "projected_app_mb": 0.0,
+  "remaining_mb": 200.0,
+  "max_limit_mb": 200.0,
+  "avg_size_kb": 0.0,
+  "largest_kb": 0.0,
+  "smallest_kb": 0.0,
+  "common_resolution": "1080x1920",
+  "category_breakdown": [
+    {
+      "id": "nature",
+      "name": "Nature",
+      "count": 1
+    },
+    {
+      "id": "abstract",
+      "name": "Abstract",
+      "count": 0
+    },
+    {
+      "id": "amoled",
+      "name": "AMOLED",
+      "count": 0
+    },
+    {
+      "id": "anime",
+      "name": "Anime",
+      "count": 0
+    },
+    {
+      "id": "architecture",
+      "name": "Architecture",
+      "count": 0
+    },
+    {
+      "id": "cars",
+      "name": "Cars & Vehicles",
+      "count": 0
+    },
+    {
+      "id": "gaming",
+      "name": "Gaming",
+      "count": 0
+    },
+    {
+      "id": "minimal",
+      "name": "Minimal",
+      "count": 0
+    },
+    {
+      "id": "space",
+      "name": "Space",
+      "count": 0
+    }
+  ],
+  "collection_breakdown": [
+    {
+      "id": "featured_editors_choice",
+      "name": "Editor's Choice",
+      "count": 0
+    },
+    {
+      "id": "minimalist_masterpieces",
+      "name": "Minimalist Masterpieces",
+      "count": 0
+    }
+  ],
+  "top_tags": [
+    "trees"
+  ],
+  "health_status": "Healthy",
+  "issues_count": 0,
+  "recent_activity": [
+    {
+      "time": "Just now",
+      "event": "Loaded 1 wallpapers & metadata"
+    },
+    {
+      "time": "08:55",
+      "event": "Completed asset integrity scan"
+    },
+    {
+      "time": "2026-08-07",
+      "event": "Synchronized asset manager cache"
+    }
+  ],
+  "cache_timestamp": "2026-08-07 08:55:43"
+}

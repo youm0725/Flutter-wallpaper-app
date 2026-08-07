@@ -8,22 +8,8 @@ from app.core.logger import get_logger
 
 logger = get_logger("MetadataService")
 
-DEFAULT_CATEGORIES = [
-    {"id": "nature", "name": "Nature", "icon": "forest", "description": "Lush landscapes, mountains, and rivers."},
-    {"id": "abstract", "name": "Abstract", "icon": "palette", "description": "Modern digital art and fluid gradients."},
-    {"id": "amoled", "name": "AMOLED", "icon": "dark_mode", "description": "True pitch black wallpapers optimized for OLED displays."},
-    {"id": "anime", "name": "Anime", "icon": "face", "description": "Japanese animation artwork and cyber aesthetics."},
-    {"id": "architecture", "name": "Architecture", "icon": "location_city", "description": "Minimalist buildings, arches, and glass towers."},
-    {"id": "cars", "name": "Cars & Vehicles", "icon": "directions_car", "description": "Supercars, retro roadsters, and automotive concepts."},
-    {"id": "gaming", "name": "Gaming", "icon": "sports_esports", "description": "Cyberpunk alleys and low poly fantasy worlds."},
-    {"id": "minimal", "name": "Minimal", "icon": "crop_free", "description": "Clean, uncluttered, geometric and dune silhouettes."},
-    {"id": "space", "name": "Space", "icon": "public", "description": "Stellar nebulae, galaxies, and cosmic drift."}
-]
-
-DEFAULT_COLLECTIONS = [
-    {"id": "featured_editors_choice", "name": "Editor's Choice", "description": "Hand-curated premium wallpapers."},
-    {"id": "minimalist_masterpieces", "name": "Minimalist Masterpieces", "description": "Sleek and distraction-free setups."}
-]
+DEFAULT_CATEGORIES = []
+DEFAULT_COLLECTIONS = []
 
 class MetadataService:
     """Service managing metadata files, JSON serialization, and automated backups."""

@@ -43,7 +43,7 @@ final selectedTagsProvider =
   SelectedTagsNotifier.new,
 );
 
-/// Standard category taxonomy defined for the application.
+/// Standard category taxonomy defined for the application fallback.
 const List<String> kStandardCategories = <String>[
   'Nature',
   'Abstract',
@@ -63,30 +63,43 @@ final categoriesProvider = Provider<List<Category>>((ref) {
 
   return asyncWallpapers.when(
     data: (wallpapers) {
-      return kStandardCategories.map((catName) {
-        final matchingWallpapers = wallpapers.where(
-          (w) => w.category.toLowerCase() == catName.toLowerCase(),
-        ).toList();
+      if (wallpapers.isEmpty) {
+        return const <Category>[];
+      }
 
-        final previewPath = matchingWallpapers.isNotEmpty
-            ? matchingWallpapers.first.imagePath
+      // Collect unique categories present in the wallpapers
+      final Map<String, List<dynamic>> categoryMap = {};
+      for (final w in wallpapers) {
+        final catName = w.category.trim();
+        if (catName.isNotEmpty) {
+          final key = catName.toLowerCase();
+          categoryMap.putIfAbsent(key, () => []).add(w);
+        }
+      }
+
+      final List<Category> result = [];
+      categoryMap.forEach((key, categoryWallpapers) {
+        final displayName = categoryWallpapers.first.category.trim();
+        final previewPath = categoryWallpapers.isNotEmpty
+            ? categoryWallpapers.first.imagePath
             : null;
 
-        return Category(
-          id: catName.toLowerCase(),
-          name: catName,
-          wallpaperCount: matchingWallpapers.length,
-          previewImagePath: previewPath,
-          iconName: _getCategoryIconName(catName),
+        result.add(
+          Category(
+            id: key,
+            name: displayName,
+            wallpaperCount: categoryWallpapers.length,
+            previewImagePath: previewPath,
+            iconName: _getCategoryIconName(displayName),
+          ),
         );
-      }).toList();
+      });
+
+      result.sort((a, b) => a.name.compareTo(b.name));
+      return result;
     },
-    loading: () => kStandardCategories
-        .map((name) => Category(id: name.toLowerCase(), name: name))
-        .toList(),
-    error: (error, stack) => kStandardCategories
-        .map((name) => Category(id: name.toLowerCase(), name: name))
-        .toList(),
+    loading: () => const <Category>[],
+    error: (error, stack) => const <Category>[],
   );
 });
 

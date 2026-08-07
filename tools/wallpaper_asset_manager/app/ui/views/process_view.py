@@ -63,12 +63,17 @@ class ProcessView(ctk.CTkFrame):
 
         # Category Selector
         ctk.CTkLabel(ctrl_frame, text="Target Category:", font=ctk.CTkFont(weight="bold")).pack(side="left", padx=(0, 6))
+        
+        initial_cats = [c.get("id", "") for c in self.service.library_service.categories]
+        if not initial_cats:
+            initial_cats = ["general"]
+
         self.category_option = ctk.CTkOptionMenu(
             ctrl_frame,
-            values=self.CATEGORIES,
+            values=initial_cats,
             width=130
         )
-        self.category_option.set("general")
+        self.category_option.set(initial_cats[0])
         self.category_option.pack(side="left", padx=(0, 15))
 
         # Action Buttons
@@ -255,3 +260,14 @@ class ProcessView(ctk.CTkFrame):
             # Duration
             dur_str = f"{task.duration_seconds:.2f}s" if task.duration_seconds > 0 else "-"
             ctk.CTkLabel(row_frame, text=dur_str, width=80, font=ctk.CTkFont(size=11), anchor="w").pack(side="left")
+
+    def refresh_data(self):
+        cat_ids = [c.get("id", "") for c in self.service.library_service.categories]
+        if not cat_ids:
+            cat_ids = ["general"]
+        cur = self.category_option.get()
+        self.category_option.configure(values=cat_ids)
+        if cur in cat_ids:
+            self.category_option.set(cur)
+        else:
+            self.category_option.set(cat_ids[0])

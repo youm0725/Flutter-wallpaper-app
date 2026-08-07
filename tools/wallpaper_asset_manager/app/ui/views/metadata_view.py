@@ -22,9 +22,9 @@ class MetadataView(ctk.CTkFrame):
         super().__init__(master, fg_color="transparent", **kwargs)
         
         self.service = service
-        self.metadata_service = MetadataService()
-        self.history_service = HistoryService()
-        self.library_service = LibraryService(self.metadata_service, self.history_service)
+        self.metadata_service = getattr(service, "metadata_service", None) or MetadataService()
+        self.history_service = getattr(service, "history_service", None) or HistoryService()
+        self.library_service = getattr(service, "library_service", None) or LibraryService(self.metadata_service, self.history_service)
         
         self.selected_wallpaper_id: Optional[str] = None
         self.featured_only_filter: bool = False
@@ -291,16 +291,8 @@ class MetadataView(ctk.CTkFrame):
             self.refresh_library_grid()
 
     def _open_category_manager(self):
-        dialog = ctk.CTkInputDialog(text="Enter new category ID (e.g. cyber, nature):", title="Create Category")
-        new_cat = dialog.get_input()
-        if new_cat:
-            cat_id = new_cat.lower().strip()
-            if self.library_service.add_category(cat_id, new_cat.capitalize()):
-                # Refresh categories dropdowns
-                cat_names = [c.get("id", "") for c in self.library_service.categories]
-                self.insp_cat_option.configure(values=cat_names)
-                self.category_filter_option.configure(values=["All"] + cat_names)
-                messagebox.showinfo("Category Added", f"Category '{cat_id}' created successfully.")
+        from app.ui.dialogs.category_manager_dialog import CategoryManagerDialog
+        CategoryManagerDialog(self, self.library_service, on_refresh_callback=self.refresh_library_grid)
 
     # ----------------------------------------------------
     # GRID & INSPECTOR REFRESH

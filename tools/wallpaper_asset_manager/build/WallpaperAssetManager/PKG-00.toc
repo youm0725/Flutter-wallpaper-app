@@ -1,0 +1,68 @@
+('D:\\YOUM PATEL\\Desktop\\Flutter '
+ 'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\build\\WallpaperAssetManager\\WallpaperAssetManager.pkg',
+ {'BINARY': True,
+  'DATA': True,
+  'EXECUTABLE': True,
+  'EXTENSION': True,
+  'PYMODULE': True,
+  'PYSOURCE': True,
+  'PYZ': False,
+  'SPLASH': True,
+  'SYMLINK': False},
+ [('pyi-contents-directory _internal', '', 'OPTION'),
+  ('PYZ-00.pyz',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\build\\WallpaperAssetManager\\PYZ-00.pyz',
+   'PYZ'),
+  ('struct',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\build\\WallpaperAssetManager\\localpycs\\struct.pyc',
+   'PYMODULE'),
+  ('pyimod01_archive',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\build\\WallpaperAssetManager\\localpycs\\pyimod01_archive.pyc',
+   'PYMODULE'),
+  ('pyimod02_importers',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\build\\WallpaperAssetManager\\localpycs\\pyimod02_importers.pyc',
+   'PYMODULE'),
+  ('pyimod03_ctypes',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\build\\WallpaperAssetManager\\localpycs\\pyimod03_ctypes.pyc',
+   'PYMODULE'),
+  ('pyimod04_pywin32',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\build\\WallpaperAssetManager\\localpycs\\pyimod04_pywin32.pyc',
+   'PYMODULE'),
+  ('pyiboot01_bootstrap',
+   'C:\\Users\\YOUM '
+   'PATEL.DESKTOP-EC43HK5\\AppData\\Roaming\\Python\\Python313\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'PYSOURCE'),
+  ('pyi_rth_inspect',
+   'C:\\Users\\YOUM '
+   'PATEL.DESKTOP-EC43HK5\\AppData\\Roaming\\Python\\Python313\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_inspect.py',
+   'PYSOURCE'),
+  ('pyi_rth__tkinter',
+   'C:\\Users\\YOUM '
+   'PATEL.DESKTOP-EC43HK5\\AppData\\Roaming\\Python\\Python313\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth__tkinter.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgutil',
+   'C:\\Users\\YOUM '
+   'PATEL.DESKTOP-EC43HK5\\AppData\\Roaming\\Python\\Python313\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgutil.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'C:\\Users\\YOUM '
+   'PATEL.DESKTOP-EC43HK5\\AppData\\Roaming\\Python\\Python313\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
+  ('main',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\main.py',
+   'PYSOURCE')],
+ 'python313.dll',
+ True,
+ False,
+ False,
+ [],
+ None,
+ None,
+ None)
