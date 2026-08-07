@@ -65,6 +65,10 @@ class ValidationService:
                     else:
                         aspect_str = f"{ratio:.2f}:1"
                 
+                # STRICT REQUIREMENT: Only Vertical Wallpapers Allowed (height > width)
+                if width >= height:
+                    return False, "Error", [f"Horizontal (landscape) images are not allowed ({width}x{height}). Only vertical (portrait) wallpapers (height > width) are supported."], width, height, res_str, aspect_str, creation_str
+
                 # Minimum Resolution Warning (Standard 1080x1920 mobile portrait)
                 if width < 720 or height < 1280:
                     status = "Warning" if status != "Error" else "Error"

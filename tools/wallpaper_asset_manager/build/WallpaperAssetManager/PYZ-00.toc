@@ -503,6 +503,10 @@
    'D:\\YOUM PATEL\\Desktop\\Flutter '
    'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\ui\\views\\dashboard_view.py',
    'PYMODULE'),
+  ('app.ui.views.delete_wallpapers_view',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\ui\\views\\delete_wallpapers_view.py',
+   'PYMODULE'),
   ('app.ui.views.import_view',
    'D:\\YOUM PATEL\\Desktop\\Flutter '
    'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\ui\\views\\import_view.py',

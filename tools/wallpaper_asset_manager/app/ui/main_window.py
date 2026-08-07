@@ -7,6 +7,7 @@ from app.ui.views.dashboard_view import DashboardView
 from app.ui.views.import_view import ImportView
 from app.ui.views.process_view import ProcessView
 from app.ui.views.metadata_view import MetadataView
+from app.ui.views.delete_wallpapers_view import DeleteWallpapersView
 from app.ui.views.validation_view import ValidationView
 from app.ui.views.sync_view import SyncView
 from app.ui.views.backup_view import BackupView
@@ -67,6 +68,7 @@ class MainWindow(ctk.CTk):
             "Import": ImportView(self.container, self.service),
             "Process": ProcessView(self.container, self.service),
             "Metadata": MetadataView(self.container, self.service),
+            "DeleteWallpapers": DeleteWallpapersView(self.container, self.service),
             "Validation": ValidationView(self.container, self.service),
             "Sync": SyncView(self.container, self.service),
             "Backups": BackupView(self.container, self.service),

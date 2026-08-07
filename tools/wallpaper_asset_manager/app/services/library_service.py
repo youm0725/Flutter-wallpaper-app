@@ -34,11 +34,50 @@ class LibraryService:
                 self.used_id_history.add(w["id"])
 
         self._auto_discover_disk_wallpapers()
+        self.purge_horizontal_wallpapers()
 
         self.history_service.clear()
         self._push_undo_snapshot()
         logger.info("Library Service initialized with %d wallpapers, %d categories, %d collections.",
                     len(self.wallpapers), len(self.categories), len(self.collections))
+
+    def purge_horizontal_wallpapers(self) -> int:
+        """Scans all wallpapers on disk & metadata, purging any horizontal/landscape wallpapers (width >= height)."""
+        from PIL import Image
+        removed_count = 0
+        valid_wallpapers = []
+
+        for w in self.wallpapers:
+            rel_path = w.get("imagePath", "")
+            full_path = self.metadata_service.workspace_root / rel_path
+            
+            is_horizontal = False
+            if full_path.exists():
+                try:
+                    with Image.open(full_path) as img:
+                        w_px, h_px = img.size
+                        if w_px >= h_px:
+                            is_horizontal = True
+                except Exception as e:
+                    logger.warning("Could not inspect image %s: %s", full_path, e)
+            
+            if is_horizontal:
+                removed_count += 1
+                logger.info("Purging horizontal wallpaper: %s (%s)", w.get("id"), rel_path)
+                try:
+                    if full_path.exists():
+                        full_path.unlink()
+                except Exception as e:
+                    logger.warning("Could not delete file %s: %s", full_path, e)
+            else:
+                valid_wallpapers.append(w)
+
+        if removed_count > 0:
+            self.wallpapers = valid_wallpapers
+            self.metadata_service.save_wallpapers_json(self.wallpapers)
+            logger.info("Purged %d horizontal wallpapers from library and disk.", removed_count)
+
+        return removed_count
 
     def _auto_discover_disk_wallpapers(self):
         """Scans output/wallpapers and assets/wallpapers on disk and registers missing WebP records."""
@@ -182,13 +221,76 @@ class LibraryService:
         return True
 
     def delete_wallpaper(self, wallpaper_id: str) -> bool:
+        """Deletes wallpaper asset file from disk, removes metadata from wallpapers.json and collections.json while preserving category."""
+        w = self.get_wallpaper_by_id(wallpaper_id)
+        if not w:
+            return False
+
         self._push_undo_snapshot()
-        orig_len = len(self.wallpapers)
-        self.wallpapers = [w for w in self.wallpapers if w.get("id") != wallpaper_id]
-        deleted = len(self.wallpapers) < orig_len
-        if deleted:
-            logger.info("Deleted wallpaper metadata: %s", wallpaper_id)
-        return deleted
+
+        # 1. Remove asset file from disk
+        rel_path = w.get("imagePath", "")
+        if rel_path:
+            full_path = self.metadata_service.workspace_root / rel_path
+            try:
+                if full_path.exists():
+                    full_path.unlink()
+                    logger.info("Deleted wallpaper file asset: %s", full_path)
+            except Exception as e:
+                logger.warning("Could not delete wallpaper file asset %s: %s", full_path, e)
+
+        # 2. Remove entry from wallpapers list
+        self.wallpapers = [item for item in self.wallpapers if item.get("id") != wallpaper_id]
+
+        # 3. Remove wallpaper_id from collections metadata
+        for col in self.collections:
+            if "wallpaperIds" in col and isinstance(col["wallpaperIds"], list):
+                col["wallpaperIds"] = [id_item for id_item in col["wallpaperIds"] if id_item != wallpaper_id]
+
+        # 4. Save metadata to disk
+        self.metadata_service.save_wallpapers_json(self.wallpapers)
+        self.metadata_service.save_collections_json(self.collections)
+
+        logger.info("Deleted wallpaper %s and all associated data. Category preserved.", wallpaper_id)
+        return True
+
+    def delete_wallpapers_bulk(self, wallpaper_ids: List[str]) -> int:
+        """Bulk deletes multiple wallpapers, asset files, and collection entries while keeping categories untouched."""
+        if not wallpaper_ids:
+            return 0
+
+        self._push_undo_snapshot()
+        deleted_count = 0
+        ids_to_delete = set(wallpaper_ids)
+
+        # Delete asset files
+        for w in self.wallpapers:
+            if w.get("id") in ids_to_delete:
+                rel_path = w.get("imagePath", "")
+                if rel_path:
+                    full_path = self.metadata_service.workspace_root / rel_path
+                    try:
+                        if full_path.exists():
+                            full_path.unlink()
+                    except Exception as e:
+                        logger.warning("Could not delete file %s: %s", full_path, e)
+                deleted_count += 1
+
+        # Filter wallpapers list
+        self.wallpapers = [w for w in self.wallpapers if w.get("id") not in ids_to_delete]
+
+        # Filter collection links
+        for col in self.collections:
+            if "wallpaperIds" in col and isinstance(col["wallpaperIds"], list):
+                col["wallpaperIds"] = [id_item for id_item in col["wallpaperIds"] if id_item not in ids_to_delete]
+
+        # Save metadata to disk
+        if deleted_count > 0:
+            self.metadata_service.save_wallpapers_json(self.wallpapers)
+            self.metadata_service.save_collections_json(self.collections)
+            logger.info("Bulk deleted %d wallpapers. Categories preserved.", deleted_count)
+
+        return deleted_count
 
     # ----------------------------------------------------
     # CATEGORY OPERATIONS

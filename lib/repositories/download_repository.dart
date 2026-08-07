@@ -1,5 +1,7 @@
+import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:gal/gal.dart';
+import 'package:path_provider/path_provider.dart';
 import '../models/wallpaper.dart';
 
 /// Repository interface for downloading and saving wallpapers to device gallery.
@@ -33,6 +35,7 @@ final class LocalDownloadRepository implements IDownloadRepository {
 
   @override
   Future<bool> saveWallpaperToGallery(Wallpaper wallpaper) async {
+    File? tempFile;
     try {
       final ByteData byteData = await rootBundle.load(wallpaper.imagePath);
       final Uint8List bytes = byteData.buffer.asUint8List(
@@ -41,10 +44,11 @@ final class LocalDownloadRepository implements IDownloadRepository {
       );
 
       final sanitizeName = wallpaper.id.replaceAll(RegExp(r'[^a-zA-Z0-9_]'), '_');
-      await Gal.putImageBytes(
-        bytes,
-        name: 'wallpaper_$sanitizeName',
-      );
+      final tempDir = await getTemporaryDirectory();
+      tempFile = File('${tempDir.path}/wallpaper_$sanitizeName.webp');
+      await tempFile.writeAsBytes(bytes, flush: true);
+
+      await Gal.putImage(tempFile.path);
       return true;
     } on GalException catch (e) {
       if (e.type == GalExceptionType.accessDenied) {
@@ -53,6 +57,12 @@ final class LocalDownloadRepository implements IDownloadRepository {
       return false;
     } catch (_) {
       return false;
+    } finally {
+      if (tempFile != null && await tempFile.exists()) {
+        try {
+          await tempFile.delete();
+        } catch (_) {}
+      }
     }
   }
 }

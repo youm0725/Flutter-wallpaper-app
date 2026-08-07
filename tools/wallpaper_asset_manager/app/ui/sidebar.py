@@ -9,6 +9,7 @@ class Sidebar(ctk.CTkFrame):
         ("Import", "📥  Import"),
         ("Process", "⚡  Process"),
         ("Metadata", "🏷️  Metadata"),
+        ("DeleteWallpapers", "🗑️  Delete Wallpapers"),
         ("Validation", "✅  Validation"),
         ("Sync", "🔄  Sync"),
         ("Backups", "📦  Backups"),

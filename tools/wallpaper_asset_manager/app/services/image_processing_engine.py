@@ -97,8 +97,12 @@ class ImageProcessingEngine:
                 if img.mode not in ("RGB", "RGBA"):
                     img = img.convert("RGB")
 
-                # 3. Resize Full Wallpaper (Max 1440x3200, aspect ratio preserved, no stretch)
+                # 3. Enforce Vertical Wallpapers Requirement (height > width)
                 orig_w, orig_h = img.size
+                if orig_w >= orig_h:
+                    raise ValueError(f"Horizontal image rejected ({orig_w}x{orig_h}). Only vertical (portrait) wallpapers (height > width) are allowed.")
+
+                # 4. Resize Full Wallpaper (Max 1440x3200, aspect ratio preserved, no stretch)
                 if orig_w > max_width or orig_h > max_height:
                     img.thumbnail((max_width, max_height), Image.Resampling.LANCZOS)
 
