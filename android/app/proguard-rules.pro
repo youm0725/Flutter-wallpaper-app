@@ -1,37 +1,47 @@
-# ProGuard & R8 configuration for Wallpaper Gallery Production Release
+# Flutter & Android ProGuard / R8 Configuration
 
-# Suppress missing class warnings for optional OkHttp and Conscrypt dependencies
+# 1. Keep Flutter Engine, Main Activity, and Generated Registrants
+-keep class com.example.wallpaper_app.** { *; }
+-keep class io.flutter.** { *; }
+-keep class io.flutter.plugins.GeneratedPluginRegistrant { *; }
+-keep class io.flutter.app.FlutterApplication { *; }
+
+# 2. Keep Flutter Plugin Android Packages
+-keep class com.codenameakshay.async_wallpaper.** { *; }
+-keep class tech.bymin.gal.** { *; }
+-keep class dev.fluttercommunity.plus.share.** { *; }
+-keep class dev.fluttercommunity.plus.packageinfo.** { *; }
+-keep class dev.flutter.plugins.inappreview.** { *; }
+-keep class io.flutter.plugins.sharedpreferences.** { *; }
+-keep class io.flutter.plugins.urllauncher.** { *; }
+-keep class io.flutter.plugins.pathprovider.** { *; }
+-keep class dart.jni.** { *; }
+
+# 3. Keep Kotlin & Coroutines
+-dontwarn kotlin.**
+-keep class kotlin.** { *; }
+-keep class kotlinx.coroutines.** { *; }
+
+# 4. Keep AndroidX & Lifecycle components
+-dontwarn androidx.**
+-keep class androidx.** { *; }
+
+# 5. Keep OkHttp3 & Network classes
 -dontwarn org.conscrypt.**
 -dontwarn okhttp3.internal.platform.**
 -dontwarn org.bouncycastle.**
 -dontwarn org.openjsse.**
 -dontwarn javax.annotation.**
 -dontwarn com.google.android.play.core.**
-
-# Keep OkHttp3 classes
 -keep class okhttp3.** { *; }
 -keep interface okhttp3.** { *; }
 
-# Keep Flutter Engine and Plugin classes
--keep class io.flutter.app.** { *; }
--keep class io.flutter.plugin.** { *; }
--keep class io.flutter.plugins.** { *; }
--keep class io.flutter.util.** { *; }
--keep class io.flutter.view.** { *; }
--keep class io.flutter.embedding.engine.** { *; }
--keep class io.flutter.embedding.android.** { *; }
-
-# Keep Native Plugins (async_wallpaper, gal, share_plus, in_app_review, etc.)
--keep class com.codenameakshay.async_wallpaper.** { *; }
--keep class tech.bymin.gal.** { *; }
--keep class dev.fluttercommunity.plus.share.** { *; }
--keep class io.flutter.plugins.sharedpreferences.** { *; }
--keep class io.flutter.plugins.urllauncher.** { *; }
--keep class dev.flutter.plugins.inappreview.** { *; }
-
-# Keep all annotated classes and members
+# 6. Preserve annotations, generic signatures, inner classes, and exception attributes
 -keepattributes *Annotation*, Signature, InnerClasses, EnclosingMethod
 -keepclassmembers class * {
     @androidx.annotation.Keep <fields>;
     @androidx.annotation.Keep <methods>;
 }
+
+# 7. Keep Resource R classes to prevent resource shrinking issues
+-keep class **.R$* { *; }
