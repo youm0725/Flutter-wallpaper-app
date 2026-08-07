@@ -974,21 +974,5 @@
     "isFeatured": false,
     "collections": [],
     "description": "Helloblack 8 wallpaper in Helloblack category."
-  },
-  {
-    "id": "test",
-    "title": "Test",
-    "category": "test",
-    "thumbnailPath": "",
-    "imagePath": "assets/wallpapers/full/test.webp",
-    "resolution": "1080x1920",
-    "fileSize": "",
-    "tags": [
-      "test",
-      "wallpaper"
-    ],
-    "isFeatured": false,
-    "collections": [],
-    "description": "Test wallpaper in Test category."
   }
 ]

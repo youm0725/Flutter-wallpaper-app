@@ -1,0 +1,365 @@
+==========================================================
+WALLPAPER GALLERY — RELEASE VALIDATION REPORT
+==========================================================
+Timestamp: 2026-08-08 00:57:13
+Duration: 0.41s
+
+SUMMARY STATS:
+  - Total Checks Run: 310
+  - Passed:           240
+  - Warnings:         69
+  - Errors:           1
+  - Total Asset Size: 9.77 MB
+
+DETAILED ISSUES & FIX SUGGESTIONS:
+[1] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_1-2.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[2] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_1.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[3] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_10-2.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[4] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_10.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[5] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_11-2.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[6] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_11.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[7] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_12-2.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[8] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_12.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[9] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_13-2.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[10] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_13.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[11] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_14-2.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[12] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_14.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[13] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_15-2.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[14] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_15.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[15] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_16-2.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[16] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_16.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[17] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_17-2.webp
+    Problem:  Low resolution (347x576).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[18] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_17.webp
+    Problem:  Low resolution (347x576).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[19] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_18-2.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[20] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_18.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[21] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_19-2.webp
+    Problem:  Low resolution (320x480).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[22] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_19.webp
+    Problem:  Low resolution (320x480).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[23] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_2-2.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[24] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_2.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[25] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_20-2.webp
+    Problem:  Low resolution (316x632).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[26] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_20.webp
+    Problem:  Low resolution (316x632).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[27] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_21-2.webp
+    Problem:  Low resolution (316x632).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[28] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_21.webp
+    Problem:  Low resolution (316x632).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[29] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_22-2.webp
+    Problem:  Low resolution (418x733).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[30] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_22.webp
+    Problem:  Low resolution (418x733).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[31] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_3-2.webp
+    Problem:  Low resolution (416x738).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[32] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_3.webp
+    Problem:  Low resolution (416x738).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[33] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_4-2.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[34] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_4.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[35] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_5-2.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[36] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_5.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[37] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_6-2.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[38] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_6.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[39] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_7-2.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[40] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_7.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[41] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_8-2.webp
+    Problem:  Low resolution (334x598).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[42] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_8.webp
+    Problem:  Low resolution (334x598).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[43] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_9-2.webp
+    Problem:  Low resolution (414x738).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[44] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_9.webp
+    Problem:  Low resolution (414x738).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[45] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_2-2.webp
+    Problem:  Low resolution (720x1038).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[46] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_2.webp
+    Problem:  Low resolution (415x738).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[47] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_3.webp
+    Problem:  Low resolution (400x756).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[48] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_4.webp
+    Problem:  Low resolution (391x782).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[49] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_5.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[50] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_6.webp
+    Problem:  Low resolution (452x678).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[51] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_7.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[52] ERROR - Asset Validation
+    Location: assets\wallpapers\full\test.webp
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\full\\test.webp'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[53] WARNING - Metadata Validation
+    Location: ID: helloblack_1
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[54] WARNING - Metadata Validation
+    Location: ID: helloblack_2-2
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[55] WARNING - Metadata Validation
+    Location: ID: helloblack_2-3
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[56] WARNING - Metadata Validation
+    Location: ID: helloblack_2
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[57] WARNING - Metadata Validation
+    Location: ID: helloblack_3-2
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[58] WARNING - Metadata Validation
+    Location: ID: helloblack_3-3
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[59] WARNING - Metadata Validation
+    Location: ID: helloblack_3
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[60] WARNING - Metadata Validation
+    Location: ID: helloblack_4-2
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[61] WARNING - Metadata Validation
+    Location: ID: helloblack_4-3
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[62] WARNING - Metadata Validation
+    Location: ID: helloblack_4
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[63] WARNING - Metadata Validation
+    Location: ID: helloblack_5-2
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[64] WARNING - Metadata Validation
+    Location: ID: helloblack_5
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[65] WARNING - Metadata Validation
+    Location: ID: helloblack_6-2
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[66] WARNING - Metadata Validation
+    Location: ID: helloblack_6
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[67] WARNING - Metadata Validation
+    Location: ID: helloblack_7-2
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[68] WARNING - Metadata Validation
+    Location: ID: helloblack_7
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[69] WARNING - Metadata Validation
+    Location: ID: helloblack_8
+    Problem:  Category 'helloblack' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[70] WARNING - Metadata Validation
+    Location: ID: test
+    Problem:  Category 'test' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+==========================================================

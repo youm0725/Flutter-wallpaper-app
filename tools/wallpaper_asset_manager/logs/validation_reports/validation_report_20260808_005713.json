@@ -1,0 +1,511 @@
+{
+  "timestamp": "2026-08-08 00:57:13",
+  "duration_seconds": 0.41,
+  "total_checks": 310,
+  "pass_count": 240,
+  "warning_count": 69,
+  "error_count": 1,
+  "storage_stats": {
+    "wallpaper_assets_mb": 9.72,
+    "full_size_mb": 9.72,
+    "thumb_size_mb": 0.0,
+    "metadata_size_mb": 0.05,
+    "total_size_mb": 9.77,
+    "max_limit_mb": 200.0,
+    "remaining_mb": 190.23,
+    "health_status": "Healthy",
+    "issues": []
+  },
+  "issues": [
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_1-2.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_1.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_10-2.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_10.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_11-2.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_11.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_12-2.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_12.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_13-2.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_13.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_14-2.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_14.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_15-2.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_15.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_16-2.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_16.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_17-2.webp",
+      "problem": "Low resolution (347x576).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_17.webp",
+      "problem": "Low resolution (347x576).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_18-2.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_18.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_19-2.webp",
+      "problem": "Low resolution (320x480).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_19.webp",
+      "problem": "Low resolution (320x480).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_2-2.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_2.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_20-2.webp",
+      "problem": "Low resolution (316x632).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_20.webp",
+      "problem": "Low resolution (316x632).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_21-2.webp",
+      "problem": "Low resolution (316x632).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_21.webp",
+      "problem": "Low resolution (316x632).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_22-2.webp",
+      "problem": "Low resolution (418x733).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_22.webp",
+      "problem": "Low resolution (418x733).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_3-2.webp",
+      "problem": "Low resolution (416x738).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_3.webp",
+      "problem": "Low resolution (416x738).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_4-2.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_4.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_5-2.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_5.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_6-2.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_6.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_7-2.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_7.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_8-2.webp",
+      "problem": "Low resolution (334x598).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_8.webp",
+      "problem": "Low resolution (334x598).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_9-2.webp",
+      "problem": "Low resolution (414x738).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_9.webp",
+      "problem": "Low resolution (414x738).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_2-2.webp",
+      "problem": "Low resolution (720x1038).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_2.webp",
+      "problem": "Low resolution (415x738).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_3.webp",
+      "problem": "Low resolution (400x756).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_4.webp",
+      "problem": "Low resolution (391x782).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_5.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_6.webp",
+      "problem": "Low resolution (452x678).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_7.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\full\\test.webp",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\full\\\\test.webp'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_1",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_2-2",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_2-3",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_2",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_3-2",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_3-3",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_3",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_4-2",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_4-3",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_4",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_5-2",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_5",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_6-2",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_6",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_7-2",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_7",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: helloblack_8",
+      "problem": "Category 'helloblack' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: test",
+      "problem": "Category 'test' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    }
+  ]
+}

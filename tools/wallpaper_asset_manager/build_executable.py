@@ -36,6 +36,11 @@ def main():
         "--windowed",
         "--clean",
         "--noconfirm",
+        "--hidden-import=PIL.WebPImagePlugin",
+        "--hidden-import=PIL.PngImagePlugin",
+        "--hidden-import=PIL.JpegImagePlugin",
+        "--hidden-import=PIL.ImageFilter",
+        "--hidden-import=PIL.ImageEnhance",
         f"--distpath={manager_root / 'dist'}",
         f"--workpath={manager_root / 'build'}",
         str(main_py)

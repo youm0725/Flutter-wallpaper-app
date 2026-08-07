@@ -6,6 +6,7 @@ MANAGER_ROOT = Path(__file__).resolve().parent
 if str(MANAGER_ROOT) not in sys.path:
     sys.path.insert(0, str(MANAGER_ROOT))
 
+from PIL import Image, WebPImagePlugin, PngImagePlugin, JpegImagePlugin
 from app.core.logger import setup_logging
 from app.core.config_manager import ConfigManager
 from app.services.app_service import AppService

@@ -116,14 +116,17 @@ class LibraryService:
                 continue
 
             # Check if vertical wallpaper (height > width)
+            is_vertical = True
             try:
                 with Image.open(webp_file) as img:
                     w_px, h_px = img.size
                     if w_px >= h_px:
-                        logger.warning("Auto-discovery skipping horizontal image: %s (%dx%d)", webp_file.name, w_px, h_px)
-                        continue
+                        is_vertical = False
             except Exception as e:
-                logger.warning("Could not read image %s: %s", webp_file, e)
+                logger.warning("Could not read image dimensions for %s: %s. Registering asset.", webp_file, e)
+
+            if not is_vertical:
+                logger.warning("Auto-discovery skipping horizontal image: %s", webp_file.name)
                 continue
 
             filename = webp_file.name
