@@ -22,4 +22,4 @@ level = "INFO"
 
 [ui]
 last_active_view = "Dashboard"
-window_geometry = "1366x685+-34+130"
+window_geometry = "1366x685+58+66"

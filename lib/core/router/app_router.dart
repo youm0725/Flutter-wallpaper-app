@@ -3,12 +3,9 @@ import '../../models/wallpaper.dart';
 import '../../screens/about/about_screen.dart';
 import '../../screens/about/legal_screens.dart';
 import '../../screens/categories/categories_screen.dart';
-import '../../screens/collections/user_collection_details_screen.dart';
-import '../../screens/collections/user_collections_screen.dart';
 import '../../screens/details/wallpaper_details_screen.dart';
 import '../../screens/favorites/favorites_screen.dart';
 import '../../screens/home/home_screen.dart';
-import '../../screens/search/search_screen.dart';
 import '../../screens/settings/settings_screen.dart';
 import '../../screens/splash/splash_screen.dart';
 import 'route_constants.dart';
@@ -31,24 +28,6 @@ final GoRouter appRouter = GoRouter(
       path: RouteConstants.categoriesPath,
       name: RouteConstants.categoriesName,
       builder: (context, state) => const CategoriesScreen(),
-    ),
-    GoRoute(
-      path: RouteConstants.userCollectionsPath,
-      name: RouteConstants.userCollectionsName,
-      builder: (context, state) => const UserCollectionsScreen(),
-    ),
-    GoRoute(
-      path: RouteConstants.userCollectionDetailsPath,
-      name: RouteConstants.userCollectionDetailsName,
-      builder: (context, state) {
-        final id = state.pathParameters['id'] ?? '';
-        return UserCollectionDetailsScreen(collectionId: id);
-      },
-    ),
-    GoRoute(
-      path: RouteConstants.searchPath,
-      name: RouteConstants.searchName,
-      builder: (context, state) => const SearchScreen(),
     ),
     GoRoute(
       path: RouteConstants.wallpaperDetailsPath,

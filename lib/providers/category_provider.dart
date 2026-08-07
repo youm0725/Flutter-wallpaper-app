@@ -60,8 +60,8 @@ const List<String> kStandardCategories = <String>[
 
 /// Provider for [ICategoryRepository] instance.
 final categoryRepositoryProvider = Provider<ICategoryRepository>((ref) {
-  final assetService = ref.watch(assetServiceProvider);
-  return LocalCategoryRepository(assetService: assetService);
+  final wallpaperRepo = ref.watch(wallpaperRepositoryProvider);
+  return LocalCategoryRepository(wallpaperRepository: wallpaperRepo);
 });
 
 /// FutureProvider loading raw category definitions from assets/metadata/categories.json.

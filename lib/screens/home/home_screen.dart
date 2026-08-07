@@ -6,13 +6,12 @@ import '../../core/router/route_constants.dart';
 import '../../models/user_preferences.dart';
 import '../../models/wallpaper.dart';
 import '../../providers/category_provider.dart';
-import '../../providers/curated_providers.dart';
 import '../../providers/preferences_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/wallpaper_providers.dart';
 import '../../widgets/widgets.dart';
 
-/// Production-quality, refined Home Screen featuring curated discovery feed & customizable sections.
+/// Clean, minimalist Home Screen featuring category filters & responsive wallpaper grid.
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
 
@@ -29,9 +28,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final isDark = theme.brightness == Brightness.dark;
     final selectedCategory = ref.watch(selectedCategoryProvider);
     final asyncWallpapers = ref.watch(wallpapersProvider);
-    final dailyWallpaper = ref.watch(dailyWallpaperProvider);
-    final featuredWallpapers = ref.watch(featuredWallpapersProvider);
-    final asyncCollections = ref.watch(collectionsProvider);
     final prefs = ref.watch(userPreferencesNotifierProvider).value ?? const UserPreferences();
 
     final crossAxisCount = calculateGridCrossAxisCount(context, prefs.gridDensity);
@@ -81,45 +77,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ],
             ),
 
-            // 2. Search Trigger Bar
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: AppSizes.p8),
-                child: SearchBarWidget(
-                  onTap: () => context.pushNamed(RouteConstants.searchName),
-                ),
-              ),
-            ),
-
-            // 3. Wallpaper of the Day Hero Banner
-            if (prefs.showDailyWallpaper && dailyWallpaper != null)
-              SliverToBoxAdapter(
-                child: DailyWallpaperCard(
-                  wallpaper: dailyWallpaper,
-                  onTap: () => _onWallpaperTap(context, dailyWallpaper),
-                ),
-              ),
-
-            // 4. Editor's Picks (Featured Wallpapers)
-            if (prefs.showFeaturedSection && featuredWallpapers.isNotEmpty) ...[
-              const SliverToBoxAdapter(
-                child: SectionHeader(
-                  title: "Editor's Picks",
-                  subtitle: 'Handpicked premium wallpapers',
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: HorizontalWallpaperList(
-                  wallpapers: featuredWallpapers,
-                  onWallpaperTap: (w) => _onWallpaperTap(context, w),
-                ),
-              ),
-              const SliverToBoxAdapter(
-                child: SizedBox(height: AppSizes.p16),
-              ),
-            ],
-
-            // 6. Categories Section Header & Horizontal List
+            // 2. Categories Section Header & Horizontal Filter Chips
             SliverToBoxAdapter(
               child: SectionHeader(
                 title: 'Categories',
@@ -167,52 +125,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               child: SizedBox(height: AppSizes.p16),
             ),
 
-            // 7. Curated Collections
-            if (prefs.showCollectionsSection)
-              asyncCollections.when(
-                data: (collections) {
-                  if (collections.isEmpty) return const SliverToBoxAdapter(child: SizedBox.shrink());
-                  return SliverMainAxisGroup(
-                    slivers: [
-                      const SliverToBoxAdapter(
-                        child: SectionHeader(
-                          title: 'Curated Collections',
-                          subtitle: 'Themed wallpaper sets',
-                        ),
-                      ),
-                      SliverToBoxAdapter(
-                        child: SizedBox(
-                          height: 150.0,
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            physics: const BouncingScrollPhysics(),
-                            padding: const EdgeInsets.symmetric(horizontal: AppSizes.p16),
-                            itemCount: collections.length,
-                            itemBuilder: (context, index) {
-                              final collection = collections[index];
-                              return CollectionCard(
-                                collection: collection,
-                                onTap: () {
-                                  ref
-                                      .read(selectedCategoryProvider.notifier)
-                                      .selectCategory(collection.title.split(' ').first);
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                      const SliverToBoxAdapter(
-                        child: SizedBox(height: AppSizes.p16),
-                      ),
-                    ],
-                  );
-                },
-                loading: () => const SliverToBoxAdapter(child: SizedBox.shrink()),
-                error: (error, stack) => const SliverToBoxAdapter(child: SizedBox.shrink()),
-              ),
-
-            // 8. Wallpaper Grid Section Header & Grid Content
+            // 3. Wallpaper Grid Section Header & Content
             const SliverToBoxAdapter(
               child: SectionHeader(
                 title: 'Explore Gallery',

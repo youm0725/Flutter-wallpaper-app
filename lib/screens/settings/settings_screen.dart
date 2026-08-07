@@ -8,10 +8,9 @@ import '../../providers/favorites_provider.dart';
 import '../../providers/preferences_provider.dart';
 import '../../providers/share_provider.dart';
 import '../../providers/theme_provider.dart';
-import '../../providers/user_collection_provider.dart';
 import '../../widgets/widgets.dart';
 
-/// Full Settings Screen — Appearance, Home Feed, Data, Engagement, and Backup sections.
+/// Clean Settings Screen — Appearance, Data, Engagement, and Backup sections.
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
@@ -72,52 +71,7 @@ class SettingsScreen extends ConsumerWidget {
 
               const SizedBox(height: AppSizes.p8),
 
-              // ── 2. HOME FEED ────────────────────────────────────────────
-              _SettingsGroup(
-                header: const SectionHeader(
-                  title: 'Home Feed',
-                  subtitle: 'Toggle discovery sections',
-                ),
-                children: [
-                  PreferenceTile(
-                    icon: Icons.today_rounded,
-                    title: 'Wallpaper of the Day',
-                    subtitle: 'Daily hero banner',
-                    trailing: Switch.adaptive(
-                      value: prefs.showDailyWallpaper,
-                      onChanged: (val) => ref
-                          .read(userPreferencesNotifierProvider.notifier)
-                          .toggleDailyWallpaper(val),
-                    ),
-                  ),
-                  PreferenceTile(
-                    icon: Icons.star_outline_rounded,
-                    title: "Editor's Picks",
-                    subtitle: 'Featured wallpapers',
-                    trailing: Switch.adaptive(
-                      value: prefs.showFeaturedSection,
-                      onChanged: (val) => ref
-                          .read(userPreferencesNotifierProvider.notifier)
-                          .toggleFeaturedSection(val),
-                    ),
-                  ),
-                  PreferenceTile(
-                    icon: Icons.collections_bookmark_outlined,
-                    title: 'Curated Collections',
-                    subtitle: 'Themed gallery sections',
-                    trailing: Switch.adaptive(
-                      value: prefs.showCollectionsSection,
-                      onChanged: (val) => ref
-                          .read(userPreferencesNotifierProvider.notifier)
-                          .toggleCollectionsSection(val),
-                    ),
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: AppSizes.p8),
-
-              // ── 3. DATA & LIBRARY ───────────────────────────────────────
+              // ── 2. DATA & LIBRARY ───────────────────────────────────────
               _SettingsGroup(
                 header: const SectionHeader(
                   title: 'Data & Library',
@@ -125,31 +79,17 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 children: [
                   PreferenceTile(
-                    icon: Icons.folder_special_outlined,
-                    title: 'Personal Collections',
-                    subtitle: 'Manage custom libraries',
-                    trailing: const Icon(Icons.chevron_right_rounded),
-                    onTap: () => context
-                        .pushNamed(RouteConstants.userCollectionsName),
-                  ),
-                  PreferenceTile(
                     icon: Icons.heart_broken_outlined,
                     title: 'Clear All Favorites',
                     subtitle: 'Remove saved wallpapers',
                     onTap: () => _clearFavorites(context, ref),
-                  ),
-                  PreferenceTile(
-                    icon: Icons.folder_delete_outlined,
-                    title: 'Delete All Collections',
-                    subtitle: 'Remove personal libraries',
-                    onTap: () => _deleteAllCollections(context, ref),
                   ),
                 ],
               ),
 
               const SizedBox(height: AppSizes.p8),
 
-              // ── 4. ABOUT & ENGAGEMENT ───────────────────────────────────
+              // ── 3. ABOUT & ENGAGEMENT ───────────────────────────────────
               _SettingsGroup(
                 header: const SectionHeader(
                   title: 'About & Feedback',
@@ -187,7 +127,7 @@ class SettingsScreen extends ConsumerWidget {
 
               const SizedBox(height: AppSizes.p8),
 
-              // ── 5. BACKUP & RESTORE ─────────────────────────────────────
+              // ── 4. BACKUP & RESTORE ─────────────────────────────────────
               _SettingsGroup(
                 header: const SectionHeader(
                   title: 'Backup & Restore',
@@ -284,47 +224,17 @@ class SettingsScreen extends ConsumerWidget {
     }
   }
 
-  Future<void> _deleteAllCollections(
-      BuildContext context, WidgetRef ref) async {
-    final confirmed = await ConfirmationDialog.show(
-      context,
-      title: 'Delete All Collections?',
-      message:
-          'All personal wallpaper libraries will be permanently deleted.',
-      confirmLabel: 'Delete All',
-      isDestructive: true,
-    );
-    if (confirmed == true) {
-      final collections =
-          ref.read(userCollectionsNotifierProvider).value ?? [];
-      for (final col in collections) {
-        await ref
-            .read(userCollectionsNotifierProvider.notifier)
-            .deleteCollection(col.id);
-      }
-      if (context.mounted) {
-        _showSnackBar(context, 'All collections deleted');
-      }
-    }
-  }
-
   Future<void> _exportBackup(
       BuildContext context, WidgetRef ref, dynamic prefs) async {
     final favs =
         ref.read(favoritesNotifierProvider).value?.toList() ?? [];
-    final userCols = ref
-            .read(userCollectionsNotifierProvider)
-            .value
-            ?.map((c) => c.toJson())
-            .toList() ??
-        [];
     final currentPrefs =
         (prefs as dynamic).toJson() as Map<String, dynamic>;
 
     final backupService = ref.read(backupServiceProvider);
     final jsonStr = await backupService.exportBackupToJson(
       favorites: favs,
-      userCollections: userCols,
+      userCollections: [],
       preferences: currentPrefs,
     );
 
@@ -431,7 +341,7 @@ class _SettingsGroup extends StatelessWidget {
       if (i < items.length - 1) {
         result.add(Divider(
           height: 1,
-          indent: AppSizes.p16 + 36 + AppSizes.p16, // align with tile content
+          indent: AppSizes.p16 + 36 + AppSizes.p16,
           endIndent: AppSizes.p16,
           color: theme.colorScheme.outlineVariant.withValues(alpha: 0.4),
         ));

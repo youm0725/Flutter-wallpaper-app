@@ -12,16 +12,10 @@ enum GridDensity {
 final class UserPreferences {
   final String themeMode;
   final GridDensity gridDensity;
-  final bool showDailyWallpaper;
-  final bool showFeaturedSection;
-  final bool showCollectionsSection;
 
   const UserPreferences({
     this.themeMode = 'system',
     this.gridDensity = GridDensity.comfortable,
-    this.showDailyWallpaper = true,
-    this.showFeaturedSection = true,
-    this.showCollectionsSection = true,
   });
 
   /// Factory constructor to deserialize [UserPreferences] from a JSON map.
@@ -37,9 +31,6 @@ final class UserPreferences {
     return UserPreferences(
       themeMode: json['themeMode'] as String? ?? 'system',
       gridDensity: density,
-      showDailyWallpaper: json['showDailyWallpaper'] as bool? ?? true,
-      showFeaturedSection: json['showFeaturedSection'] as bool? ?? true,
-      showCollectionsSection: json['showCollectionsSection'] as bool? ?? true,
     );
   }
 
@@ -48,9 +39,6 @@ final class UserPreferences {
     return <String, dynamic>{
       'themeMode': themeMode,
       'gridDensity': gridDensity.name,
-      'showDailyWallpaper': showDailyWallpaper,
-      'showFeaturedSection': showFeaturedSection,
-      'showCollectionsSection': showCollectionsSection,
     };
   }
 
@@ -58,17 +46,10 @@ final class UserPreferences {
   UserPreferences copyWith({
     String? themeMode,
     GridDensity? gridDensity,
-    bool? showDailyWallpaper,
-    bool? showFeaturedSection,
-    bool? showCollectionsSection,
   }) {
     return UserPreferences(
       themeMode: themeMode ?? this.themeMode,
       gridDensity: gridDensity ?? this.gridDensity,
-      showDailyWallpaper: showDailyWallpaper ?? this.showDailyWallpaper,
-      showFeaturedSection: showFeaturedSection ?? this.showFeaturedSection,
-      showCollectionsSection:
-          showCollectionsSection ?? this.showCollectionsSection,
     );
   }
 
@@ -77,10 +58,7 @@ final class UserPreferences {
     if (identical(this, other)) return true;
     return other is UserPreferences &&
         other.themeMode == themeMode &&
-        other.gridDensity == gridDensity &&
-        other.showDailyWallpaper == showDailyWallpaper &&
-        other.showFeaturedSection == showFeaturedSection &&
-        other.showCollectionsSection == showCollectionsSection;
+        other.gridDensity == gridDensity;
   }
 
   @override
@@ -88,9 +66,6 @@ final class UserPreferences {
     return Object.hash(
       themeMode,
       gridDensity,
-      showDailyWallpaper,
-      showFeaturedSection,
-      showCollectionsSection,
     );
   }
 }

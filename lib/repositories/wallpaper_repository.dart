@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import '../models/wallpaper.dart';
 import '../services/asset_service.dart';
 
@@ -8,12 +8,10 @@ abstract interface class IWallpaperRepository {
   Future<List<Wallpaper>> getWallpapers();
   Future<Wallpaper?> getWallpaperById(String id);
   Future<List<Wallpaper>> getWallpapersByCategory(String category);
-  Future<List<Wallpaper>> getFeaturedWallpapers();
 }
 
-/// Local offline implementation of [IWallpaperRepository].
+/// Production implementation of [IWallpaperRepository] discovering WebP assets directly.
 final class LocalWallpaperRepository implements IWallpaperRepository {
-  static const String _metadataAssetPath = 'assets/metadata/wallpapers.json';
   final IAssetService assetService;
 
   const LocalWallpaperRepository({
@@ -23,31 +21,69 @@ final class LocalWallpaperRepository implements IWallpaperRepository {
   @override
   Future<List<Wallpaper>> getWallpapers() async {
     try {
-      final jsonString = await assetService.loadString(_metadataAssetPath);
+      final List<String> paths = await _getWallpaperAssetPaths();
+      final wallpapers = <Wallpaper>[];
 
-      if (jsonString.trim().isEmpty) {
-        return const <Wallpaper>[];
-      }
+      for (final path in paths) {
+        final filename = path.split('/').last;
+        final lastDotIndex = filename.lastIndexOf('.');
+        final stem = lastDotIndex != -1 ? filename.substring(0, lastDotIndex) : filename;
+        final id = stem;
 
-      final dynamic decoded = jsonDecode(jsonString);
+        // Parse category from prefix before underscore/dash, e.g. "nature_001" -> "Nature"
+        String category = 'General';
+        final parts = stem.split(RegExp(r'[_\-]'));
+        if (parts.isNotEmpty && parts.first.isNotEmpty) {
+          final rawCat = parts.first;
+          if (!RegExp(r'^\d+$').hasMatch(rawCat)) {
+            category = rawCat[0].toUpperCase() + rawCat.substring(1).toLowerCase();
+          }
+        }
 
-      if (decoded is! List) {
-        throw FormatException(
-          'Invalid JSON structure in $_metadataAssetPath. Expected a List.',
+        // Generate clean display title
+        final words = stem.split(RegExp(r'[_\-]')).where((w) => w.isNotEmpty);
+        final title = words
+            .map((w) => w[0].toUpperCase() + w.substring(1).toLowerCase())
+            .join(' ');
+
+        wallpapers.add(
+          Wallpaper(
+            id: id,
+            title: title.isEmpty ? stem : title,
+            category: category,
+            imagePath: path,
+            resolution: '1080x1920',
+            fileSize: '',
+            tags: <String>[category.toLowerCase()],
+          ),
         );
       }
 
-      final wallpapers = decoded
-          .whereType<Map<String, dynamic>>()
-          .map((jsonMap) => Wallpaper.fromJson(jsonMap))
-          .toList(growable: false);
-
       return wallpapers;
-    } catch (e, stackTrace) {
-      if (kDebugMode) {
-        debugPrint('Error loading wallpapers from metadata: $e\n$stackTrace');
+    } catch (_) {
+      return const <Wallpaper>[];
+    }
+  }
+
+  Future<List<String>> _getWallpaperAssetPaths() async {
+    try {
+      final manifestJson = await rootBundle.loadString('AssetManifest.json');
+      final Map<String, dynamic> manifestMap = jsonDecode(manifestJson);
+      final paths = manifestMap.keys
+          .where((String k) => k.startsWith('assets/wallpapers/') && k.toLowerCase().endsWith('.webp'))
+          .toList()..sort();
+      return paths;
+    } catch (_) {
+      try {
+        final manifest = await AssetManifest.loadFromAssetBundle(rootBundle);
+        final paths = manifest
+            .listAssets()
+            .where((String k) => k.startsWith('assets/wallpapers/') && k.toLowerCase().endsWith('.webp'))
+            .toList()..sort();
+        return paths;
+      } catch (_) {
+        return const <String>[];
       }
-      rethrow;
     }
   }
 
@@ -68,11 +104,5 @@ final class LocalWallpaperRepository implements IWallpaperRepository {
     return wallpapers
         .where((w) => w.category.toLowerCase().trim() == lowerCategory)
         .toList();
-  }
-
-  @override
-  Future<List<Wallpaper>> getFeaturedWallpapers() async {
-    final wallpapers = await getWallpapers();
-    return wallpapers.where((w) => w.isFeatured).toList();
   }
 }
