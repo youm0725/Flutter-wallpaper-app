@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/router/app_router.dart';
 import 'core/theme/app_theme.dart';
 import 'providers/theme_provider.dart';
+import 'providers/engagement_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,9 @@ class WallpaperApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    // Watch the 1-minute daily dwell rating provider to trigger rating prompt once per day
+    ref.watch(dailyDwellRatingProvider);
+
     // Watch the async theme provider — fall back to ThemeMode.system while loading.
     final asyncThemeMode = ref.watch(themeModeProvider);
     final themeMode = asyncThemeMode.value ?? ThemeMode.system;
