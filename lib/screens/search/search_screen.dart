@@ -5,6 +5,7 @@ import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../core/router/route_constants.dart';
 import '../../models/wallpaper.dart';
+import '../../providers/category_provider.dart';
 import '../../providers/search_providers.dart';
 import '../../widgets/widgets.dart';
 
@@ -19,17 +20,6 @@ class SearchScreen extends ConsumerStatefulWidget {
 class _SearchScreenState extends ConsumerState<SearchScreen> {
   late final TextEditingController _controller;
   late final FocusNode _focusNode;
-
-  static const List<String> _popularSuggestions = <String>[
-    'nature',
-    'amoled',
-    'abstract',
-    'space',
-    'cars',
-    'minimal',
-    'anime',
-    'forest',
-  ];
 
   @override
   void initState() {
@@ -247,29 +237,43 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
           ),
 
           // Popular Search Suggestions Section
-          Text(
-            'Popular Suggestions',
-            style: theme.textTheme.titleSmall?.copyWith(
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(height: AppSizes.p12),
-          Wrap(
-            spacing: AppSizes.p8,
-            runSpacing: AppSizes.p8,
-            children: _popularSuggestions.map((tag) {
-              return ActionChip(
-                avatar: const Icon(Icons.trending_up_rounded, size: 14.0),
-                label: Text(tag[0].toUpperCase() + tag.substring(1)),
-                onPressed: () => _selectQuery(tag),
-                backgroundColor: theme.colorScheme.surfaceContainerHighest
-                    .withValues(alpha: 0.5),
-                labelStyle: theme.textTheme.labelMedium?.copyWith(
-                  color: theme.colorScheme.onSurfaceVariant,
-                  fontWeight: FontWeight.w500,
-                ),
+          Builder(
+            builder: (context) {
+              final categoriesList = ref.watch(categoriesProvider);
+              final popularList = categoriesList.map((c) => c.name).toList();
+
+              if (popularList.isEmpty) return const SizedBox.shrink();
+
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Popular Suggestions',
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: AppSizes.p12),
+                  Wrap(
+                    spacing: AppSizes.p8,
+                    runSpacing: AppSizes.p8,
+                    children: popularList.map((tag) {
+                      return ActionChip(
+                        avatar: const Icon(Icons.trending_up_rounded, size: 14.0),
+                        label: Text(tag),
+                        onPressed: () => _selectQuery(tag),
+                        backgroundColor: theme.colorScheme.surfaceContainerHighest
+                            .withValues(alpha: 0.5),
+                        labelStyle: theme.textTheme.labelMedium?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                          fontWeight: FontWeight.w500,
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                ],
               );
-            }).toList(),
+            },
           ),
         ],
       ),

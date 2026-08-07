@@ -31,6 +31,15 @@ class CategoryManagerDialog(ctk.CTkToplevel):
         )
         title_lbl.pack(side="left")
         
+        subtitle_lbl = ctk.CTkLabel(
+            hdr,
+            text="Categories created here automatically populate Home Screen category chips and Search Screen popular suggestions.",
+            font=ctk.CTkFont(size=11),
+            text_color=("gray40", "gray60"),
+            anchor="w"
+        )
+        subtitle_lbl.pack(anchor="w", pady=(2, 0))
+        
         # Add New Category Frame (Top Form)
         add_card = ctk.CTkFrame(self, corner_radius=8, fg_color=("gray90", "gray17"))
         add_card.grid(row=1, column=0, sticky="ew", padx=20, pady=8)

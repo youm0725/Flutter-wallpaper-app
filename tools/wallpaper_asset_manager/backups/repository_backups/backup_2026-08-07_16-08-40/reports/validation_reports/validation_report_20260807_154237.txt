@@ -1,0 +1,215 @@
+==========================================================
+WALLPAPER GALLERY — RELEASE VALIDATION REPORT
+==========================================================
+Timestamp: 2026-08-07 15:42:37
+Duration: 0.4s
+
+SUMMARY STATS:
+  - Total Checks Run: 55
+  - Passed:           15
+  - Warnings:         20
+  - Errors:           20
+  - Total Asset Size: 0.02 MB
+
+DETAILED ISSUES & FIX SUGGESTIONS:
+[1] WARNING - Asset Validation
+    Location: assets\wallpapers\abstract\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[2] ERROR - Asset Validation
+    Location: assets\wallpapers\abstract\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\abstract\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[3] WARNING - Asset Validation
+    Location: assets\wallpapers\amoled\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[4] ERROR - Asset Validation
+    Location: assets\wallpapers\amoled\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\amoled\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[5] WARNING - Asset Validation
+    Location: assets\wallpapers\anime\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[6] ERROR - Asset Validation
+    Location: assets\wallpapers\anime\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\anime\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[7] WARNING - Asset Validation
+    Location: assets\wallpapers\architecture\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[8] ERROR - Asset Validation
+    Location: assets\wallpapers\architecture\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\architecture\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[9] WARNING - Asset Validation
+    Location: assets\wallpapers\cars\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[10] ERROR - Asset Validation
+    Location: assets\wallpapers\cars\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\cars\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[11] WARNING - Asset Validation
+    Location: assets\wallpapers\gaming\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[12] ERROR - Asset Validation
+    Location: assets\wallpapers\gaming\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\gaming\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[13] WARNING - Asset Validation
+    Location: assets\wallpapers\minimal\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[14] ERROR - Asset Validation
+    Location: assets\wallpapers\minimal\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\minimal\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[15] WARNING - Asset Validation
+    Location: assets\wallpapers\nature\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[16] ERROR - Asset Validation
+    Location: assets\wallpapers\nature\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\nature\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[17] WARNING - Asset Validation
+    Location: assets\wallpapers\space\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[18] ERROR - Asset Validation
+    Location: assets\wallpapers\space\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\space\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[19] ERROR - Metadata Validation
+    Location: ID: cars_01
+    Problem:  Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_04_18_at_45137_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[20] WARNING - Metadata Validation
+    Location: ID: cars_01
+    Problem:  Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_04_18_at_45137_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[21] ERROR - Metadata Validation
+    Location: ID: cars_02
+    Problem:  Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_04_18_at_45137_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[22] WARNING - Metadata Validation
+    Location: ID: cars_02
+    Problem:  Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_04_18_at_45137_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[23] ERROR - Metadata Validation
+    Location: ID: cars_03
+    Problem:  Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[24] WARNING - Metadata Validation
+    Location: ID: cars_03
+    Problem:  Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[25] ERROR - Metadata Validation
+    Location: ID: cars_04
+    Problem:  Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_1.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[26] WARNING - Metadata Validation
+    Location: ID: cars_04
+    Problem:  Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_1.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[27] ERROR - Metadata Validation
+    Location: ID: cars_05
+    Problem:  Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_1_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[28] WARNING - Metadata Validation
+    Location: ID: cars_05
+    Problem:  Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_1_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[29] ERROR - Metadata Validation
+    Location: ID: cars_06
+    Problem:  Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[30] WARNING - Metadata Validation
+    Location: ID: cars_06
+    Problem:  Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[31] ERROR - Metadata Validation
+    Location: ID: cars_07
+    Problem:  Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92521_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[32] WARNING - Metadata Validation
+    Location: ID: cars_07
+    Problem:  Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92521_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[33] ERROR - Metadata Validation
+    Location: ID: cars_08
+    Problem:  Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92522_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[34] WARNING - Metadata Validation
+    Location: ID: cars_08
+    Problem:  Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92522_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[35] ERROR - Metadata Validation
+    Location: ID: cars_09
+    Problem:  Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92522_pm_1.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[36] WARNING - Metadata Validation
+    Location: ID: cars_09
+    Problem:  Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92522_pm_1.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[37] ERROR - Metadata Validation
+    Location: ID: cars_10
+    Problem:  Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92523_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[38] WARNING - Metadata Validation
+    Location: ID: cars_10
+    Problem:  Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92523_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[39] ERROR - Metadata Validation
+    Location: ID: cars_11
+    Problem:  Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92523_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[40] WARNING - Metadata Validation
+    Location: ID: cars_11
+    Problem:  Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92523_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+==========================================================

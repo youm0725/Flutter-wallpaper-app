@@ -1,0 +1,301 @@
+{
+  "timestamp": "2026-08-07 15:45:05",
+  "duration_seconds": 0.06,
+  "total_checks": 55,
+  "pass_count": 15,
+  "warning_count": 20,
+  "error_count": 20,
+  "storage_stats": {
+    "wallpaper_assets_mb": 0.0,
+    "full_size_mb": 0.0,
+    "thumb_size_mb": 0.0,
+    "metadata_size_mb": 0.04,
+    "total_size_mb": 0.04,
+    "max_limit_mb": 200.0,
+    "remaining_mb": 199.96,
+    "health_status": "Healthy",
+    "issues": []
+  },
+  "issues": [
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\abstract\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\abstract\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\abstract\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\amoled\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\amoled\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\amoled\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\anime\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\anime\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\anime\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\architecture\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\architecture\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\architecture\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\cars\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\cars\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\cars\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\gaming\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\gaming\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\gaming\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\minimal\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\minimal\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\minimal\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\nature\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\nature\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\nature\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\space\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\space\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\space\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_01",
+      "problem": "Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_04_18_at_45137_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: cars_01",
+      "problem": "Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_04_18_at_45137_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_02",
+      "problem": "Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_04_18_at_45137_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: cars_02",
+      "problem": "Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_04_18_at_45137_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_03",
+      "problem": "Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: cars_03",
+      "problem": "Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_04",
+      "problem": "Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_1.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: cars_04",
+      "problem": "Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_1.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_05",
+      "problem": "Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_1_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: cars_05",
+      "problem": "Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_1_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_06",
+      "problem": "Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: cars_06",
+      "problem": "Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_07",
+      "problem": "Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92521_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: cars_07",
+      "problem": "Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92521_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_08",
+      "problem": "Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92522_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: cars_08",
+      "problem": "Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92522_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_09",
+      "problem": "Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92522_pm_1.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: cars_09",
+      "problem": "Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92522_pm_1.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_10",
+      "problem": "Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92523_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: cars_10",
+      "problem": "Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92523_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_11",
+      "problem": "Wallpaper asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92523_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: cars_11",
+      "problem": "Legacy thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92523_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    }
+  ]
+}

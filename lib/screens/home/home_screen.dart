@@ -24,19 +24,6 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   static const int _currentBottomNavIndex = 0;
 
-  static const List<String> _categories = <String>[
-    'All',
-    'nature',
-    'abstract',
-    'amoled',
-    'anime',
-    'architecture',
-    'cars',
-    'gaming',
-    'minimal',
-    'space',
-  ];
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -173,30 +160,35 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
             SliverToBoxAdapter(
-              child: SizedBox(
-                height: 44.0,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.symmetric(horizontal: AppSizes.p16),
-                  itemCount: _categories.length,
-                  itemBuilder: (context, index) {
-                    final category = _categories[index];
-                    final isSelected =
-                        selectedCategory.toLowerCase() == category.toLowerCase();
-                    return CategoryChip(
-                      label: category == 'All'
-                          ? 'All'
-                          : category[0].toUpperCase() + category.substring(1),
-                      isSelected: isSelected,
-                      onTap: () {
-                        ref
-                            .read(selectedCategoryProvider.notifier)
-                            .selectCategory(category);
+              child: Builder(
+                builder: (context) {
+                  final categoriesList = ref.watch(categoriesProvider);
+                  final categoryNames = <String>['All', ...categoriesList.map((c) => c.name)];
+
+                  return SizedBox(
+                    height: 44.0,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(horizontal: AppSizes.p16),
+                      itemCount: categoryNames.length,
+                      itemBuilder: (context, index) {
+                        final category = categoryNames[index];
+                        final isSelected =
+                            selectedCategory.toLowerCase() == category.toLowerCase();
+                        return CategoryChip(
+                          label: category,
+                          isSelected: isSelected,
+                          onTap: () {
+                            ref
+                                .read(selectedCategoryProvider.notifier)
+                                .selectCategory(category);
+                          },
+                        );
                       },
-                    );
-                  },
-                ),
+                    ),
+                  );
+                },
               ),
             ),
 
