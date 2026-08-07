@@ -49,15 +49,6 @@ class UserPreferencesNotifier extends AsyncNotifier<UserPreferences> {
     await repository.savePreferences(updated);
   }
 
-  Future<void> toggleRecentlyViewed(bool value) async {
-    final current = state.value ?? const UserPreferences();
-    final updated = current.copyWith(showRecentlyViewed: value);
-    state = AsyncData(updated);
-
-    final repository = ref.read(preferencesRepositoryProvider);
-    await repository.savePreferences(updated);
-  }
-
   Future<void> toggleCollectionsSection(bool value) async {
     final current = state.value ?? const UserPreferences();
     final updated = current.copyWith(showCollectionsSection: value);

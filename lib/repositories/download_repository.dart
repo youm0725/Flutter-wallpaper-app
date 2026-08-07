@@ -16,7 +16,7 @@ final class LocalDownloadRepository implements IDownloadRepository {
   @override
   Future<bool> hasStoragePermission() async {
     try {
-      return await Gal.hasAccess();
+      return await Gal.hasAccess(toAlbum: false);
     } catch (_) {
       return false;
     }
@@ -25,7 +25,7 @@ final class LocalDownloadRepository implements IDownloadRepository {
   @override
   Future<bool> requestStoragePermission() async {
     try {
-      return await Gal.requestAccess();
+      return await Gal.requestAccess(toAlbum: false);
     } catch (_) {
       return false;
     }
@@ -34,12 +34,6 @@ final class LocalDownloadRepository implements IDownloadRepository {
   @override
   Future<bool> saveWallpaperToGallery(Wallpaper wallpaper) async {
     try {
-      final hasAccess = await hasStoragePermission();
-      if (!hasAccess) {
-        final granted = await requestStoragePermission();
-        if (!granted) return false;
-      }
-
       final ByteData byteData = await rootBundle.load(wallpaper.imagePath);
       final Uint8List bytes = byteData.buffer.asUint8List(
         byteData.offsetInBytes,

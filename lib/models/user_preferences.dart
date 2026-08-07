@@ -14,7 +14,6 @@ final class UserPreferences {
   final GridDensity gridDensity;
   final bool showDailyWallpaper;
   final bool showFeaturedSection;
-  final bool showRecentlyViewed;
   final bool showCollectionsSection;
 
   const UserPreferences({
@@ -22,7 +21,6 @@ final class UserPreferences {
     this.gridDensity = GridDensity.comfortable,
     this.showDailyWallpaper = true,
     this.showFeaturedSection = true,
-    this.showRecentlyViewed = true,
     this.showCollectionsSection = true,
   });
 
@@ -41,7 +39,6 @@ final class UserPreferences {
       gridDensity: density,
       showDailyWallpaper: json['showDailyWallpaper'] as bool? ?? true,
       showFeaturedSection: json['showFeaturedSection'] as bool? ?? true,
-      showRecentlyViewed: json['showRecentlyViewed'] as bool? ?? true,
       showCollectionsSection: json['showCollectionsSection'] as bool? ?? true,
     );
   }
@@ -53,7 +50,6 @@ final class UserPreferences {
       'gridDensity': gridDensity.name,
       'showDailyWallpaper': showDailyWallpaper,
       'showFeaturedSection': showFeaturedSection,
-      'showRecentlyViewed': showRecentlyViewed,
       'showCollectionsSection': showCollectionsSection,
     };
   }
@@ -64,7 +60,6 @@ final class UserPreferences {
     GridDensity? gridDensity,
     bool? showDailyWallpaper,
     bool? showFeaturedSection,
-    bool? showRecentlyViewed,
     bool? showCollectionsSection,
   }) {
     return UserPreferences(
@@ -72,7 +67,6 @@ final class UserPreferences {
       gridDensity: gridDensity ?? this.gridDensity,
       showDailyWallpaper: showDailyWallpaper ?? this.showDailyWallpaper,
       showFeaturedSection: showFeaturedSection ?? this.showFeaturedSection,
-      showRecentlyViewed: showRecentlyViewed ?? this.showRecentlyViewed,
       showCollectionsSection:
           showCollectionsSection ?? this.showCollectionsSection,
     );
@@ -86,7 +80,6 @@ final class UserPreferences {
         other.gridDensity == gridDensity &&
         other.showDailyWallpaper == showDailyWallpaper &&
         other.showFeaturedSection == showFeaturedSection &&
-        other.showRecentlyViewed == showRecentlyViewed &&
         other.showCollectionsSection == showCollectionsSection;
   }
 
@@ -97,7 +90,6 @@ final class UserPreferences {
       gridDensity,
       showDailyWallpaper,
       showFeaturedSection,
-      showRecentlyViewed,
       showCollectionsSection,
     );
   }

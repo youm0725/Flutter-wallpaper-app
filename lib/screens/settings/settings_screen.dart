@@ -6,7 +6,6 @@ import '../../core/router/route_constants.dart';
 import '../../providers/engagement_provider.dart';
 import '../../providers/favorites_provider.dart';
 import '../../providers/preferences_provider.dart';
-import '../../providers/recently_viewed_provider.dart';
 import '../../providers/share_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/user_collection_provider.dart';
@@ -103,17 +102,6 @@ class SettingsScreen extends ConsumerWidget {
                     ),
                   ),
                   PreferenceTile(
-                    icon: Icons.history_rounded,
-                    title: 'Recently Viewed',
-                    subtitle: 'Recent view history',
-                    trailing: Switch.adaptive(
-                      value: prefs.showRecentlyViewed,
-                      onChanged: (val) => ref
-                          .read(userPreferencesNotifierProvider.notifier)
-                          .toggleRecentlyViewed(val),
-                    ),
-                  ),
-                  PreferenceTile(
                     icon: Icons.collections_bookmark_outlined,
                     title: 'Curated Collections',
                     subtitle: 'Themed gallery sections',
@@ -143,12 +131,6 @@ class SettingsScreen extends ConsumerWidget {
                     trailing: const Icon(Icons.chevron_right_rounded),
                     onTap: () => context
                         .pushNamed(RouteConstants.userCollectionsName),
-                  ),
-                  PreferenceTile(
-                    icon: Icons.delete_outline_rounded,
-                    title: 'Clear Recently Viewed',
-                    subtitle: 'Reset view history',
-                    onTap: () => _clearRecentlyViewed(context, ref),
                   ),
                   PreferenceTile(
                     icon: Icons.heart_broken_outlined,
@@ -282,25 +264,6 @@ class SettingsScreen extends ConsumerWidget {
     final success = await openFeedback(ref);
     if (!success && context.mounted) {
       _showSnackBar(context, 'No email app found. Please contact support.');
-    }
-  }
-
-  Future<void> _clearRecentlyViewed(
-      BuildContext context, WidgetRef ref) async {
-    final confirmed = await ConfirmationDialog.show(
-      context,
-      title: 'Clear History?',
-      message: 'This will remove all wallpapers from your recently viewed list.',
-      confirmLabel: 'Clear',
-      isDestructive: true,
-    );
-    if (confirmed == true) {
-      await ref
-          .read(recentlyViewedNotifierProvider.notifier)
-          .clearHistory();
-      if (context.mounted) {
-        _showSnackBar(context, 'Recently viewed history cleared');
-      }
     }
   }
 

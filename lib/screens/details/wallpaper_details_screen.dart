@@ -6,7 +6,6 @@ import '../../core/constants/app_sizes.dart';
 import '../../models/wallpaper.dart';
 import '../../providers/download_provider.dart';
 import '../../providers/favorites_provider.dart';
-import '../../providers/recently_viewed_provider.dart';
 import '../../providers/wallpaper_providers.dart';
 import '../../widgets/widgets.dart';
 
@@ -29,16 +28,6 @@ class WallpaperDetailsScreen extends ConsumerStatefulWidget {
 class _WallpaperDetailsScreenState
     extends ConsumerState<WallpaperDetailsScreen> {
   bool _showControls = true;
-
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      ref
-          .read(recentlyViewedNotifierProvider.notifier)
-          .addWallpaperView(widget.wallpaperId);
-    });
-  }
 
   void _toggleControls() {
     setState(() {

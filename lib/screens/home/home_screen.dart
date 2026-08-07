@@ -8,7 +8,6 @@ import '../../models/wallpaper.dart';
 import '../../providers/category_provider.dart';
 import '../../providers/curated_providers.dart';
 import '../../providers/preferences_provider.dart';
-import '../../providers/recently_viewed_provider.dart';
 import '../../providers/theme_provider.dart';
 import '../../providers/wallpaper_providers.dart';
 import '../../widgets/widgets.dart';
@@ -33,7 +32,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final dailyWallpaper = ref.watch(dailyWallpaperProvider);
     final featuredWallpapers = ref.watch(featuredWallpapersProvider);
     final asyncCollections = ref.watch(collectionsProvider);
-    final recentlyViewedWallpapers = ref.watch(recentlyViewedWallpapersProvider);
     final prefs = ref.watch(userPreferencesNotifierProvider).value ?? const UserPreferences();
 
     final crossAxisCount = calculateGridCrossAxisCount(context, prefs.gridDensity);
@@ -113,33 +111,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               SliverToBoxAdapter(
                 child: HorizontalWallpaperList(
                   wallpapers: featuredWallpapers,
-                  onWallpaperTap: (w) => _onWallpaperTap(context, w),
-                ),
-              ),
-              const SliverToBoxAdapter(
-                child: SizedBox(height: AppSizes.p16),
-              ),
-            ],
-
-            // 5. Recently Viewed History Section
-            if (prefs.showRecentlyViewed && recentlyViewedWallpapers.isNotEmpty) ...[
-              SliverToBoxAdapter(
-                child: SectionHeader(
-                  title: 'Recently Viewed',
-                  subtitle: 'Wallpapers you recently explored',
-                  trailing: TextButton(
-                    onPressed: () {
-                      ref
-                          .read(recentlyViewedNotifierProvider.notifier)
-                          .clearHistory();
-                    },
-                    child: const Text('Clear'),
-                  ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: HorizontalWallpaperList(
-                  wallpapers: recentlyViewedWallpapers,
                   onWallpaperTap: (w) => _onWallpaperTap(context, w),
                 ),
               ),

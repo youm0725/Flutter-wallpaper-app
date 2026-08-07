@@ -34,7 +34,7 @@ abstract final class PrivacyContent {
     (
       heading: 'Local Storage Only',
       body:
-          'Your favorites, recently viewed history, collections, and preferences '
+          'Your favorites, collections, and preferences '
           'are saved using your device\'s local storage (SharedPreferences). '
           'This data never leaves your device.',
     ),
