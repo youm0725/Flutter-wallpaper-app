@@ -71,6 +71,8 @@ class _ZoomableWallpaperState extends State<ZoomableWallpaper>
             child: Image.asset(
               widget.wallpaper.imagePath,
               fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
               frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {
                 if (wasSynchronouslyLoaded) return child;
                 return AnimatedOpacity(
