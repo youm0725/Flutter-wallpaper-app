@@ -1,6 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/wallpaper.dart';
 import '../repositories/download_repository.dart';
+import 'engagement_provider.dart';
 
 /// Result status of a wallpaper download attempt.
 enum DownloadResult {
@@ -60,6 +61,11 @@ Future<DownloadResult> downloadWallpaper(
 
     final success = await repository.saveWallpaperToGallery(wallpaper);
     downloadsNotifier.stopDownload(wallpaper.id);
+
+    if (success) {
+      // Trigger native in-app rating popup for iOS and Play Store
+      await requestAppReview(ref);
+    }
 
     return success ? DownloadResult.success : DownloadResult.error;
   } catch (_) {
