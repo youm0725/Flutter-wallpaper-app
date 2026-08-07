@@ -1,5 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/category.dart';
+import '../repositories/category_repository.dart';
 import 'wallpaper_providers.dart';
 
 /// Notifier managing the currently selected single category filter string.
@@ -57,50 +58,80 @@ const List<String> kStandardCategories = <String>[
   'Technology',
 ];
 
-/// Provider computing structured [Category] models with counts and image previews.
+/// Provider for [ICategoryRepository] instance.
+final categoryRepositoryProvider = Provider<ICategoryRepository>((ref) {
+  final assetService = ref.watch(assetServiceProvider);
+  return LocalCategoryRepository(assetService: assetService);
+});
+
+/// FutureProvider loading raw category definitions from assets/metadata/categories.json.
+final rawCategoriesProvider = FutureProvider<List<Category>>((ref) async {
+  final repository = ref.watch(categoryRepositoryProvider);
+  return await repository.getCategories();
+});
+
+/// Provider computing structured [Category] models combining categories.json and wallpapers.
 final categoriesProvider = Provider<List<Category>>((ref) {
   final asyncWallpapers = ref.watch(wallpapersProvider);
+  final asyncRawCategories = ref.watch(rawCategoriesProvider);
 
-  return asyncWallpapers.when(
-    data: (wallpapers) {
-      if (wallpapers.isEmpty) {
-        return const <Category>[];
-      }
+  final wallpapers = asyncWallpapers.value ?? const [];
+  final rawCategories = asyncRawCategories.value ?? const [];
 
-      // Collect unique categories present in the wallpapers
-      final Map<String, List<dynamic>> categoryMap = {};
-      for (final w in wallpapers) {
-        final catName = w.category.trim();
-        if (catName.isNotEmpty) {
-          final key = catName.toLowerCase();
-          categoryMap.putIfAbsent(key, () => []).add(w);
-        }
-      }
+  if (wallpapers.isEmpty && rawCategories.isEmpty) {
+    return const <Category>[];
+  }
 
-      final List<Category> result = [];
-      categoryMap.forEach((key, categoryWallpapers) {
-        final displayName = categoryWallpapers.first.category.trim();
-        final previewPath = categoryWallpapers.isNotEmpty
-            ? categoryWallpapers.first.imagePath
-            : null;
+  // 1. Group wallpapers by category key (lowercase)
+  final Map<String, List<dynamic>> wallpapersByCat = {};
+  for (final w in wallpapers) {
+    final catName = w.category.trim();
+    if (catName.isNotEmpty) {
+      final key = catName.toLowerCase();
+      wallpapersByCat.putIfAbsent(key, () => []).add(w);
+    }
+  }
 
-        result.add(
-          Category(
-            id: key,
-            name: displayName,
-            wallpaperCount: categoryWallpapers.length,
-            previewImagePath: previewPath,
-            iconName: _getCategoryIconName(displayName),
-          ),
-        );
-      });
+  // 2. Build Category objects starting from metadata rawCategories
+  final Map<String, Category> resultCategories = {};
+  for (final cat in rawCategories) {
+    final key = cat.id.toLowerCase();
+    final matchingWallpapers = wallpapersByCat[key] ?? const [];
+    final previewPath = matchingWallpapers.isNotEmpty
+        ? matchingWallpapers.first.imagePath
+        : null;
 
-      result.sort((a, b) => a.name.compareTo(b.name));
-      return result;
-    },
-    loading: () => const <Category>[],
-    error: (error, stack) => const <Category>[],
-  );
+    resultCategories[key] = Category(
+      id: key,
+      name: cat.name,
+      description: cat.description,
+      wallpaperCount: matchingWallpapers.length,
+      previewImagePath: previewPath,
+      iconName: cat.iconName.isNotEmpty ? cat.iconName : _getCategoryIconName(cat.name),
+    );
+  }
+
+  // 3. Add any categories present in wallpapers but missing from rawCategories
+  wallpapersByCat.forEach((key, categoryWallpapers) {
+    if (!resultCategories.containsKey(key)) {
+      final displayName = categoryWallpapers.first.category.trim();
+      final previewPath = categoryWallpapers.isNotEmpty
+          ? categoryWallpapers.first.imagePath
+          : null;
+
+      resultCategories[key] = Category(
+        id: key,
+        name: displayName,
+        wallpaperCount: categoryWallpapers.length,
+        previewImagePath: previewPath,
+        iconName: _getCategoryIconName(displayName),
+      );
+    }
+  });
+
+  final List<Category> resultList = resultCategories.values.toList();
+  resultList.sort((a, b) => a.name.compareTo(b.name));
+  return resultList;
 });
 
 /// Provider computing all unique tags and their item counts across offline wallpapers.

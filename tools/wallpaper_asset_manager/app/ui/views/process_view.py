@@ -74,7 +74,17 @@ class ProcessView(ctk.CTkFrame):
             width=130
         )
         self.category_option.set(initial_cats[0])
-        self.category_option.pack(side="left", padx=(0, 15))
+        self.category_option.pack(side="left", padx=(0, 6))
+
+        btn_manage_cats = ctk.CTkButton(
+            ctrl_frame,
+            text="📂 Categories",
+            width=110,
+            fg_color="gray30",
+            hover_color="gray40",
+            command=self._open_category_manager
+        )
+        btn_manage_cats.pack(side="left", padx=(0, 15))
 
         # Action Buttons
         self.btn_start = ctk.CTkButton(
@@ -271,3 +281,8 @@ class ProcessView(ctk.CTkFrame):
             self.category_option.set(cur)
         else:
             self.category_option.set(cat_ids[0])
+
+    def _open_category_manager(self):
+        from app.ui.dialogs.category_manager_dialog import CategoryManagerDialog
+        dialog = CategoryManagerDialog(self, self.service.library_service, on_refresh_callback=self.refresh_data)
+        dialog.focus()

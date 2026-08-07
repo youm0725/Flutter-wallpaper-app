@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 class Category {
   final String id;
   final String name;
+  final String description;
   final int wallpaperCount;
   final String? previewImagePath;
   final String iconName;
@@ -12,10 +13,22 @@ class Category {
   const Category({
     required this.id,
     required this.name,
+    this.description = '',
     this.wallpaperCount = 0,
     this.previewImagePath,
     this.iconName = 'category',
   });
+
+  factory Category.fromJson(Map<String, dynamic> json) {
+    final rawId = (json['id'] as String? ?? '').trim();
+    final rawName = (json['name'] as String? ?? '').trim();
+    return Category(
+      id: rawId.toLowerCase(),
+      name: rawName.isNotEmpty ? rawName : rawId.toUpperCase(),
+      description: (json['description'] as String? ?? '').trim(),
+      iconName: (json['icon'] as String? ?? json['iconName'] as String? ?? 'category').trim(),
+    );
+  }
 
   Category copyWith({
     String? id,

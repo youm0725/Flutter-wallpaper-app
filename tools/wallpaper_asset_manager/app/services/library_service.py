@@ -196,7 +196,7 @@ class LibraryService:
     # ----------------------------------------------------
     # CATEGORY OPERATIONS
     # ----------------------------------------------------
-    def add_category(self, cat_id: str, name: str, description: str = "") -> bool:
+    def add_category(self, cat_id: str, name: str, description: str = "", icon: str = "folder") -> bool:
         cat_id = cat_id.lower().strip()
         if any(c.get("id", "").lower() == cat_id for c in self.categories):
             logger.warning("Category '%s' already exists.", cat_id)
@@ -206,23 +206,55 @@ class LibraryService:
         self.categories.append({
             "id": cat_id,
             "name": name.strip(),
-            "description": description.strip()
+            "description": description.strip(),
+            "icon": icon.strip() or "folder"
         })
-        logger.info("Added new category: %s", name)
+        logger.info("Added new category: %s (%s)", name, cat_id)
+        return True
+
+    def update_category(
+        self,
+        old_id: str,
+        new_name: str,
+        new_description: str = "",
+        new_icon: str = "folder",
+        new_id: Optional[str] = None
+    ) -> bool:
+        old_id = old_id.lower().strip()
+        target_category = None
+        for c in self.categories:
+            if c.get("id", "").lower() == old_id:
+                target_category = c
+                break
+
+        if not target_category:
+            logger.warning("Category '%s' not found for update.", old_id)
+            return False
+
+        self._push_undo_snapshot()
+        target_category["name"] = new_name.strip()
+        target_category["description"] = new_description.strip()
+        target_category["icon"] = new_icon.strip() or "folder"
+
+        if new_id and new_id.lower().strip() != old_id:
+            clean_new_id = new_id.lower().strip()
+            if any(c.get("id", "").lower() == clean_new_id for c in self.categories if c is not target_category):
+                logger.warning("Cannot rename category ID to existing '%s'", clean_new_id)
+            else:
+                target_category["id"] = clean_new_id
+                for w in self.wallpapers:
+                    if w.get("category", "").lower() == old_id:
+                        w["category"] = clean_new_id
+
+        logger.info("Updated category %s: %s", old_id, new_name)
         return True
 
     def rename_category(self, cat_id: str, new_name: str) -> bool:
-        for c in self.categories:
-            if c.get("id") == cat_id:
-                self._push_undo_snapshot()
-                c["name"] = new_name.strip()
-                logger.info("Renamed category %s to %s", cat_id, new_name)
-                return True
-        return False
+        return self.update_category(cat_id, new_name)
 
     def delete_category(self, cat_id: str, reassign_category: str = "general") -> bool:
         self._push_undo_snapshot()
-        self.categories = [c for c in self.categories if c.get("id") != cat_id]
+        self.categories = [c for c in self.categories if c.get("id", "").lower() != cat_id.lower()]
         
         # Reassign wallpapers under deleted category to reassign_category
         for w in self.wallpapers:
