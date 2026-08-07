@@ -6,7 +6,7 @@ from app.core.logger import get_logger
 logger = get_logger("SizeAnalyzerService")
 
 class SizeAnalyzerService:
-    """Service analyzing asset disk space consumption and warning thresholds."""
+    """Service analyzing asset disk space consumption, footprint estimation, and warning thresholds."""
     
     @staticmethod
     def analyze_storage_size(
@@ -28,12 +28,25 @@ class SizeAnalyzerService:
                         tot += fp.stat().st_size
             return tot
 
-        full_size_bytes = _dir_size(wallpapers_dir / "full")
-        thumb_size_bytes = _dir_size(wallpapers_dir / "thumbnails")
+        wallpaper_assets_bytes = _dir_size(wallpapers_dir)
         metadata_size_bytes = _dir_size(metadata_dir)
 
-        total_bytes = full_size_bytes + thumb_size_bytes + metadata_size_bytes
-        total_mb = total_bytes / (1024 * 1024)
+        total_bytes = wallpaper_assets_bytes + metadata_size_bytes
+        total_mb = round(total_bytes / (1024 * 1024), 2)
+        wallpaper_assets_mb = round(wallpaper_assets_bytes / (1024 * 1024), 2)
+        metadata_size_mb = round(metadata_size_bytes / (1024 * 1024), 2)
+        remaining_mb = round(max_limit_mb - total_mb, 2)
+
+        # Health Level Calculation
+        ratio = total_mb / max_limit_mb if max_limit_mb > 0 else 0.0
+        if ratio < 0.75:
+            health_status = "Healthy"
+        elif ratio < 0.90:
+            health_status = "Notice"
+        elif ratio <= 1.00:
+            health_status = "Warning"
+        else:
+            health_status = "Critical"
 
         issues: List[Dict[str, Any]] = []
         if total_mb > max_limit_mb:
@@ -41,15 +54,18 @@ class SizeAnalyzerService:
                 "category": "Storage Limit",
                 "severity": "Warning",
                 "location": "assets/",
-                "problem": f"Total assets size ({total_mb:.1f} MB) exceeds configured warning limit ({max_limit_mb} MB).",
-                "fix": "Re-compress wallpapers using Compact WebP preset or remove unused wallpapers."
+                "problem": f"Total assets size ({total_mb} MB) exceeds configured warning limit ({max_limit_mb} MB).",
+                "fix": "Re-compress wallpapers using Compact WebP preset or run Asset Cleanup to remove unreferenced wallpapers."
             })
 
         return {
-            "full_size_mb": round(full_size_bytes / (1024 * 1024), 2),
-            "thumb_size_mb": round(thumb_size_bytes / (1024 * 1024), 2),
-            "metadata_size_mb": round(metadata_size_bytes / (1024 * 1024), 2),
-            "total_size_mb": round(total_mb, 2),
+            "wallpaper_assets_mb": wallpaper_assets_mb,
+            "full_size_mb": wallpaper_assets_mb,
+            "thumb_size_mb": 0.0,
+            "metadata_size_mb": metadata_size_mb,
+            "total_size_mb": total_mb,
             "max_limit_mb": max_limit_mb,
+            "remaining_mb": remaining_mb,
+            "health_status": health_status,
             "issues": issues
         }

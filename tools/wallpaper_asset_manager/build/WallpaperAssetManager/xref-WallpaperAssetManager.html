@@ -3832,6 +3832,7 @@ imported by:
  &#8226;   <a href="#app.services.asset_validator_service">app.services.asset_validator_service</a>
  &#8226;   <a href="#app.services.cache_service">app.services.cache_service</a>
  &#8226;   <a href="#app.services.checklist_manager_service">app.services.checklist_manager_service</a>
+ &#8226;   <a href="#app.services.cleanup_service">app.services.cleanup_service</a>
  &#8226;   <a href="#app.services.flutter_detector_service">app.services.flutter_detector_service</a>
  &#8226;   <a href="#app.services.history_service">app.services.history_service</a>
  &#8226;   <a href="#app.services.image_processing_engine">app.services.image_processing_engine</a>
@@ -3841,6 +3842,7 @@ imported by:
  &#8226;   <a href="#app.services.master_restore_service">app.services.master_restore_service</a>
  &#8226;   <a href="#app.services.metadata_service">app.services.metadata_service</a>
  &#8226;   <a href="#app.services.metadata_validation_service">app.services.metadata_validation_service</a>
+ &#8226;   <a href="#app.services.migration_service">app.services.migration_service</a>
  &#8226;   <a href="#app.services.processing_queue_manager">app.services.processing_queue_manager</a>
  &#8226;   <a href="#app.services.release_validator_service">app.services.release_validator_service</a>
  &#8226;   <a href="#app.services.size_analyzer_service">app.services.size_analyzer_service</a>
@@ -3963,6 +3965,7 @@ imported by:
  &#8226;   <a href="#app.services.asset_validator_service">app.services.asset_validator_service</a>
  &#8226;   <a href="#app.services.cache_service">app.services.cache_service</a>
  &#8226;   <a href="#app.services.checklist_manager_service">app.services.checklist_manager_service</a>
+ &#8226;   <a href="#app.services.cleanup_service">app.services.cleanup_service</a>
  &#8226;   <a href="#app.services.flutter_detector_service">app.services.flutter_detector_service</a>
  &#8226;   <a href="#app.services.history_service">app.services.history_service</a>
  &#8226;   <a href="#app.services.image_processing_engine">app.services.image_processing_engine</a>
@@ -3972,6 +3975,7 @@ imported by:
  &#8226;   <a href="#app.services.master_restore_service">app.services.master_restore_service</a>
  &#8226;   <a href="#app.services.metadata_service">app.services.metadata_service</a>
  &#8226;   <a href="#app.services.metadata_validation_service">app.services.metadata_validation_service</a>
+ &#8226;   <a href="#app.services.migration_service">app.services.migration_service</a>
  &#8226;   <a href="#app.services.processing_queue_manager">app.services.processing_queue_manager</a>
  &#8226;   <a href="#app.services.release_validator_service">app.services.release_validator_service</a>
  &#8226;   <a href="#app.services.size_analyzer_service">app.services.size_analyzer_service</a>
@@ -3994,9 +3998,11 @@ imports:
  &#8226;   <a href="#app.core.logger">app.core.logger</a>
  &#8226;   <a href="#app.models.app_state">app.models.app_state</a>
  &#8226;   <a href="#app.services">app.services</a>
+ &#8226;   <a href="#app.services.cleanup_service">app.services.cleanup_service</a>
  &#8226;   <a href="#app.services.history_service">app.services.history_service</a>
  &#8226;   <a href="#app.services.library_service">app.services.library_service</a>
  &#8226;   <a href="#app.services.metadata_service">app.services.metadata_service</a>
+ &#8226;   <a href="#app.services.migration_service">app.services.migration_service</a>
  &#8226;   <a href="#app.utils.path_helper">app.utils.path_helper</a>
 
   </div>
@@ -4068,6 +4074,28 @@ imports:
   <div class="import">
 imported by:
     <a href="#app.ui.views.validation_view">app.ui.views.validation_view</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="app.services.cleanup_service"></a>
+  <a target="code" href="///D:/YOUM%20PATEL/Desktop/Flutter%20Projects/wallpaper_app/tools/wallpaper_asset_manager/app/services/cleanup_service.py" type="text/plain"><tt>app.services.cleanup_service</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#app.core.logger">app.core.logger</a>
+ &#8226;   <a href="#app.services">app.services</a>
+ &#8226;   <a href="#app.services.metadata_service">app.services.metadata_service</a>
+ &#8226;   <a href="#app.services.sync_backup_service">app.services.sync_backup_service</a>
+ &#8226;   <a href="#app.utils.path_helper">app.utils.path_helper</a>
+ &#8226;   <a href="#pathlib">pathlib</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#app.services.app_service">app.services.app_service</a>
 
   </div>
 
@@ -4263,9 +4291,11 @@ imports:
   <div class="import">
 imported by:
     <a href="#app.services.app_service">app.services.app_service</a>
+ &#8226;   <a href="#app.services.cleanup_service">app.services.cleanup_service</a>
  &#8226;   <a href="#app.services.library_service">app.services.library_service</a>
  &#8226;   <a href="#app.services.master_backup_service">app.services.master_backup_service</a>
  &#8226;   <a href="#app.services.master_restore_service">app.services.master_restore_service</a>
+ &#8226;   <a href="#app.services.migration_service">app.services.migration_service</a>
  &#8226;   <a href="#app.services.release_validator_service">app.services.release_validator_service</a>
  &#8226;   <a href="#app.services.statistics_service">app.services.statistics_service</a>
  &#8226;   <a href="#app.ui.views.metadata_view">app.ui.views.metadata_view</a>
@@ -4291,6 +4321,30 @@ imported by:
     <a href="#app.services.library_service">app.services.library_service</a>
  &#8226;   <a href="#app.services.release_validator_service">app.services.release_validator_service</a>
  &#8226;   <a href="#app.ui.views.metadata_view">app.ui.views.metadata_view</a>
+
+  </div>
+
+</div>
+
+<div class="node">
+  <a name="app.services.migration_service"></a>
+  <a target="code" href="///D:/YOUM%20PATEL/Desktop/Flutter%20Projects/wallpaper_app/tools/wallpaper_asset_manager/app/services/migration_service.py" type="text/plain"><tt>app.services.migration_service</tt></a>
+<span class="moduletype">SourceModule</span>  <div class="import">
+imports:
+    <a href="#app.core.logger">app.core.logger</a>
+ &#8226;   <a href="#app.services">app.services</a>
+ &#8226;   <a href="#app.services.metadata_service">app.services.metadata_service</a>
+ &#8226;   <a href="#app.services.sync_backup_service">app.services.sync_backup_service</a>
+ &#8226;   <a href="#app.utils.path_helper">app.utils.path_helper</a>
+ &#8226;   <a href="#pathlib">pathlib</a>
+ &#8226;   <a href="#shutil">shutil</a>
+ &#8226;   <a href="#time">time</a>
+ &#8226;   <a href="#typing">typing</a>
+
+  </div>
+  <div class="import">
+imported by:
+    <a href="#app.services.app_service">app.services.app_service</a>
 
   </div>
 
@@ -4412,7 +4466,9 @@ imports:
   </div>
   <div class="import">
 imported by:
-    <a href="#app.services.sync_service">app.services.sync_service</a>
+    <a href="#app.services.cleanup_service">app.services.cleanup_service</a>
+ &#8226;   <a href="#app.services.migration_service">app.services.migration_service</a>
+ &#8226;   <a href="#app.services.sync_service">app.services.sync_service</a>
  &#8226;   <a href="#app.ui.views.sync_view">app.ui.views.sync_view</a>
 
   </div>
@@ -5055,6 +5111,7 @@ imported by:
  &#8226;   <a href="#app.services.asset_validator_service">app.services.asset_validator_service</a>
  &#8226;   <a href="#app.services.cache_service">app.services.cache_service</a>
  &#8226;   <a href="#app.services.checklist_manager_service">app.services.checklist_manager_service</a>
+ &#8226;   <a href="#app.services.cleanup_service">app.services.cleanup_service</a>
  &#8226;   <a href="#app.services.flutter_detector_service">app.services.flutter_detector_service</a>
  &#8226;   <a href="#app.services.image_processing_engine">app.services.image_processing_engine</a>
  &#8226;   <a href="#app.services.library_service">app.services.library_service</a>
@@ -5062,6 +5119,7 @@ imported by:
  &#8226;   <a href="#app.services.master_restore_service">app.services.master_restore_service</a>
  &#8226;   <a href="#app.services.metadata_service">app.services.metadata_service</a>
  &#8226;   <a href="#app.services.metadata_validation_service">app.services.metadata_validation_service</a>
+ &#8226;   <a href="#app.services.migration_service">app.services.migration_service</a>
  &#8226;   <a href="#app.services.release_validator_service">app.services.release_validator_service</a>
  &#8226;   <a href="#app.services.size_analyzer_service">app.services.size_analyzer_service</a>
  &#8226;   <a href="#app.services.statistics_service">app.services.statistics_service</a>
@@ -12994,6 +13052,7 @@ imported by:
  &#8226;   <a href="#app.services.asset_validator_service">app.services.asset_validator_service</a>
  &#8226;   <a href="#app.services.cache_service">app.services.cache_service</a>
  &#8226;   <a href="#app.services.checklist_manager_service">app.services.checklist_manager_service</a>
+ &#8226;   <a href="#app.services.cleanup_service">app.services.cleanup_service</a>
  &#8226;   <a href="#app.services.flutter_detector_service">app.services.flutter_detector_service</a>
  &#8226;   <a href="#app.services.image_processing_engine">app.services.image_processing_engine</a>
  &#8226;   <a href="#app.services.import_service">app.services.import_service</a>
@@ -13002,6 +13061,7 @@ imported by:
  &#8226;   <a href="#app.services.master_restore_service">app.services.master_restore_service</a>
  &#8226;   <a href="#app.services.metadata_service">app.services.metadata_service</a>
  &#8226;   <a href="#app.services.metadata_validation_service">app.services.metadata_validation_service</a>
+ &#8226;   <a href="#app.services.migration_service">app.services.migration_service</a>
  &#8226;   <a href="#app.services.processing_queue_manager">app.services.processing_queue_manager</a>
  &#8226;   <a href="#app.services.release_validator_service">app.services.release_validator_service</a>
  &#8226;   <a href="#app.services.size_analyzer_service">app.services.size_analyzer_service</a>
@@ -13744,6 +13804,7 @@ imported by:
  &#8226;   <a href="#app.services.master_backup_service">app.services.master_backup_service</a>
  &#8226;   <a href="#app.services.master_restore_service">app.services.master_restore_service</a>
  &#8226;   <a href="#app.services.metadata_service">app.services.metadata_service</a>
+ &#8226;   <a href="#app.services.migration_service">app.services.migration_service</a>
  &#8226;   <a href="#app.services.sync_backup_service">app.services.sync_backup_service</a>
  &#8226;   <a href="#app.services.sync_service">app.services.sync_service</a>
  &#8226;   <a href="#argparse">argparse</a>
@@ -14411,6 +14472,7 @@ imported by:
  &#8226;   <a href="#app.services.master_backup_service">app.services.master_backup_service</a>
  &#8226;   <a href="#app.services.master_restore_service">app.services.master_restore_service</a>
  &#8226;   <a href="#app.services.metadata_service">app.services.metadata_service</a>
+ &#8226;   <a href="#app.services.migration_service">app.services.migration_service</a>
  &#8226;   <a href="#app.services.processing_queue_manager">app.services.processing_queue_manager</a>
  &#8226;   <a href="#app.services.release_validator_service">app.services.release_validator_service</a>
  &#8226;   <a href="#app.services.statistics_service">app.services.statistics_service</a>
@@ -15071,6 +15133,7 @@ imported by:
  &#8226;   <a href="#app.services.asset_validator_service">app.services.asset_validator_service</a>
  &#8226;   <a href="#app.services.cache_service">app.services.cache_service</a>
  &#8226;   <a href="#app.services.checklist_manager_service">app.services.checklist_manager_service</a>
+ &#8226;   <a href="#app.services.cleanup_service">app.services.cleanup_service</a>
  &#8226;   <a href="#app.services.flutter_detector_service">app.services.flutter_detector_service</a>
  &#8226;   <a href="#app.services.history_service">app.services.history_service</a>
  &#8226;   <a href="#app.services.image_processing_engine">app.services.image_processing_engine</a>
@@ -15080,6 +15143,7 @@ imported by:
  &#8226;   <a href="#app.services.master_restore_service">app.services.master_restore_service</a>
  &#8226;   <a href="#app.services.metadata_service">app.services.metadata_service</a>
  &#8226;   <a href="#app.services.metadata_validation_service">app.services.metadata_validation_service</a>
+ &#8226;   <a href="#app.services.migration_service">app.services.migration_service</a>
  &#8226;   <a href="#app.services.processing_queue_manager">app.services.processing_queue_manager</a>
  &#8226;   <a href="#app.services.release_validator_service">app.services.release_validator_service</a>
  &#8226;   <a href="#app.services.size_analyzer_service">app.services.size_analyzer_service</a>

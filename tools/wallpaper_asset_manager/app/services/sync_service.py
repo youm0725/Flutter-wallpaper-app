@@ -13,7 +13,7 @@ logger = get_logger("SyncService")
 DEFAULT_MAX_APP_SIZE_MB = 200.0
 
 class SyncService:
-    """Core synchronization service between Asset Manager output and Flutter workspace."""
+    """Core synchronization service V2 between Asset Manager output and Flutter workspace."""
     
     def __init__(self, workspace_root: Path | None = None):
         self.workspace_root = workspace_root or PathHelper.get_workspace_root()
@@ -39,8 +39,7 @@ class SyncService:
         """Calculates Dry Run preview comparing processed output with target Flutter assets."""
         target_assets = self.workspace_root / "assets" / "wallpapers"
         
-        processed_full = self.output_dir / "full"
-        processed_thumb = self.output_dir / "thumbnails"
+        processed_wp_dir = self.output_dir / "wallpapers" if (self.output_dir / "wallpapers").exists() else self.output_dir
 
         added_files: List[str] = []
         updated_files: List[str] = []
@@ -51,16 +50,18 @@ class SyncService:
         if target_assets.exists():
             for root, _, files in target_assets.walk():
                 for f in files:
-                    rel = (root / f).relative_to(target_assets)
-                    target_files_set.add(str(rel))
+                    fp = root / f
+                    if fp.is_file() and fp.suffix.lower() == ".webp":
+                        rel = fp.relative_to(target_assets)
+                        target_files_set.add(str(rel))
 
         processed_files_set = set()
-        for root_dir in (processed_full, processed_thumb):
-            if root_dir.exists():
-                prefix = root_dir.name  # 'full' or 'thumbnails'
-                for root, _, files in root_dir.walk():
-                    for f in files:
-                        rel = Path(prefix) / (root / f).relative_to(root_dir)
+        if processed_wp_dir.exists():
+            for root, _, files in processed_wp_dir.walk():
+                for f in files:
+                    fp = root / f
+                    if fp.is_file() and fp.suffix.lower() == ".webp":
+                        rel = fp.relative_to(processed_wp_dir)
                         rel_str = str(rel)
                         processed_files_set.add(rel_str)
 
@@ -76,7 +77,7 @@ class SyncService:
         cur_bytes = self.calculate_dir_size_bytes(target_assets)
         cur_mb = cur_bytes / (1024 * 1024)
 
-        proc_bytes = self.calculate_dir_size_bytes(self.output_dir)
+        proc_bytes = self.calculate_dir_size_bytes(processed_wp_dir)
         projected_mb = proc_bytes / (1024 * 1024)
         delta_mb = projected_mb - cur_mb
 
@@ -113,32 +114,23 @@ class SyncService:
         target_metadata.mkdir(parents=True, exist_ok=True)
 
         try:
-            # Step 3: Copy Assets (full & thumbnails)
-            full_src = self.output_dir / "full"
-            thumb_src = self.output_dir / "thumbnails"
+            # Step 3: Copy WebP Wallpaper Assets directly
+            processed_wp_dir = self.output_dir / "wallpapers" if (self.output_dir / "wallpapers").exists() else self.output_dir
 
-            if full_src.exists():
-                shutil.copytree(full_src, target_assets / "full", dirs_exist_ok=True)
-            if thumb_src.exists():
-                shutil.copytree(thumb_src, target_assets / "thumbnails", dirs_exist_ok=True)
-
-            # Step 4: Copy Metadata JSON files
-            meta_src = self.workspace_root / "assets" / "metadata"
-            # Metadata is already updated in assets/metadata by LibraryService
-
-            # Step 5: Handle Removed Assets
-            for rel_removed in dry_run["removed_files"]:
-                to_delete = target_assets / rel_removed
-                if to_delete.exists():
-                    to_delete.unlink()
+            if processed_wp_dir.exists():
+                for root, _, files in processed_wp_dir.walk():
+                    for f in files:
+                        fp = root / f
+                        if fp.is_file() and fp.suffix.lower() == ".webp":
+                            shutil.copy2(fp, target_assets / fp.name)
 
             duration = round(time.time() - start_time, 2)
 
-            # Step 6: Generate Sync Report Log
+            # Step 4: Generate Sync Report Log
             report_path = self._generate_report(dry_run, duration, backup_path)
-            logger.info("Flutter Sync completed in %.2fs. Report: %s", duration, report_path)
+            logger.info("Flutter Sync V2 completed in %.2fs. Report: %s", duration, report_path)
 
-            summary_msg = f"Synced successfully in {duration}s! Added: {dry_run['added_count']}, Updated: {dry_run['updated_count']}, Removed: {dry_run['removed_count']}."
+            summary_msg = f"Synced successfully in {duration}s! Added: {dry_run['added_count']}, Updated: {dry_run['updated_count']}."
             return True, summary_msg, report_path
 
         except Exception as e:
@@ -154,7 +146,7 @@ class SyncService:
 
         lines = [
             "==========================================================",
-            "FLUTTER WALLPAPER APP — ASSET SYNC REPORT",
+            "FLUTTER WALLPAPER APP — ASSET SYNC REPORT V2",
             "==========================================================",
             f"Timestamp: {time.strftime('%Y-%m-%d %H:%M:%S')}",
             f"Duration: {duration:.2f} seconds",

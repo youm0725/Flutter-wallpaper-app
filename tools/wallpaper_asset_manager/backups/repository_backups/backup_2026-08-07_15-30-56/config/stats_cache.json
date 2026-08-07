@@ -1,0 +1,40 @@
+{
+  "total_wallpapers": 1,
+  "total_categories": 0,
+  "total_collections": 0,
+  "featured_count": 1,
+  "total_storage_mb": 0.0,
+  "full_size_mb": 0.0,
+  "thumb_size_mb": 0.0,
+  "metadata_size_mb": 0.0,
+  "backups_size_mb": 1.98,
+  "projected_app_mb": 0.0,
+  "remaining_mb": 200.0,
+  "max_limit_mb": 200.0,
+  "avg_size_kb": 0.0,
+  "largest_kb": 0.0,
+  "smallest_kb": 0.0,
+  "common_resolution": "1080x1920",
+  "category_breakdown": [],
+  "collection_breakdown": [],
+  "top_tags": [
+    "trees"
+  ],
+  "health_status": "Healthy",
+  "issues_count": 0,
+  "recent_activity": [
+    {
+      "time": "Just now",
+      "event": "Loaded 1 wallpapers & metadata"
+    },
+    {
+      "time": "15:30",
+      "event": "Completed asset integrity scan"
+    },
+    {
+      "time": "2026-08-07",
+      "event": "Synchronized asset manager cache"
+    }
+  ],
+  "cache_timestamp": "2026-08-07 15:30:55"
+}

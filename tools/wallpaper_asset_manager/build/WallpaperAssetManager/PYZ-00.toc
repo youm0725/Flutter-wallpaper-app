@@ -370,6 +370,10 @@
    'D:\\YOUM PATEL\\Desktop\\Flutter '
    'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\services\\checklist_manager_service.py',
    'PYMODULE'),
+  ('app.services.cleanup_service',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\services\\cleanup_service.py',
+   'PYMODULE'),
   ('app.services.flutter_detector_service',
    'D:\\YOUM PATEL\\Desktop\\Flutter '
    'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\services\\flutter_detector_service.py',
@@ -405,6 +409,10 @@
   ('app.services.metadata_validation_service',
    'D:\\YOUM PATEL\\Desktop\\Flutter '
    'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\services\\metadata_validation_service.py',
+   'PYMODULE'),
+  ('app.services.migration_service',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\services\\migration_service.py',
    'PYMODULE'),
   ('app.services.processing_queue_manager',
    'D:\\YOUM PATEL\\Desktop\\Flutter '

@@ -3,7 +3,7 @@ import re
 import gc
 import time
 from pathlib import Path
-from typing import Tuple, Dict
+from typing import Tuple, Dict, Optional
 from PIL import Image, ImageOps
 from app.models.processing_task import ProcessingTask
 from app.utils.path_helper import PathHelper
@@ -18,7 +18,7 @@ QUALITY_PRESETS: Dict[str, int] = {
 }
 
 class ImageProcessingEngine:
-    """Core image processing pipeline converting wallpapers to optimized WebP assets."""
+    """Core image processing pipeline V2 generating single optimized WebP assets per wallpaper."""
     
     @staticmethod
     def clean_filename(raw_filename: str) -> str:
@@ -60,34 +60,40 @@ class ImageProcessingEngine:
         max_width: int = 1440,
         max_height: int = 3200,
         thumb_width: int = 360,
-        output_root: Path | None = None
+        output_root: Optional[Path] = None,
+        single_asset_mode: bool = True,
+        **kwargs
     ) -> bool:
-        """Executes full wallpaper processing pipeline on a candidate task."""
+        """Executes wallpaper processing pipeline generating optimized WebP asset."""
         start_time = time.time()
         task.status = "Processing"
         
         quality = QUALITY_PRESETS.get(preset, 82)
         base_output_dir = output_root or PathHelper.get_output_dir()
         
-        category = task.category.lower().strip() if task.category else "general"
-        full_dir = base_output_dir / "full" / category
-        thumb_dir = base_output_dir / "thumbnails" / category
+        # If output_root doesn't end with 'wallpapers', route into wallpapers subfolder
+        if base_output_dir.name != "wallpapers":
+            target_dir = base_output_dir / "wallpapers"
+        else:
+            target_dir = base_output_dir
 
         input_path = task.imported_item.file_path
         clean_name = cls.clean_filename(task.imported_item.filename)
 
-        full_output_path = cls.resolve_unique_path(full_dir, clean_name)
-        thumb_output_path = cls.resolve_unique_path(thumb_dir, full_output_path.name)
+        output_path = cls.resolve_unique_path(target_dir, clean_name)
 
         try:
-            logger.info("Processing wallpaper: %s -> %s (Preset: %s, Q: %d)", input_path.name, full_output_path.name, preset, quality)
+            logger.info(
+                "Processing wallpaper V2: %s -> %s (Preset: %s, Q: %d, Max: %dx%d)",
+                input_path.name, output_path.name, preset, quality, max_width, max_height
+            )
 
             # Open image copy (never touch original file in input/)
             with Image.open(input_path) as orig_img:
                 # 1. Correct EXIF Orientation
                 img = ImageOps.exif_transpose(orig_img)
 
-                # 2. Color Mode Standardisation (RGB for WebP)
+                # 2. Color Mode Standardisation (RGB/RGBA for WebP)
                 if img.mode not in ("RGB", "RGBA"):
                     img = img.convert("RGB")
 
@@ -96,29 +102,27 @@ class ImageProcessingEngine:
                 if orig_w > max_width or orig_h > max_height:
                     img.thumbnail((max_width, max_height), Image.Resampling.LANCZOS)
 
-                # 4. Save Full WebP Wallpaper
-                img.save(full_output_path, "WEBP", quality=quality, method=6)
-                task.full_size_bytes = full_output_path.stat().st_size
-
-                # 5. Generate Thumbnail (Width: 360px, aspect ratio preserved)
-                cur_w, cur_h = img.size
-                calc_h = int(cur_h * (thumb_width / cur_w)) if cur_w > 0 else 640
-                
-                thumb_img = img.copy()
-                thumb_img.thumbnail((thumb_width, calc_h), Image.Resampling.LANCZOS)
-                thumb_img.save(thumb_output_path, "WEBP", quality=min(quality, 80), method=6)
-                task.thumb_size_bytes = thumb_output_path.stat().st_size
+                # 4. Save Single Optimized WebP Wallpaper Asset
+                img.save(output_path, "WEBP", quality=quality, method=6)
+                task.full_size_bytes = output_path.stat().st_size
+                task.thumb_size_bytes = task.full_size_bytes
 
             # Update Task Record
-            task.output_full_path = full_output_path
-            task.output_thumb_path = thumb_output_path
+            task.output_full_path = output_path
+            task.output_thumb_path = output_path
             task.duration_seconds = round(time.time() - start_time, 2)
             task.status = "Completed"
             
-            logger.info("Successfully processed %s in %.2fs. Full: %s (%d KB), Thumb: %s (%d KB)",
-                        input_path.name, task.duration_seconds,
-                        full_output_path.name, round(task.full_size_bytes / 1024),
-                        thumb_output_path.name, round(task.thumb_size_bytes / 1024))
+            orig_bytes = input_path.stat().st_size
+            opt_bytes = task.full_size_bytes
+            saved_bytes = max(0, orig_bytes - opt_bytes)
+            saved_percent = round((saved_bytes / orig_bytes * 100), 1) if orig_bytes > 0 else 0.0
+
+            logger.info(
+                "Successfully processed %s in %.2fs. Original: %d KB, Optimized: %d KB (Saved %s%%)",
+                input_path.name, task.duration_seconds,
+                round(orig_bytes / 1024), round(opt_bytes / 1024), saved_percent
+            )
 
             return True
 

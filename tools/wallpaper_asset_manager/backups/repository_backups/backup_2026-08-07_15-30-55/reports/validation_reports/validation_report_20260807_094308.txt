@@ -1,0 +1,125 @@
+==========================================================
+WALLPAPER GALLERY — RELEASE VALIDATION REPORT
+==========================================================
+Timestamp: 2026-08-07 09:43:08
+Duration: 0.06s
+
+SUMMARY STATS:
+  - Total Checks Run: 55
+  - Passed:           33
+  - Warnings:         0
+  - Errors:           22
+  - Total Asset Size: 0.02 MB
+
+DETAILED ISSUES & FIX SUGGESTIONS:
+[1] ERROR - Metadata Validation
+    Location: ID: cars_01
+    Problem:  Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_04_18_at_45137_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[2] ERROR - Metadata Validation
+    Location: ID: cars_01
+    Problem:  Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_04_18_at_45137_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[3] ERROR - Metadata Validation
+    Location: ID: cars_02
+    Problem:  Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_04_18_at_45137_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[4] ERROR - Metadata Validation
+    Location: ID: cars_02
+    Problem:  Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_04_18_at_45137_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[5] ERROR - Metadata Validation
+    Location: ID: cars_03
+    Problem:  Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[6] ERROR - Metadata Validation
+    Location: ID: cars_03
+    Problem:  Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[7] ERROR - Metadata Validation
+    Location: ID: cars_04
+    Problem:  Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_1.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[8] ERROR - Metadata Validation
+    Location: ID: cars_04
+    Problem:  Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_1.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[9] ERROR - Metadata Validation
+    Location: ID: cars_05
+    Problem:  Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_1_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[10] ERROR - Metadata Validation
+    Location: ID: cars_05
+    Problem:  Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_1_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[11] ERROR - Metadata Validation
+    Location: ID: cars_06
+    Problem:  Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[12] ERROR - Metadata Validation
+    Location: ID: cars_06
+    Problem:  Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[13] ERROR - Metadata Validation
+    Location: ID: cars_07
+    Problem:  Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92521_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[14] ERROR - Metadata Validation
+    Location: ID: cars_07
+    Problem:  Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92521_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[15] ERROR - Metadata Validation
+    Location: ID: cars_08
+    Problem:  Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92522_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[16] ERROR - Metadata Validation
+    Location: ID: cars_08
+    Problem:  Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92522_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[17] ERROR - Metadata Validation
+    Location: ID: cars_09
+    Problem:  Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92522_pm_1.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[18] ERROR - Metadata Validation
+    Location: ID: cars_09
+    Problem:  Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92522_pm_1.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[19] ERROR - Metadata Validation
+    Location: ID: cars_10
+    Problem:  Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92523_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[20] ERROR - Metadata Validation
+    Location: ID: cars_10
+    Problem:  Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92523_pm.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[21] ERROR - Metadata Validation
+    Location: ID: cars_11
+    Problem:  Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92523_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[22] ERROR - Metadata Validation
+    Location: ID: cars_11
+    Problem:  Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92523_pm_copy.webp'
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+==========================================================

@@ -5,11 +5,13 @@ from app.utils.path_helper import PathHelper
 from app.services.metadata_service import MetadataService
 from app.services.history_service import HistoryService
 from app.services.library_service import LibraryService
+from app.services.migration_service import MigrationService
+from app.services.cleanup_service import CleanupService
 
 logger = get_logger("AppService")
 
 class AppService:
-    """Service layer managing application state, configuration, and background events."""
+    """Service layer managing application state, configuration, migration, and background events."""
     
     def __init__(self, config_manager: ConfigManager):
         self.config_manager = config_manager
@@ -21,6 +23,8 @@ class AppService:
         self.metadata_service = MetadataService()
         self.history_service = HistoryService()
         self.library_service = LibraryService(self.metadata_service, self.history_service)
+        self.migration_service = MigrationService()
+        self.cleanup_service = CleanupService()
 
     def set_theme(self, theme_name: str) -> None:
         """Updates active theme and persists setting in config.toml."""

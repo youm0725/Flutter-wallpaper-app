@@ -67,24 +67,7 @@ flutter:
   assets:
     - assets/metadata/
     - assets/icons/
-    - assets/wallpapers/full/nature/
-    - assets/wallpapers/full/abstract/
-    - assets/wallpapers/full/amoled/
-    - assets/wallpapers/full/anime/
-    - assets/wallpapers/full/architecture/
-    - assets/wallpapers/full/cars/
-    - assets/wallpapers/full/gaming/
-    - assets/wallpapers/full/minimal/
-    - assets/wallpapers/full/space/
-    - assets/wallpapers/thumbnails/nature/
-    - assets/wallpapers/thumbnails/abstract/
-    - assets/wallpapers/thumbnails/amoled/
-    - assets/wallpapers/thumbnails/anime/
-    - assets/wallpapers/thumbnails/architecture/
-    - assets/wallpapers/thumbnails/cars/
-    - assets/wallpapers/thumbnails/gaming/
-    - assets/wallpapers/thumbnails/minimal/
-    - assets/wallpapers/thumbnails/space/
+    - assets/wallpapers/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

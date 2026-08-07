@@ -32,8 +32,7 @@ class FlutterDetectorService:
         try:
             content = pubspec_path.read_text(encoding="utf-8")
             required_assets = [
-                "assets/wallpapers/full/",
-                "assets/wallpapers/thumbnails/",
+                "assets/wallpapers/",
                 "assets/metadata/"
             ]
             for asset in required_assets:

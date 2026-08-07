@@ -1,0 +1,32 @@
+{
+  "timestamp": "2026-08-07 09:35:17",
+  "duration_seconds": 0.08,
+  "total_checks": 2,
+  "pass_count": 0,
+  "warning_count": 2,
+  "error_count": 0,
+  "storage_stats": {
+    "full_size_mb": 0.0,
+    "thumb_size_mb": 0.0,
+    "metadata_size_mb": 0.0,
+    "total_size_mb": 0.01,
+    "max_limit_mb": 200.0,
+    "issues": []
+  },
+  "issues": [
+    {
+      "category": "Flutter Workspace",
+      "severity": "Warning",
+      "location": "pubspec.yaml",
+      "problem": "Asset path 'assets/wallpapers/thumbnails/' not explicitly listed in pubspec.yaml assets section.",
+      "fix": "Add missing asset paths to pubspec.yaml assets section."
+    },
+    {
+      "category": "Flutter Workspace",
+      "severity": "Warning",
+      "location": "pubspec.yaml",
+      "problem": "Asset path 'assets/metadata/' not explicitly listed in pubspec.yaml assets section.",
+      "fix": "Add missing asset paths to pubspec.yaml assets section."
+    }
+  ]
+}

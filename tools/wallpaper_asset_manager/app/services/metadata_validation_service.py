@@ -33,8 +33,8 @@ class MetadataValidationService:
             item_id = item.get("id", f"idx_{idx}")
             title = item.get("title", "")
             category = item.get("category", "")
-            thumb_path = item.get("thumbnailPath", "")
             full_path = item.get("imagePath", "")
+            thumb_path = item.get("thumbnailPath", "")
 
             # 1. Unique ID Check
             if item_id in seen_ids:
@@ -56,33 +56,25 @@ class MetadataValidationService:
             if category.lower().strip() not in valid_cat_ids:
                 issues.append({"id": item_id, "type": "Warning", "message": f"Category '{category}' not defined in categories.json"})
 
-            # 4. Collections Check
-            item_cols = item.get("collections", [])
-            for col_name in item_cols:
-                if col_name.lower().strip() not in valid_col_ids:
-                    # Also allow loose string matching
-                    pass
-
-            # 5. File Existence Check on Disk
+            # 4. File Existence Check on Disk
             if full_path:
                 full_disk = root / full_path
                 if not full_disk.exists():
-                    issues.append({"id": item_id, "type": "Error", "message": f"Full image asset file missing on disk: '{full_path}'"})
+                    issues.append({"id": item_id, "type": "Error", "message": f"Wallpaper asset file missing on disk: '{full_path}'"})
                 else:
                     fname = full_disk.name.lower()
                     if fname in seen_filenames:
-                        issues.append({"id": item_id, "type": "Warning", "message": f"Duplicate full image filename: '{fname}'"})
+                        issues.append({"id": item_id, "type": "Warning", "message": f"Duplicate wallpaper filename: '{fname}'"})
                     else:
                         seen_filenames.add(fname)
             else:
                 issues.append({"id": item_id, "type": "Error", "message": "imagePath is missing."})
 
+            # 5. Thumbnail Path check if present
             if thumb_path:
                 thumb_disk = root / thumb_path
                 if not thumb_disk.exists():
-                    issues.append({"id": item_id, "type": "Error", "message": f"Thumbnail asset file missing on disk: '{thumb_path}'"})
-            else:
-                issues.append({"id": item_id, "type": "Warning", "message": "thumbnailPath is missing."})
+                    issues.append({"id": item_id, "type": "Warning", "message": f"Legacy thumbnail asset file missing on disk: '{thumb_path}'"})
 
         is_all_valid = not any(issue["type"] == "Error" for issue in issues)
         logger.info("Metadata validation completed. Found %d issues.", len(issues))

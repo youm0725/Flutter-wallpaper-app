@@ -6,7 +6,8 @@ from PIL import Image
 from app.models.imported_wallpaper import ImportedWallpaperItem
 from app.models.processing_task import ProcessingTask
 from app.services.image_processing_engine import ImageProcessingEngine, QUALITY_PRESETS
-from app.services.processing_queue_manager import ProcessingQueueManager
+from app.services.migration_service import MigrationService
+from app.services.cleanup_service import CleanupService
 
 class TestImageProcessingEngine(unittest.TestCase):
     def setUp(self):
@@ -59,35 +60,36 @@ class TestImageProcessingEngine(unittest.TestCase):
             preset="High",
             max_width=1440,
             max_height=3200,
-            thumb_width=360,
             output_root=self.output_dir
         )
 
         self.assertTrue(success)
         self.assertEqual(task.status, "Completed")
         self.assertIsNotNone(task.output_full_path)
-        self.assertIsNotNone(task.output_thumb_path)
         self.assertTrue(task.output_full_path.exists())
-        self.assertTrue(task.output_thumb_path.exists())
 
-        # Verify output formats are WebP
+        # Verify output format is WebP
         self.assertEqual(task.output_full_path.suffix, ".webp")
-        self.assertEqual(task.output_thumb_path.suffix, ".webp")
 
-        # Verify Full image dimensions bounded by 1440x3200
+        # Verify image dimensions bounded by 1440x3200
         with Image.open(task.output_full_path) as full_img:
             w, h = full_img.size
             self.assertLessEqual(w, 1440)
             self.assertLessEqual(h, 3200)
 
-        # Verify Thumbnail width is 360px
-        with Image.open(task.output_thumb_path) as thumb_img:
-            tw, th = thumb_img.size
-            self.assertEqual(tw, 360)
-
         # Verify Original File Remains UNTOUCHED
         self.assertTrue(self.raw_img_path.exists())
         self.assertEqual(self.raw_img_path.stat().st_mtime, self.original_mtime)
+
+    def test_migration_and_cleanup_services(self):
+        migration_service = MigrationService(workspace_root=self.tmp_path)
+        cleanup_service = CleanupService(workspace_root=self.tmp_path)
+
+        detect = migration_service.detect_legacy_assets()
+        self.assertFalse(detect["needs_migration"])
+
+        orphans = cleanup_service.find_orphaned_assets()
+        self.assertEqual(orphans["orphan_count"], 0)
 
 if __name__ == "__main__":
     unittest.main()
