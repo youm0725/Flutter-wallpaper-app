@@ -51,7 +51,7 @@ class Sidebar(ctk.CTkFrame):
             btn = ctk.CTkButton(
                 self,
                 text=display_text,
-                font=ctk.CTkFont(size=13, weight="medium"),
+                font=ctk.CTkFont(size=13, weight="normal"),
                 height=36,
                 anchor="w",
                 fg_color="transparent",
@@ -111,5 +111,5 @@ class Sidebar(ctk.CTkFrame):
             else:
                 btn.configure(
                     fg_color="transparent",
-                    font=ctk.CTkFont(size=13, weight="medium")
+                    font=ctk.CTkFont(size=13, weight="normal")
                 )
