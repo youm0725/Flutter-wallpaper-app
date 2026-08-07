@@ -24,7 +24,7 @@ class LibraryService:
         self.reload_all()
 
     def reload_all(self):
-        """Reloads metadata from disk."""
+        """Reloads metadata from disk and auto-discovers processed WebP wallpapers."""
         self.wallpapers = self.metadata_service.load_wallpapers_json()
         self.categories = self.metadata_service.load_categories_json()
         self.collections = self.metadata_service.load_collections_json()
@@ -33,10 +33,70 @@ class LibraryService:
             if w.get("id"):
                 self.used_id_history.add(w["id"])
 
+        self._auto_discover_disk_wallpapers()
+
         self.history_service.clear()
         self._push_undo_snapshot()
         logger.info("Library Service initialized with %d wallpapers, %d categories, %d collections.",
                     len(self.wallpapers), len(self.categories), len(self.collections))
+
+    def _auto_discover_disk_wallpapers(self):
+        """Scans output/full and assets/wallpapers/full on disk and registers missing WebP records."""
+        from app.utils.path_helper import PathHelper
+        import time
+
+        search_dirs = [
+            self.metadata_service.workspace_root / "assets" / "wallpapers" / "full",
+        ]
+        if self.metadata_service.workspace_root == PathHelper.get_workspace_root():
+            search_dirs.append(PathHelper.get_output_dir() / "full")
+
+        new_found = False
+        for full_dir in search_dirs:
+            if not full_dir.exists():
+                continue
+
+            for cat_dir in full_dir.iterdir():
+                if not cat_dir.is_dir():
+                    continue
+                cat_id = cat_dir.name.lower()
+
+                for webp_file in cat_dir.glob("*.webp"):
+                    filename = webp_file.name
+                    rel_full = f"assets/wallpapers/full/{cat_id}/{filename}"
+                    rel_thumb = f"assets/wallpapers/thumbnails/{cat_id}/{filename}"
+
+                    already_exists = any(
+                        w.get("imagePath", "").endswith(filename) or
+                        w.get("thumbnailPath", "").endswith(filename) or
+                        w.get("id", "") == webp_file.stem
+                        for w in self.wallpapers
+                    )
+                    if already_exists:
+                        continue
+
+                    raw_title = webp_file.stem.replace("_", " ").replace("-", " ").title()
+                    w_id = self.generate_next_id(cat_id)
+
+                    new_entry = {
+                        "id": w_id,
+                        "title": raw_title,
+                        "category": cat_id,
+                        "imagePath": rel_full,
+                        "thumbnailPath": rel_thumb,
+                        "collections": [],
+                        "tags": [cat_id, "wallpaper"],
+                        "description": f"{raw_title} wallpaper in {cat_id.capitalize()} category.",
+                        "isFeatured": False,
+                        "featured": False,
+                        "createdAt": time.strftime("%Y-%m-%d")
+                    }
+                    self.wallpapers.append(new_entry)
+                    new_found = True
+                    logger.info("Auto-discovered and registered wallpaper record: %s (%s)", w_id, filename)
+
+        if new_found:
+            self.metadata_service.save_wallpapers_json(self.wallpapers)
 
     def _push_undo_snapshot(self):
         snapshot = {

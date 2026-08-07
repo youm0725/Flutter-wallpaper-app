@@ -123,8 +123,25 @@ class LibraryGridCard(ctk.CTkFrame):
     def _load_thumb_ctk(self, rel_path: str):
         if not rel_path:
             return None
-        full_disk = PathHelper.get_workspace_root() / rel_path
-        if not full_disk.exists():
+
+        filename = Path(rel_path).name
+        category = self.item_data.get("category", "general").lower()
+
+        candidates = [
+            PathHelper.get_workspace_root() / rel_path,
+            PathHelper.get_output_dir() / "thumbnails" / category / filename,
+            PathHelper.get_output_dir() / "full" / category / filename,
+            PathHelper.get_workspace_root() / "assets" / "wallpapers" / "thumbnails" / category / filename,
+            PathHelper.get_workspace_root() / "assets" / "wallpapers" / "full" / category / filename,
+        ]
+
+        full_disk = None
+        for cand in candidates:
+            if cand.exists():
+                full_disk = cand
+                break
+
+        if not full_disk:
             return None
 
         try:

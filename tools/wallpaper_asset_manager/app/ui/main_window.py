@@ -110,6 +110,10 @@ class MainWindow(ctk.CTk):
         if view_name in self.views:
             view = self.views[view_name]
             view.lift()
+            if hasattr(view, "refresh_library_grid"):
+                view.refresh_library_grid()
+            elif hasattr(view, "refresh_data"):
+                view.refresh_data()
             self.status_bar.set_status(f"Active View: {view_name}")
             self.sidebar.set_active(view_name)
             self.service.config_manager.set("ui", "last_active_view", view_name)

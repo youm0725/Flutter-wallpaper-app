@@ -101,12 +101,14 @@ class MetadataView(ctk.CTkFrame):
         )
         self.sort_option.pack(side="right", padx=(5, 10), pady=8)
 
+        cat_ids = [c.get("id", "") for c in self.library_service.categories]
         self.category_filter_option = ctk.CTkOptionMenu(
             self.toolbar,
-            values=["All"] + [c.get("name", "") for c in self.library_service.categories],
+            values=["All"] + cat_ids,
             width=120,
             command=lambda v: self.refresh_library_grid()
         )
+        self.category_filter_option.set("All")
         self.category_filter_option.pack(side="right", padx=5, pady=8)
 
         self.search_entry = ctk.CTkEntry(
@@ -304,6 +306,19 @@ class MetadataView(ctk.CTkFrame):
     # GRID & INSPECTOR REFRESH
     # ----------------------------------------------------
     def refresh_library_grid(self):
+        self.library_service.reload_all()
+
+        # Dynamic category list refresh
+        cat_ids = [c.get("id", "") for c in self.library_service.categories]
+        cur_cat = self.category_filter_option.get()
+        self.category_filter_option.configure(values=["All"] + cat_ids)
+        if cur_cat in ["All"] + cat_ids:
+            self.category_filter_option.set(cur_cat)
+        else:
+            self.category_filter_option.set("All")
+
+        self.insp_cat_option.configure(values=cat_ids if cat_ids else ["general"])
+
         query = self.search_entry.get()
         cat_filter = self.category_filter_option.get()
         feat_filter = True if self.featured_only_filter else None
@@ -366,8 +381,17 @@ class MetadataView(ctk.CTkFrame):
         # Load Preview Image
         rel_path = w.get("thumbnailPath") or w.get("imagePath")
         if rel_path:
-            full_disk = PathHelper.get_workspace_root() / rel_path
-            if full_disk.exists():
+            filename = Path(rel_path).name
+            category = w.get("category", "general").lower()
+            candidates = [
+                PathHelper.get_workspace_root() / rel_path,
+                PathHelper.get_output_dir() / "thumbnails" / category / filename,
+                PathHelper.get_output_dir() / "full" / category / filename,
+                PathHelper.get_workspace_root() / "assets" / "wallpapers" / "thumbnails" / category / filename,
+                PathHelper.get_workspace_root() / "assets" / "wallpapers" / "full" / category / filename,
+            ]
+            full_disk = next((c for c in candidates if c.exists()), None)
+            if full_disk:
                 try:
                     with Image.open(full_disk) as img:
                         img_copy = img.copy()
