@@ -70,7 +70,7 @@ class _ZoomableWallpaperState extends State<ZoomableWallpaper>
             tag: 'wallpaper_${widget.wallpaper.id}',
             child: Image.asset(
               widget.wallpaper.imagePath,
-              fit: BoxFit.contain,
+              fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,
               frameBuilder: (context, child, frame, wasSynchronouslyLoaded) {

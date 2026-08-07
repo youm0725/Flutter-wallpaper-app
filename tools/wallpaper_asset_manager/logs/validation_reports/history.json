@@ -1,5 +1,13 @@
 [
   {
+    "timestamp": "2026-08-08 00:26:28",
+    "total_checks": 110,
+    "pass_count": 48,
+    "warning_count": 53,
+    "error_count": 9,
+    "total_size_mb": 0.78
+  },
+  {
     "timestamp": "2026-08-07 23:54:16",
     "total_checks": 18,
     "pass_count": 0,
@@ -145,14 +153,6 @@
   },
   {
     "timestamp": "2026-08-07 15:45:07",
-    "total_checks": 55,
-    "pass_count": 15,
-    "warning_count": 20,
-    "error_count": 20,
-    "total_size_mb": 0.04
-  },
-  {
-    "timestamp": "2026-08-07 15:45:05",
     "total_checks": 55,
     "pass_count": 15,
     "warning_count": 20,

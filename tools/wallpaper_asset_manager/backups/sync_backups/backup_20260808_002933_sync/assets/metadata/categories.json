@@ -1,0 +1,14 @@
+[
+  {
+    "id": "avatar",
+    "name": "Avatar",
+    "description": "",
+    "icon": "avatar"
+  },
+  {
+    "id": "black",
+    "name": "Black",
+    "description": "",
+    "icon": "Black circle"
+  }
+]
