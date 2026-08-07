@@ -103,13 +103,15 @@ class LibraryService:
             self.wallpapers = valid_entries
             self.metadata_service.save_wallpapers_json(self.wallpapers)
 
-        # 2. Discover missing vertical WebP files in assets/wallpapers
+        # 2. Discover missing vertical WebP files in assets/wallpapers (recursively)
         wp_dir = self.metadata_service.workspace_root / "assets" / "wallpapers"
         if not wp_dir.exists():
             return
 
         new_found = False
-        for webp_file in wp_dir.glob("*.webp"):
+        discovered_categories = set(c.get("id", "").lower() for c in self.categories)
+
+        for webp_file in wp_dir.rglob("*.webp"):
             if webp_file.is_dir():
                 continue
 
@@ -119,29 +121,49 @@ class LibraryService:
                     w_px, h_px = img.size
                     if w_px >= h_px:
                         logger.warning("Auto-discovery skipping horizontal image: %s (%dx%d)", webp_file.name, w_px, h_px)
-                        try:
-                            webp_file.unlink()
-                        except Exception:
-                            pass
                         continue
             except Exception as e:
                 logger.warning("Could not read image %s: %s", webp_file, e)
                 continue
 
             filename = webp_file.name
-            rel_full = f"assets/wallpapers/{filename}"
+            rel_full = str(webp_file.relative_to(self.metadata_service.workspace_root)).replace("\\", "/")
 
             already_exists = any(
                 w.get("imagePath", "").endswith(filename) or
                 w.get("id", "") == webp_file.stem
                 for w in self.wallpapers
             )
+            
+            # Derive category from filename prefix e.g. "avatar_1.webp" -> "avatar"
+            stem = webp_file.stem
+            parts = re.split(r'[_\-]', stem)
+            if parts and parts[0] and not parts[0].isdigit():
+                cat_id = parts[0].lower()
+            elif webp_file.parent != wp_dir:
+                cat_id = webp_file.parent.name.lower()
+            else:
+                cat_id = "general"
+
+            if cat_id not in discovered_categories:
+                self.categories.append({
+                    "id": cat_id,
+                    "name": cat_id.capitalize(),
+                    "description": f"{cat_id.capitalize()} wallpapers",
+                    "icon": "folder"
+                })
+                discovered_categories.add(cat_id)
+
             if already_exists:
+                # Update existing wallpaper category if missing
+                for w in self.wallpapers:
+                    if w.get("id", "") == webp_file.stem or w.get("imagePath", "").endswith(filename):
+                        w["category"] = cat_id
+                        w["imagePath"] = rel_full
                 continue
 
-            raw_title = webp_file.stem.replace("_", " ").replace("-", " ").title()
-            cat_id = "general"
-            w_id = self.generate_next_id(cat_id)
+            raw_title = stem.replace("_", " ").replace("-", " ").title()
+            w_id = stem
 
             new_entry = {
                 "id": w_id,

@@ -1,0 +1,623 @@
+{
+  "timestamp": "2026-08-08 00:37:30",
+  "duration_seconds": 0.44,
+  "total_checks": 195,
+  "pass_count": 109,
+  "warning_count": 77,
+  "error_count": 9,
+  "storage_stats": {
+    "wallpaper_assets_mb": 3.45,
+    "full_size_mb": 3.45,
+    "thumb_size_mb": 0.0,
+    "metadata_size_mb": 0.12,
+    "total_size_mb": 3.56,
+    "max_limit_mb": 200.0,
+    "remaining_mb": 196.44,
+    "health_status": "Healthy",
+    "issues": []
+  },
+  "issues": [
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_1.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_10.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_11.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_12.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_13.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_14.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_15.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_16.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_17.webp",
+      "problem": "Low resolution (347x576).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_18.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_19.webp",
+      "problem": "Low resolution (320x480).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_2.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_20.webp",
+      "problem": "Low resolution (316x632).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_21.webp",
+      "problem": "Low resolution (316x632).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_22.webp",
+      "problem": "Low resolution (418x733).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_3.webp",
+      "problem": "Low resolution (416x738).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_4.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_5.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_6.webp",
+      "problem": "Low resolution (335x597).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_7.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_8.webp",
+      "problem": "Low resolution (334x598).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\avatar_9.webp",
+      "problem": "Low resolution (414x738).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_2-2.webp",
+      "problem": "Low resolution (720x1038).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_2.webp",
+      "problem": "Low resolution (415x738).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_3.webp",
+      "problem": "Low resolution (400x756).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_4.webp",
+      "problem": "Low resolution (391x782).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_5.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_6.webp",
+      "problem": "Low resolution (452x678).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Image Quality",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\helloblack_7.webp",
+      "problem": "Low resolution (415x739).",
+      "fix": "Re-import wallpaper with minimum 1080x1920 source image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\abstract\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\abstract\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\abstract\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\amoled\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\amoled\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\amoled\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\anime\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\anime\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\anime\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\architecture\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\architecture\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\architecture\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\cars\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\cars\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\cars\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\gaming\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\gaming\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\gaming\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\minimal\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\minimal\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\minimal\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\nature\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\nature\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\nature\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\space\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\space\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\space\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_01",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_02",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_03",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_04",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_05",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_06",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_07",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_08",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_09",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_10",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_11",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_12",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_13",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_14",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_15",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_16",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_17",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_18",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_19",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_20",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_21",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_22",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_23",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_24",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_25",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_26",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_27",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_28",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_29",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_30",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_31",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_32",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_33",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_34",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_35",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_36",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_37",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_38",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Warning",
+      "location": "ID: general_39",
+      "problem": "Category 'general' not defined in categories.json",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    }
+  ]
+}

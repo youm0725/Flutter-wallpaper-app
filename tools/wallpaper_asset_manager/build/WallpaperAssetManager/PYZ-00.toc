@@ -108,6 +108,10 @@
    'C:\\Users\\YOUM '
    'PATEL.DESKTOP-EC43HK5\\AppData\\Roaming\\Python\\Python313\\site-packages\\PIL\\ImageColor.py',
    'PYMODULE'),
+  ('PIL.ImageEnhance',
+   'C:\\Users\\YOUM '
+   'PATEL.DESKTOP-EC43HK5\\AppData\\Roaming\\Python\\Python313\\site-packages\\PIL\\ImageEnhance.py',
+   'PYMODULE'),
   ('PIL.ImageFile',
    'C:\\Users\\YOUM '
    'PATEL.DESKTOP-EC43HK5\\AppData\\Roaming\\Python\\Python313\\site-packages\\PIL\\ImageFile.py',
@@ -143,6 +147,10 @@
   ('PIL.ImageShow',
    'C:\\Users\\YOUM '
    'PATEL.DESKTOP-EC43HK5\\AppData\\Roaming\\Python\\Python313\\site-packages\\PIL\\ImageShow.py',
+   'PYMODULE'),
+  ('PIL.ImageStat',
+   'C:\\Users\\YOUM '
+   'PATEL.DESKTOP-EC43HK5\\AppData\\Roaming\\Python\\Python313\\site-packages\\PIL\\ImageStat.py',
    'PYMODULE'),
   ('PIL.ImageTk',
    'C:\\Users\\YOUM '

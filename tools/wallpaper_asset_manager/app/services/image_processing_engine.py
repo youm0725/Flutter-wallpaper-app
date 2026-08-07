@@ -102,11 +102,35 @@ class ImageProcessingEngine:
                 if orig_w >= orig_h:
                     raise ValueError(f"Horizontal image rejected ({orig_w}x{orig_h}). Only vertical (portrait) wallpapers (height > width) are allowed.")
 
-                # 4. Resize Full Wallpaper (Max 1440x3200, aspect ratio preserved, no stretch)
-                if orig_w > max_width or orig_h > max_height:
+                # 4. Image Quality Enhancement Pipeline (Upscaling, Detail Sharpening & Color Vibrance)
+                from PIL import ImageFilter, ImageEnhance
+
+                # A. Upscale lower-resolution images up to target QHD resolution (1440x3200) using Lanczos
+                if orig_w < max_width and orig_h < max_height:
+                    scale = min(max_width / orig_w, max_height / orig_h)
+                    if scale > 1.0 and scale <= 2.5:
+                        new_w = int(orig_w * scale)
+                        new_h = int(orig_h * scale)
+                        img = img.resize((new_w, new_h), Image.Resampling.LANCZOS)
+                elif orig_w > max_width or orig_h > max_height:
                     img.thumbnail((max_width, max_height), Image.Resampling.LANCZOS)
 
-                # 4. Save WebP format without lossy compression (100% quality)
+                # B. Unsharp Masking for crisp detail sharpening
+                img = img.filter(ImageFilter.UnsharpMask(radius=1.5, percent=120, threshold=2))
+
+                # C. Selective Contrast Boost (+5%)
+                contrast_enhancer = ImageEnhance.Contrast(img)
+                img = contrast_enhancer.enhance(1.05)
+
+                # D. Color Saturation Vibrance Boost (+8%)
+                color_enhancer = ImageEnhance.Color(img)
+                img = color_enhancer.enhance(1.08)
+
+                # E. Sharpness Fine-Tuning (+15%)
+                sharp_enhancer = ImageEnhance.Sharpness(img)
+                img = sharp_enhancer.enhance(1.15)
+
+                # 5. Save WebP format without lossy compression (100% quality)
                 img.save(output_path, "WEBP", quality=100, lossless=True, method=6)
                 task.full_size_bytes = output_path.stat().st_size
                 task.thumb_size_bytes = task.full_size_bytes

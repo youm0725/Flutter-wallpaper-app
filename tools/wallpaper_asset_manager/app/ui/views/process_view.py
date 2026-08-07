@@ -157,8 +157,7 @@ class ProcessView(ctk.CTkFrame):
         ctk.CTkLabel(tbl_hdr, text="Input Filename", width=220, font=ctk.CTkFont(weight="bold"), anchor="w").pack(side="left")
         ctk.CTkLabel(tbl_hdr, text="Category", width=110, font=ctk.CTkFont(weight="bold"), anchor="w").pack(side="left")
         ctk.CTkLabel(tbl_hdr, text="Output WebP", width=200, font=ctk.CTkFont(weight="bold"), anchor="w").pack(side="left")
-        ctk.CTkLabel(tbl_hdr, text="Full Size", width=100, font=ctk.CTkFont(weight="bold"), anchor="w").pack(side="left")
-        ctk.CTkLabel(tbl_hdr, text="Thumb Size", width=100, font=ctk.CTkFont(weight="bold"), anchor="w").pack(side="left")
+        ctk.CTkLabel(tbl_hdr, text="Full WebP Size", width=120, font=ctk.CTkFont(weight="bold"), anchor="w").pack(side="left")
         ctk.CTkLabel(tbl_hdr, text="Duration", width=80, font=ctk.CTkFont(weight="bold"), anchor="w").pack(side="left")
 
         self.queue_scrollable = ctk.CTkScrollableFrame(self.queue_card.container, fg_color="transparent")
@@ -271,11 +270,7 @@ class ProcessView(ctk.CTkFrame):
 
             # Full Size
             full_sz = f"{round(task.full_size_bytes / 1024)} KB" if task.full_size_bytes else "-"
-            ctk.CTkLabel(row_frame, text=full_sz, width=100, font=ctk.CTkFont(size=11), anchor="w").pack(side="left")
-
-            # Thumb Size
-            thumb_sz = f"{round(task.thumb_size_bytes / 1024)} KB" if task.thumb_size_bytes else "-"
-            ctk.CTkLabel(row_frame, text=thumb_sz, width=100, font=ctk.CTkFont(size=11), anchor="w").pack(side="left")
+            ctk.CTkLabel(row_frame, text=full_sz, width=120, font=ctk.CTkFont(size=11), anchor="w").pack(side="left")
 
             # Duration
             dur_str = f"{task.duration_seconds:.2f}s" if task.duration_seconds > 0 else "-"

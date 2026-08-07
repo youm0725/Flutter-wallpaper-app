@@ -1,0 +1,445 @@
+==========================================================
+WALLPAPER GALLERY — RELEASE VALIDATION REPORT
+==========================================================
+Timestamp: 2026-08-08 00:37:30
+Duration: 0.44s
+
+SUMMARY STATS:
+  - Total Checks Run: 195
+  - Passed:           109
+  - Warnings:         77
+  - Errors:           9
+  - Total Asset Size: 3.56 MB
+
+DETAILED ISSUES & FIX SUGGESTIONS:
+[1] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_1.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[2] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_10.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[3] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_11.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[4] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_12.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[5] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_13.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[6] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_14.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[7] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_15.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[8] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_16.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[9] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_17.webp
+    Problem:  Low resolution (347x576).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[10] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_18.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[11] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_19.webp
+    Problem:  Low resolution (320x480).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[12] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_2.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[13] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_20.webp
+    Problem:  Low resolution (316x632).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[14] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_21.webp
+    Problem:  Low resolution (316x632).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[15] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_22.webp
+    Problem:  Low resolution (418x733).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[16] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_3.webp
+    Problem:  Low resolution (416x738).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[17] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_4.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[18] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_5.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[19] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_6.webp
+    Problem:  Low resolution (335x597).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[20] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_7.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[21] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_8.webp
+    Problem:  Low resolution (334x598).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[22] WARNING - Image Quality
+    Location: assets\wallpapers\avatar_9.webp
+    Problem:  Low resolution (414x738).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[23] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_2-2.webp
+    Problem:  Low resolution (720x1038).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[24] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_2.webp
+    Problem:  Low resolution (415x738).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[25] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_3.webp
+    Problem:  Low resolution (400x756).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[26] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_4.webp
+    Problem:  Low resolution (391x782).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[27] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_5.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[28] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_6.webp
+    Problem:  Low resolution (452x678).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[29] WARNING - Image Quality
+    Location: assets\wallpapers\helloblack_7.webp
+    Problem:  Low resolution (415x739).
+    Fix:      Re-import wallpaper with minimum 1080x1920 source image.
+
+[30] WARNING - Asset Validation
+    Location: assets\wallpapers\abstract\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[31] ERROR - Asset Validation
+    Location: assets\wallpapers\abstract\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\abstract\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[32] WARNING - Asset Validation
+    Location: assets\wallpapers\amoled\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[33] ERROR - Asset Validation
+    Location: assets\wallpapers\amoled\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\amoled\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[34] WARNING - Asset Validation
+    Location: assets\wallpapers\anime\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[35] ERROR - Asset Validation
+    Location: assets\wallpapers\anime\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\anime\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[36] WARNING - Asset Validation
+    Location: assets\wallpapers\architecture\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[37] ERROR - Asset Validation
+    Location: assets\wallpapers\architecture\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\architecture\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[38] WARNING - Asset Validation
+    Location: assets\wallpapers\cars\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[39] ERROR - Asset Validation
+    Location: assets\wallpapers\cars\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\cars\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[40] WARNING - Asset Validation
+    Location: assets\wallpapers\gaming\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[41] ERROR - Asset Validation
+    Location: assets\wallpapers\gaming\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\gaming\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[42] WARNING - Asset Validation
+    Location: assets\wallpapers\minimal\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[43] ERROR - Asset Validation
+    Location: assets\wallpapers\minimal\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\minimal\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[44] WARNING - Asset Validation
+    Location: assets\wallpapers\nature\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[45] ERROR - Asset Validation
+    Location: assets\wallpapers\nature\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\nature\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[46] WARNING - Asset Validation
+    Location: assets\wallpapers\space\.gitkeep
+    Problem:  Non-WebP image format ''.
+    Fix:      Convert asset to WebP using Image Processing Engine.
+
+[47] ERROR - Asset Validation
+    Location: assets\wallpapers\space\.gitkeep
+    Problem:  Corrupted or unreadable image file: cannot identify image file 'D:\\YOUM PATEL\\Desktop\\Flutter Projects\\wallpaper_app\\assets\\wallpapers\\space\\.gitkeep'
+    Fix:      Delete or re-process corrupted wallpaper image.
+
+[48] WARNING - Metadata Validation
+    Location: ID: general_01
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[49] WARNING - Metadata Validation
+    Location: ID: general_02
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[50] WARNING - Metadata Validation
+    Location: ID: general_03
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[51] WARNING - Metadata Validation
+    Location: ID: general_04
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[52] WARNING - Metadata Validation
+    Location: ID: general_05
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[53] WARNING - Metadata Validation
+    Location: ID: general_06
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[54] WARNING - Metadata Validation
+    Location: ID: general_07
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[55] WARNING - Metadata Validation
+    Location: ID: general_08
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[56] WARNING - Metadata Validation
+    Location: ID: general_09
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[57] WARNING - Metadata Validation
+    Location: ID: general_10
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[58] WARNING - Metadata Validation
+    Location: ID: general_11
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[59] WARNING - Metadata Validation
+    Location: ID: general_12
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[60] WARNING - Metadata Validation
+    Location: ID: general_13
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[61] WARNING - Metadata Validation
+    Location: ID: general_14
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[62] WARNING - Metadata Validation
+    Location: ID: general_15
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[63] WARNING - Metadata Validation
+    Location: ID: general_16
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[64] WARNING - Metadata Validation
+    Location: ID: general_17
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[65] WARNING - Metadata Validation
+    Location: ID: general_18
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[66] WARNING - Metadata Validation
+    Location: ID: general_19
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[67] WARNING - Metadata Validation
+    Location: ID: general_20
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[68] WARNING - Metadata Validation
+    Location: ID: general_21
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[69] WARNING - Metadata Validation
+    Location: ID: general_22
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[70] WARNING - Metadata Validation
+    Location: ID: general_23
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[71] WARNING - Metadata Validation
+    Location: ID: general_24
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[72] WARNING - Metadata Validation
+    Location: ID: general_25
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[73] WARNING - Metadata Validation
+    Location: ID: general_26
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[74] WARNING - Metadata Validation
+    Location: ID: general_27
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[75] WARNING - Metadata Validation
+    Location: ID: general_28
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[76] WARNING - Metadata Validation
+    Location: ID: general_29
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[77] WARNING - Metadata Validation
+    Location: ID: general_30
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[78] WARNING - Metadata Validation
+    Location: ID: general_31
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[79] WARNING - Metadata Validation
+    Location: ID: general_32
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[80] WARNING - Metadata Validation
+    Location: ID: general_33
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[81] WARNING - Metadata Validation
+    Location: ID: general_34
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[82] WARNING - Metadata Validation
+    Location: ID: general_35
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[83] WARNING - Metadata Validation
+    Location: ID: general_36
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[84] WARNING - Metadata Validation
+    Location: ID: general_37
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[85] WARNING - Metadata Validation
+    Location: ID: general_38
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+[86] WARNING - Metadata Validation
+    Location: ID: general_39
+    Problem:  Category 'general' not defined in categories.json
+    Fix:      Edit metadata record in Metadata Manager screen.
+
+==========================================================

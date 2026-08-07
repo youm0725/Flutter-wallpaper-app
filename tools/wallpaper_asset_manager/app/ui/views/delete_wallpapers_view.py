@@ -101,10 +101,13 @@ class DeleteWallpapersView(ctk.CTkFrame):
         """Reloads wallpaper library and updates category dropdown and grid cards."""
         self.library_service.reload_all()
 
-        cat_ids = [c.get("id", "") for c in self.library_service.categories]
+        cats_from_wps = set(w.get("category", "").lower() for w in self.library_service.wallpapers if w.get("category"))
+        cats_from_service = set(c.get("id", "").lower() for c in self.library_service.categories if c.get("id"))
+        all_cats = sorted(list(cats_from_wps | cats_from_service))
+
         cur_cat = self.cat_filter_option.get()
-        self.cat_filter_option.configure(values=["All"] + cat_ids)
-        if cur_cat in ["All"] + cat_ids:
+        self.cat_filter_option.configure(values=["All"] + all_cats)
+        if cur_cat in ["All"] + all_cats:
             self.cat_filter_option.set(cur_cat)
         else:
             self.cat_filter_option.set("All")
