@@ -1,0 +1,172 @@
+{
+  "timestamp": "2026-08-07 09:43:08",
+  "duration_seconds": 0.06,
+  "total_checks": 55,
+  "pass_count": 33,
+  "warning_count": 0,
+  "error_count": 22,
+  "storage_stats": {
+    "full_size_mb": 0.0,
+    "thumb_size_mb": 0.0,
+    "metadata_size_mb": 0.02,
+    "total_size_mb": 0.02,
+    "max_limit_mb": 200.0,
+    "issues": []
+  },
+  "issues": [
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_01",
+      "problem": "Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_04_18_at_45137_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_01",
+      "problem": "Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_04_18_at_45137_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_02",
+      "problem": "Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_04_18_at_45137_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_02",
+      "problem": "Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_04_18_at_45137_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_03",
+      "problem": "Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_03",
+      "problem": "Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_04",
+      "problem": "Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_1.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_04",
+      "problem": "Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_1.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_05",
+      "problem": "Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_1_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_05",
+      "problem": "Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_1_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_06",
+      "problem": "Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92519_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_06",
+      "problem": "Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92519_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_07",
+      "problem": "Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92521_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_07",
+      "problem": "Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92521_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_08",
+      "problem": "Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92522_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_08",
+      "problem": "Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92522_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_09",
+      "problem": "Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92522_pm_1.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_09",
+      "problem": "Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92522_pm_1.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_10",
+      "problem": "Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92523_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_10",
+      "problem": "Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92523_pm.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_11",
+      "problem": "Full image asset file missing on disk: 'assets/wallpapers/full/cars/whatsapp_image_2026_06_12_at_92523_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    },
+    {
+      "category": "Metadata Validation",
+      "severity": "Error",
+      "location": "ID: cars_11",
+      "problem": "Thumbnail asset file missing on disk: 'assets/wallpapers/thumbnails/cars/whatsapp_image_2026_06_12_at_92523_pm_copy.webp'",
+      "fix": "Edit metadata record in Metadata Manager screen."
+    }
+  ]
+}

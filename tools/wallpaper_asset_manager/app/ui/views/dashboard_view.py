@@ -47,6 +47,16 @@ class DashboardView(ctk.CTkFrame):
         )
         btn_export.pack(side="right", padx=5)
 
+        btn_build = ctk.CTkButton(
+            header,
+            text="📱 Build APK & IPA",
+            font=ctk.CTkFont(weight="bold"),
+            fg_color="#8B5CF6",
+            hover_color="#7C3AED",
+            command=self._open_flutter_builder
+        )
+        btn_build.pack(side="right", padx=5)
+
         btn_refresh = ctk.CTkButton(
             header,
             text="🔄 Refresh Data",
@@ -192,3 +202,7 @@ class DashboardView(ctk.CTkFrame):
             json.dump(data, f, indent=2)
 
         messagebox.showinfo("Report Exported", f"Dashboard analytics report exported to:\n\n{json_file}")
+
+    def _open_flutter_builder(self):
+        from app.ui.dialogs.flutter_build_dialog import FlutterBuildDialog
+        FlutterBuildDialog(self.winfo_toplevel(), self.service)

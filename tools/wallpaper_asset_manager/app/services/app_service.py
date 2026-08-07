@@ -7,11 +7,12 @@ from app.services.history_service import HistoryService
 from app.services.library_service import LibraryService
 from app.services.migration_service import MigrationService
 from app.services.cleanup_service import CleanupService
+from app.services.flutter_build_service import FlutterBuildService
 
 logger = get_logger("AppService")
 
 class AppService:
-    """Service layer managing application state, configuration, migration, and background events."""
+    """Service layer managing application state, configuration, builds, migration, and background events."""
     
     def __init__(self, config_manager: ConfigManager):
         self.config_manager = config_manager
@@ -25,6 +26,7 @@ class AppService:
         self.library_service = LibraryService(self.metadata_service, self.history_service)
         self.migration_service = MigrationService()
         self.cleanup_service = CleanupService()
+        self.build_service = FlutterBuildService()
 
     def set_theme(self, theme_name: str) -> None:
         """Updates active theme and persists setting in config.toml."""

@@ -116,6 +116,16 @@ class ProcessView(ctk.CTkFrame):
         )
         self.btn_cancel.pack(side="left", padx=5)
 
+        self.btn_build_app = ctk.CTkButton(
+            ctrl_frame,
+            text="📱 Build App (APK/IPA)",
+            font=ctk.CTkFont(weight="bold"),
+            fg_color="#8B5CF6",
+            hover_color="#7C3AED",
+            command=self._open_flutter_builder
+        )
+        self.btn_build_app.pack(side="left", padx=5)
+
         # Progress Indicator Row
         progress_row = ctk.CTkFrame(self.toolbar_card.container, fg_color="transparent")
         progress_row.pack(fill="x", pady=(10, 4))
@@ -281,6 +291,10 @@ class ProcessView(ctk.CTkFrame):
             self.category_option.set(cur)
         else:
             self.category_option.set(cat_ids[0])
+
+    def _open_flutter_builder(self):
+        from app.ui.dialogs.flutter_build_dialog import FlutterBuildDialog
+        FlutterBuildDialog(self.winfo_toplevel(), self.service)
 
     def _open_category_manager(self):
         from app.ui.dialogs.category_manager_dialog import CategoryManagerDialog
