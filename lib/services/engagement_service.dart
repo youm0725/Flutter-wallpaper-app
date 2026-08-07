@@ -28,14 +28,25 @@ final class LocalEngagementService implements IEngagementService {
   @override
   Future<bool> requestInAppReview() async {
     try {
-      if (await _review.isAvailable()) {
+      if (Platform.isIOS) {
+        final isAvailable = await _review.isAvailable();
+        if (!isAvailable) return false;
         await _review.requestReview();
         return true;
       }
-      await _review.openStoreListing();
-      return true;
+
+      if (Platform.isAndroid) {
+        if (await _review.isAvailable()) {
+          await _review.requestReview();
+        } else {
+          await _review.requestReview();
+        }
+        return true;
+      }
+
+      return false;
     } catch (_) {
-      return openStoreReviewPage();
+      return false;
     }
   }
 

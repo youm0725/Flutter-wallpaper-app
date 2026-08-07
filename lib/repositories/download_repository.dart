@@ -18,7 +18,7 @@ final class LocalDownloadRepository implements IDownloadRepository {
   @override
   Future<bool> hasStoragePermission() async {
     try {
-      return await Gal.hasAccess(toAlbum: false);
+      return await Gal.hasAccess(toAlbum: true);
     } catch (_) {
       return false;
     }
@@ -27,7 +27,7 @@ final class LocalDownloadRepository implements IDownloadRepository {
   @override
   Future<bool> requestStoragePermission() async {
     try {
-      return await Gal.requestAccess(toAlbum: false);
+      return await Gal.requestAccess(toAlbum: true);
     } catch (_) {
       return false;
     }
@@ -56,7 +56,18 @@ final class LocalDownloadRepository implements IDownloadRepository {
       }
       return false;
     } catch (_) {
-      return false;
+      try {
+        final ByteData byteData = await rootBundle.load(wallpaper.imagePath);
+        final Uint8List bytes = byteData.buffer.asUint8List(
+          byteData.offsetInBytes,
+          byteData.lengthInBytes,
+        );
+        final sanitizeName = wallpaper.id.replaceAll(RegExp(r'[^a-zA-Z0-9_]'), '_');
+        await Gal.putImageBytes(bytes, name: 'wallpaper_$sanitizeName.webp');
+        return true;
+      } catch (_) {
+        return false;
+      }
     } finally {
       if (tempFile != null && await tempFile.exists()) {
         try {
