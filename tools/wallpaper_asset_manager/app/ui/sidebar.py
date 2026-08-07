@@ -1,4 +1,5 @@
 import customtkinter as ctk
+from typing import Callable, Optional
 
 class Sidebar(ctk.CTkFrame):
     """Sidebar navigation panel."""
@@ -9,16 +10,27 @@ class Sidebar(ctk.CTkFrame):
         ("Process", "⚡  Process"),
         ("Metadata", "🏷️  Metadata"),
         ("Validation", "✅  Validation"),
+        ("Sync", "🔄  Sync"),
+        ("Backups", "📦  Backups"),
         ("Settings", "⚙️  Settings"),
         ("Logs", "📜  Logs"),
         ("About", "ℹ️  About"),
     ]
     
-    def __init__(self, master, on_navigate_callback, on_theme_callback, current_theme: str = "Dark", **kwargs):
+    def __init__(
+        self,
+        master,
+        on_navigate_callback: Optional[Callable[[str], None]] = None,
+        on_theme_callback: Optional[Callable[[str], None]] = None,
+        current_theme: str = "Dark",
+        on_nav_change: Optional[Callable[[str], None]] = None,
+        on_theme_change: Optional[Callable[[str], None]] = None,
+        **kwargs
+    ):
         super().__init__(master, width=210, corner_radius=0, **kwargs)
         
-        self.on_navigate_callback = on_navigate_callback
-        self.on_theme_callback = on_theme_callback
+        self.on_navigate_callback = on_navigate_callback or on_nav_change or (lambda v: None)
+        self.on_theme_callback = on_theme_callback or on_theme_change or (lambda t: None)
         self.buttons = {}
         self.active_nav = "Dashboard"
         
@@ -80,6 +92,13 @@ class Sidebar(ctk.CTkFrame):
 
     def _handle_theme_change(self, new_theme: str):
         self.on_theme_callback(new_theme)
+
+    def _on_nav_click(self, view_id: str):
+        self._handle_click(view_id)
+
+    @property
+    def active_view_name(self) -> str:
+        return self.active_nav
 
     def set_active(self, view_id: str):
         self.active_nav = view_id

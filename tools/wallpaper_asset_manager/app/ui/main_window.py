@@ -48,7 +48,7 @@ class MainWindow(ctk.CTk):
         self.menu_bar = MenuBar(self, on_navigate=self.show_view, on_theme=self._change_theme)
 
         # Sidebar Component
-        self.sidebar = Sidebar(self, on_nav_change=self.show_view)
+        self.sidebar = Sidebar(self, on_navigate_callback=self.show_view, on_theme_callback=self._change_theme)
         self.sidebar.grid(row=0, column=0, sticky="nsew")
 
         # View Container
