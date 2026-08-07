@@ -1,0 +1,147 @@
+{
+  "timestamp": "2026-08-07 16:15:52",
+  "duration_seconds": 0.34,
+  "total_checks": 18,
+  "pass_count": 0,
+  "warning_count": 9,
+  "error_count": 9,
+  "storage_stats": {
+    "wallpaper_assets_mb": 0.0,
+    "full_size_mb": 0.0,
+    "thumb_size_mb": 0.0,
+    "metadata_size_mb": 0.04,
+    "total_size_mb": 0.04,
+    "max_limit_mb": 200.0,
+    "remaining_mb": 199.96,
+    "health_status": "Healthy",
+    "issues": []
+  },
+  "issues": [
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\abstract\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\abstract\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\abstract\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\amoled\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\amoled\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\amoled\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\anime\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\anime\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\anime\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\architecture\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\architecture\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\architecture\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\cars\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\cars\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\cars\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\gaming\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\gaming\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\gaming\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\minimal\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\minimal\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\minimal\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\nature\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\nature\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\nature\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Warning",
+      "location": "assets\\wallpapers\\space\\.gitkeep",
+      "problem": "Non-WebP image format ''.",
+      "fix": "Convert asset to WebP using Image Processing Engine."
+    },
+    {
+      "category": "Asset Validation",
+      "severity": "Error",
+      "location": "assets\\wallpapers\\space\\.gitkeep",
+      "problem": "Corrupted or unreadable image file: cannot identify image file 'D:\\\\YOUM PATEL\\\\Desktop\\\\Flutter Projects\\\\wallpaper_app\\\\assets\\\\wallpapers\\\\space\\\\.gitkeep'",
+      "fix": "Delete or re-process corrupted wallpaper image."
+    }
+  ]
+}

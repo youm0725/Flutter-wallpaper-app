@@ -8,11 +8,12 @@ from app.services.library_service import LibraryService
 from app.services.migration_service import MigrationService
 from app.services.cleanup_service import CleanupService
 from app.services.flutter_build_service import FlutterBuildService
+from app.services.git_service import GitService
 
 logger = get_logger("AppService")
 
 class AppService:
-    """Service layer managing application state, configuration, builds, migration, and background events."""
+    """Service layer managing application state, configuration, builds, git sync, migration, and events."""
     
     def __init__(self, config_manager: ConfigManager):
         self.config_manager = config_manager
@@ -27,6 +28,7 @@ class AppService:
         self.migration_service = MigrationService()
         self.cleanup_service = CleanupService()
         self.build_service = FlutterBuildService()
+        self.git_service = GitService()
 
     def set_theme(self, theme_name: str) -> None:
         """Updates active theme and persists setting in config.toml."""

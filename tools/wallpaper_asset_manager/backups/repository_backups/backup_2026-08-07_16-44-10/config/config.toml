@@ -1,0 +1,25 @@
+[app]
+name = "Wallpaper Asset Manager"
+version = "1.0.0"
+theme = "Dark"
+
+[paths]
+input_folder = "input"
+output_folder = "output"
+flutter_assets_folder = "../../assets"
+
+[processing]
+quality_full = 85
+quality_thumb = 75
+full_width = 1080
+full_height = 1920
+thumb_width = 360
+thumb_height = 640
+format = "WEBP"
+
+[logging]
+level = "INFO"
+
+[ui]
+last_active_view = "Dashboard"
+window_geometry = "1366x685+-34+130"

@@ -1,0 +1,11 @@
+==========================================================
+WALLPAPER ASSET MANAGER — CRASH REPORT
+==========================================================
+Date & Time: 2026-08-07 16:08:44
+Python Version: 3.13.7 (win32)
+Exception Type: RuntimeError
+Exception Message: Test crash
+
+STACK TRACE:
+Dummy traceback
+==========================================================

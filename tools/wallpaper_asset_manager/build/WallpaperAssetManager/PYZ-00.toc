@@ -382,6 +382,10 @@
    'D:\\YOUM PATEL\\Desktop\\Flutter '
    'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\services\\flutter_detector_service.py',
    'PYMODULE'),
+  ('app.services.git_service',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\services\\git_service.py',
+   'PYMODULE'),
   ('app.services.history_service',
    'D:\\YOUM PATEL\\Desktop\\Flutter '
    'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\services\\history_service.py',
@@ -462,6 +466,10 @@
   ('app.ui.dialogs.flutter_build_dialog',
    'D:\\YOUM PATEL\\Desktop\\Flutter '
    'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\ui\\dialogs\\flutter_build_dialog.py',
+   'PYMODULE'),
+  ('app.ui.dialogs.git_push_dialog',
+   'D:\\YOUM PATEL\\Desktop\\Flutter '
+   'Projects\\wallpaper_app\\tools\\wallpaper_asset_manager\\app\\ui\\dialogs\\git_push_dialog.py',
    'PYMODULE'),
   ('app.ui.main_window',
    'D:\\YOUM PATEL\\Desktop\\Flutter '

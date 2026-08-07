@@ -132,6 +132,17 @@ class SyncView(ctk.CTkFrame):
         )
         btn_sync.pack(side="left", padx=(0, 10))
 
+        btn_git_push = ctk.CTkButton(
+            btn_row,
+            text="🚀 Push to GitHub",
+            font=ctk.CTkFont(size=13, weight="bold"),
+            fg_color="#8B5CF6",
+            hover_color="#7C3AED",
+            height=36,
+            command=self._open_git_push_dialog
+        )
+        btn_git_push.pack(side="left", padx=10)
+
         btn_preview = ctk.CTkButton(
             btn_row,
             text="🔍 Preview Sync (Dry Run)",
@@ -201,7 +212,8 @@ class SyncView(ctk.CTkFrame):
             if success:
                 self.refresh_dry_run()
                 self.service.update_status(f"✓ {summary}")
-                messagebox.showinfo("Sync Successful", f"{summary}\n\nReport generated at:\n{report_path}")
+                if messagebox.askyesno("Sync Successful", f"{summary}\n\nWould you like to commit and push these updates to GitHub now?"):
+                    self._open_git_push_dialog()
             else:
                 messagebox.showerror("Sync Failed", summary)
 
@@ -221,3 +233,7 @@ class SyncView(ctk.CTkFrame):
                 messagebox.showinfo("Restore Complete", "Flutter assets & metadata restored to previous backup state.")
             else:
                 messagebox.showerror("Restore Failed", "Failed restoring backup.")
+
+    def _open_git_push_dialog(self):
+        from app.ui.dialogs.git_push_dialog import GitPushDialog
+        GitPushDialog(self.winfo_toplevel(), self.service)

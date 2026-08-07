@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-08-07 16:44:21",
+  "duration_seconds": 0.03,
+  "total_checks": 1,
+  "pass_count": 0,
+  "warning_count": 1,
+  "error_count": 0,
+  "storage_stats": {
+    "wallpaper_assets_mb": 0.01,
+    "full_size_mb": 0.01,
+    "thumb_size_mb": 0.0,
+    "metadata_size_mb": 0.0,
+    "total_size_mb": 0.01,
+    "max_limit_mb": 200.0,
+    "remaining_mb": 199.99,
+    "health_status": "Healthy",
+    "issues": []
+  },
+  "issues": [
+    {
+      "category": "Flutter Workspace",
+      "severity": "Warning",
+      "location": "pubspec.yaml",
+      "problem": "Asset path 'assets/metadata/' not explicitly listed in pubspec.yaml assets section.",
+      "fix": "Add missing asset paths to pubspec.yaml assets section."
+    }
+  ]
+}
