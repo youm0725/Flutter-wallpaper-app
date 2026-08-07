@@ -80,56 +80,84 @@ class LibraryService:
         return removed_count
 
     def _auto_discover_disk_wallpapers(self):
-        """Scans output/wallpapers and assets/wallpapers on disk and registers missing WebP records."""
-        from app.utils.path_helper import PathHelper
+        """Scans assets/wallpapers on disk, registers valid vertical WebP records, and purges dead missing file records."""
+        from PIL import Image
         import time
 
-        search_dirs = [
-            self.metadata_service.workspace_root / "assets" / "wallpapers",
-        ]
-        if self.metadata_service.workspace_root == PathHelper.get_workspace_root():
-            search_dirs.append(PathHelper.get_output_dir() / "wallpapers")
-            search_dirs.append(PathHelper.get_output_dir())
+        # 1. Purge dead metadata entries whose asset file does not exist
+        valid_entries = []
+        dead_found = False
+        for w in self.wallpapers:
+            rel_path = w.get("imagePath", "")
+            if rel_path:
+                full_path = self.metadata_service.workspace_root / rel_path
+                if full_path.exists():
+                    valid_entries.append(w)
+                else:
+                    dead_found = True
+                    logger.info("Purging dead ghost metadata entry (file missing): %s (%s)", w.get("id"), rel_path)
+            else:
+                dead_found = True
+
+        if dead_found:
+            self.wallpapers = valid_entries
+            self.metadata_service.save_wallpapers_json(self.wallpapers)
+
+        # 2. Discover missing vertical WebP files in assets/wallpapers
+        wp_dir = self.metadata_service.workspace_root / "assets" / "wallpapers"
+        if not wp_dir.exists():
+            return
 
         new_found = False
-        for wp_dir in search_dirs:
-            if not wp_dir.exists():
+        for webp_file in wp_dir.glob("*.webp"):
+            if webp_file.is_dir():
                 continue
 
-            for webp_file in wp_dir.glob("*.webp"):
-                if webp_file.is_dir():
-                    continue
+            # Check if vertical wallpaper (height > width)
+            try:
+                with Image.open(webp_file) as img:
+                    w_px, h_px = img.size
+                    if w_px >= h_px:
+                        logger.warning("Auto-discovery skipping horizontal image: %s (%dx%d)", webp_file.name, w_px, h_px)
+                        try:
+                            webp_file.unlink()
+                        except Exception:
+                            pass
+                        continue
+            except Exception as e:
+                logger.warning("Could not read image %s: %s", webp_file, e)
+                continue
 
-                filename = webp_file.name
-                rel_full = f"assets/wallpapers/{filename}"
+            filename = webp_file.name
+            rel_full = f"assets/wallpapers/{filename}"
 
-                already_exists = any(
-                    w.get("imagePath", "").endswith(filename) or
-                    w.get("id", "") == webp_file.stem
-                    for w in self.wallpapers
-                )
-                if already_exists:
-                    continue
+            already_exists = any(
+                w.get("imagePath", "").endswith(filename) or
+                w.get("id", "") == webp_file.stem
+                for w in self.wallpapers
+            )
+            if already_exists:
+                continue
 
-                raw_title = webp_file.stem.replace("_", " ").replace("-", " ").title()
-                cat_id = "general"
-                w_id = self.generate_next_id(cat_id)
+            raw_title = webp_file.stem.replace("_", " ").replace("-", " ").title()
+            cat_id = "general"
+            w_id = self.generate_next_id(cat_id)
 
-                new_entry = {
-                    "id": w_id,
-                    "title": raw_title,
-                    "category": cat_id,
-                    "imagePath": rel_full,
-                    "collections": [],
-                    "tags": [cat_id, "wallpaper"],
-                    "description": f"{raw_title} wallpaper in {cat_id.capitalize()} category.",
-                    "isFeatured": False,
-                    "featured": False,
-                    "createdAt": time.strftime("%Y-%m-%d")
-                }
-                self.wallpapers.append(new_entry)
-                new_found = True
-                logger.info("Auto-discovered and registered wallpaper record: %s (%s)", w_id, filename)
+            new_entry = {
+                "id": w_id,
+                "title": raw_title,
+                "category": cat_id,
+                "imagePath": rel_full,
+                "collections": [],
+                "tags": [cat_id, "wallpaper"],
+                "description": f"{raw_title} wallpaper in {cat_id.capitalize()} category.",
+                "isFeatured": False,
+                "featured": False,
+                "createdAt": time.strftime("%Y-%m-%d")
+            }
+            self.wallpapers.append(new_entry)
+            new_found = True
+            logger.info("Auto-discovered and registered wallpaper record: %s (%s)", w_id, filename)
 
         if new_found:
             self.metadata_service.save_wallpapers_json(self.wallpapers)
